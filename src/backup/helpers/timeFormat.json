@@ -1,0 +1,14 @@
+[
+    {
+        "text": "hh:mm:ss A (1:15:30 PM)",
+        "value": "hh:mm:ss A"
+    },
+    {
+        "text": "h:mm A (1:15 PM)",
+        "value": "h:mm A"
+    },
+    {
+        "text": "hh:mm A (01:15 PM)",
+        "value": "hh:mm A"
+    }
+]

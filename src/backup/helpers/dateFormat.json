@@ -1,0 +1,70 @@
+[
+    {
+        "text": "MM-DD-YYYY (2023-12-01)",
+        "value": "MM-DD-YYYY"
+    },
+    {
+        "text": "DD-MM-YYYY (12-01-2023)",
+        "value": "DD-MM-YYYY"
+    },
+    {
+        "text": "YYYY-DD-MM (2023-12-01)",
+        "value": "YYYY-DD-MM"
+    },
+    {
+        "text": "YYYY-MM-DD (2023-01-12)",
+        "value": "YYYY-MM-DD"
+    },
+    {
+        "text": "DD/MM/YY (13/04/23)",
+        "value": "DD/MM/YY"
+    },
+    {
+        "text": "DD/MM/YYYY (13/04/2023)",
+        "value": "DD/MM/YYYY"
+    },
+    {
+        "text": "MM/DD/YYYY (04/13/2023)",
+        "value": "MM/DD/YYYY"
+    },
+    {
+        "text": "DD MMM YY (04 Aug 23)",
+        "value": "DD MMM YY"
+    },
+    {
+        "text": "DD MMM YYYY (04 Aug 2023)",
+        "value": "DD MMM YYYY"
+    },
+    {
+        "text": "DD MMMM YYYY (04 August 2023)",
+        "value": "DD MMMM YYYY"
+    },
+    {
+        "text": "MMM D, YY (Aug 5, 23)",
+        "value": "MMM D, YY"
+    },
+    {
+        "text": "MMM D, YYYY (Aug 5, 2023)",
+        "value": "MMM D, YYYY"
+    },
+    {
+        "text": "MMM DD, YYYY (Aug 05, 2023)",
+        "value": "MMM DD, YYYY"
+    },
+    {
+        "text": "MMMM DD, YYYY (August 05, 2023)",
+        "value": "MMMM DD, YYYY"
+    },
+    {
+        "text": "ddd MMM DD, YY (Wed Aug 05, 23)",
+        "value": "ddd MMM DD, YY"
+    },
+    {
+        "text": "dddd MMM D, YYYY (Wednesday Aug 5, 2023)",
+        "value": "dddd MMM D, YYYY"
+    },
+    {
+        "text": "dddd, MMMM DD, YYYY (Wednesday, August 05, 2023)",
+        "value": "dddd, MMMM DD, YYYY"
+    }
+]
