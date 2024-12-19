@@ -19,12 +19,12 @@
           </a>
         </li>
         <li class="nav-item nav-category">Main Menu</li>
-        <li class="nav-item">
+        <!-- <li class="nav-item">
           <router-link class="nav-link" :to="{ path: '/dashboard' }">
             <i class="menu-icon typcn typcn-home-outline typcn-3x"></i>
             <span class="menu-title">Dashboard</span></router-link
           >
-        </li>
+        </li>-->
         <li class="nav-item">
           <router-link class="nav-link" :to="{ name: 'eagleeye' }">
             <i class="menu-icon typcn typcn-eye"></i>
@@ -132,7 +132,7 @@
             </ul>
           </b-collapse>
         </li>
-        <li class="nav-item">
+        <!--<li class="nav-item">
           <a class="nav-link" v-b-toggle="'manage-routes'">
             <i class="menu-icon typcn typcn-location-arrow-outline"></i>
             <span class="menu-title">Fixed routes</span>
@@ -193,7 +193,7 @@
               </li>
             </ul>
           </b-collapse>
-        </li>
+        </li>-->
         <li v-if="getName.role == 'admin'" class="nav-item nav-category">
           Administrations Settings
         </li>
@@ -256,7 +256,7 @@
           </b-collapse>
         </li>  -->
 
-        <li class="nav-item">
+        <!--<li class="nav-item">
           <a class="nav-link" v-b-toggle="'manage-offers'">
             <i class="menu-icon typcn typcn-group-outline"></i>
             <span class="menu-title">Manage Offers</span>
@@ -306,7 +306,7 @@
               </li>
             </ul>
           </b-collapse>
-        </li>
+        </li>-->
 
         <!-- <li class="nav-item">
           <router-link class="nav-link" to="/agents">
@@ -337,7 +337,7 @@
           </router-link>
         </li> -->
 
-        <li class="nav-item">
+        <!--<li class="nav-item">
           <a class="nav-link" v-b-toggle="'trips'">
             <i class="menu-icon typcn typcn-user-outline"></i>
             <span class="menu-title">Manage Trips</span>
@@ -367,7 +367,7 @@
               </li>
             </ul>
           </b-collapse>
-        </li>
+        </li> -->
 
         <li class="nav-item">
           <a class="nav-link" v-b-toggle="'bookings'">
@@ -437,7 +437,7 @@
           </b-collapse>
         </li>
 
-        <li class="nav-item">
+        <!--<li class="nav-item">
           <a class="nav-link" v-b-toggle="'payments'">
             <i class="menu-icon typcn typcn-user-outline"></i>
             <span class="menu-title">Manage Payments</span>
@@ -481,7 +481,7 @@
               </li>
             </ul>
           </b-collapse>
-        </li>
+        </li>-->
 
         <!-- <li class="nav-item">
           <a class="nav-link" v-b-toggle="'icons'">
