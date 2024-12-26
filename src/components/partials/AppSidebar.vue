@@ -45,7 +45,7 @@
                   :to="{
                     path: '/buses',
                   }"
-                  >All Buses</router-link
+                  >All Vehicles</router-link
                 >
               </li>
               <!-- <li class="nav-item">
@@ -54,7 +54,7 @@
                   :to="{
                     path: '/staff/buses',
                   }"
-                  >All Buses</router-link
+                  >All Vehicles</router-link
                 >
               </li> -->
 
@@ -64,7 +64,7 @@
                   :to="{
                     path: '/bus/create',
                   }"
-                  >Create Bus</router-link
+                  >Create Vehicle</router-link
                 >
               </li>
               <li class="nav-item">
@@ -73,7 +73,7 @@
                   :to="{
                     path: '/buslayouts',
                   }"
-                  >All Bus Layout</router-link
+                  >All Vehicles Layout</router-link
                 >
               </li>
               <li class="nav-item">
@@ -82,7 +82,7 @@
                   :to="{
                     path: '/buslayout/create',
                   }"
-                  >Add Bus Layout
+                  >Add Vehicle Layout
                 </router-link>
               </li>
 
@@ -92,7 +92,7 @@
                   :to="{
                     path: '/bustypes',
                   }"
-                  >All Bus Type</router-link
+                  >All Vehicle Type</router-link
                 >
               </li>
               <li class="nav-item">
@@ -101,7 +101,7 @@
                   :to="{
                     path: '/bustype/create',
                   }"
-                  >Add Bus Type
+                  >Add Vehicle Type
                 </router-link>
               </li>
             </ul>
@@ -132,7 +132,7 @@
             </ul>
           </b-collapse>
         </li>
-        <!--<li class="nav-item">
+        <li class="nav-item">
           <a class="nav-link" v-b-toggle="'manage-routes'">
             <i class="menu-icon typcn typcn-location-arrow-outline"></i>
             <span class="menu-title">Fixed routes</span>
@@ -179,7 +179,7 @@
                   :to="{
                     path: '/bus-schedules',
                   }"
-                  >All bus Schedule</router-link
+                  >All Vehicles Schedule</router-link
                 >
               </li>
               <li class="nav-item">
@@ -188,12 +188,12 @@
                   :to="{
                     path: '/bus-schedules/create',
                   }"
-                  >Create bus schedule</router-link
+                  >Create Vehicle schedule</router-link
                 >
               </li>
             </ul>
           </b-collapse>
-        </li>-->
+        </li>
         <li v-if="getName.role == 'admin'" class="nav-item nav-category">
           Administrations Settings
         </li>
