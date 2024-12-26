@@ -3,7 +3,7 @@
     <section class="tables">
       <b-container>
         <b-row>
-          <b-col cols="4">Bus Name</b-col>
+          <b-col cols="4">Vehicle Name</b-col>
           <b-col cols="8">{{ modalData.name }} </b-col>
 
           <b-col cols="4">Reg No.</b-col>
@@ -21,7 +21,7 @@
           <b-col cols="4">Created By</b-col>
           <b-col cols="8">{{ modalData.created_by }}</b-col>
 
-          <b-col cols="4">Bus Picture</b-col>
+          <b-col cols="4">Vehicle Picture</b-col>
           <b-col cols="8"
             ><b-img
               class="img-fluid"

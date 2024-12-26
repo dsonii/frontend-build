@@ -26,9 +26,9 @@ export default {
     return {
       formtype: false,
       breadcrumbs: {
-        title: "Create Bus type",
-        b1: "Manage Bus types",
-        b2: "Bus types",
+        title: "Create Vehicle type",
+        b1: "Manage Vehicle types",
+        b2: "Vehicle types",
         b3: "Index",
         link: true,
         name: "bustypes",

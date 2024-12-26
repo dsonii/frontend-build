@@ -121,12 +121,12 @@ export default {
     return {
       title: "",
       breadcrumbs: {
-        title: "Bus Lists",
-        b1: "Manage Buses",
-        b2: "Buses",
+        title: "Vehicle Lists",
+        b1: "Manage Vehicles",
+        b2: "Vehicles",
         b3: "Index",
         link: false,
-        name: "Bus lists",
+        name: "Vehicle lists",
       },
       showLoader: false,
       columns: [

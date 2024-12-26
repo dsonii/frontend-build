@@ -41,7 +41,7 @@
               </b-form-group>
 
               <b-form-group
-                label="Buses"
+                label="Vehicles"
                 label-for="buses-input"
                 label-cols-sm="5"
                 label-cols-lg="4"
@@ -66,7 +66,7 @@
                   v-if="submitted && !$v.form.busId.required"
                   class="invalid-feedback"
                 >
-                  bus name is required
+                  vehicle name is required
                 </div>
               </b-form-group>
 
@@ -273,9 +273,9 @@ export default {
     return {
       timeZone: useAuth().general.timezone,
       breadcrumbs: {
-        title: "Edit Bus Schedules",
-        b1: "Manage Bus Schedules",
-        b2: "Bus Schedules",
+        title: "Edit Vehicle Schedules",
+        b1: "Manage Vehicle Schedules",
+        b2: "Vehicle Schedules",
         b3: "Index",
         link: true,
         name: "bus-schedules",

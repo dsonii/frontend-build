@@ -32,7 +32,7 @@
           allowed</b-form-invalid-feedback
         >
         <b-form-invalid-feedback v-if="!$v.form.name.uniqueName">
-          Bus name is already registered.
+          Vehicle name is already registered.
         </b-form-invalid-feedback>
       </b-form-group>
       <b-form-group
@@ -197,7 +197,7 @@
       </b-form-group>
 
       <b-form-group
-        label="Bus Type"
+        label="Vehicle Type"
         label-for="bus-type-input"
         label-cols-sm="4"
         label-cols-lg="3"
@@ -214,7 +214,7 @@
         >
           <template #first>
             <b-form-select-option :value="null" disabled
-              >-- Please select an bus type --</b-form-select-option
+              >-- Please select an vehicle type --</b-form-select-option
             >
           </template>
         </b-form-select>
@@ -222,12 +222,12 @@
           v-if="submitted || !$v.form.bustypeId.required"
           class="invalid-feedback"
         >
-          bus type is required
+          vehicle type is required
         </div>
       </b-form-group>
 
       <b-form-group
-        label="Bus Layout"
+        label="Vehicle Layout"
         label-for="bus-layout-input"
         label-cols-sm="4"
         label-cols-lg="3"
@@ -252,7 +252,7 @@
           v-if="submitted || !$v.form.buslayoutId.required"
           class="invalid-feedback"
         >
-          bus layout is required
+          vehicle layout is required
         </b-form-invalid-feedback>
       </b-form-group>
 
@@ -283,7 +283,7 @@
       <p class="card-description fw-500"><b>Documents</b></p>
       <br />
       <b-form-group
-        label="Bus picture"
+        label="Vehicle picture"
         label-for="picture-input"
         label-cols-sm="4"
         label-cols-lg="3"

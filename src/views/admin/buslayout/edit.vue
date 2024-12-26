@@ -312,9 +312,9 @@ export default {
   data() {
     return {
       breadcrumbs: {
-        title: "Edit Bus layout",
-        b1: "Manage Bus layouts",
-        b2: "Bus layouts",
+        title: "Edit Vehicle layout",
+        b1: "Manage Vehicle layouts",
+        b2: "Vehicle layouts",
         b3: "Index",
         link: true,
         name: "buslayouts",

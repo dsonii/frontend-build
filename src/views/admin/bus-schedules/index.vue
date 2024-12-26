@@ -15,7 +15,7 @@
           :classes="classes"
           :show-loader="showLoader"
         >
-          <template slot="empty-results"> No bus schedule found </template>
+          <template slot="empty-results"> No vehicle schedule found </template>
           <template slot="global-search-clear-icon">
             <i class="mdi mdi-account-search"></i>
           </template>
@@ -148,9 +148,9 @@ export default {
   data() {
     return {
       breadcrumbs: {
-        title: "Bus Schedules",
-        b1: "Manage Bus Schedules",
-        b2: "Bus Schedules",
+        title: "Vehicle Schedules",
+        b1: "Manage Vehicle Schedules",
+        b2: "Vehicle Schedules",
         b3: "Index",
         link: false,
         name: "bus-schedules",
@@ -168,7 +168,7 @@ export default {
           sort: true,
         },
         {
-          label: "Bus",
+          label: "Vehicle",
           name: "bus_name",
           sort: true,
         },

@@ -5,7 +5,7 @@
         <b-row>
           <b-col cols="4">Route Name</b-col>
           <b-col cols="8">{{ form.route_name }}</b-col>
-          <b-col cols="4">Bus Name</b-col>
+          <b-col cols="4">Vehicle Name</b-col>
           <b-col cols="8">{{ form.bus_name }}</b-col>
           <b-col cols="4">Departure To Arrival</b-col>
           <b-col cols="8">{{ form.departure_to_arrival_time }}</b-col>

@@ -119,9 +119,9 @@ export default {
     return {
       title: "",
       breadcrumbs: {
-        title: "Bus layout Lists",
+        title: "Vehicle layout Lists",
         b1: "Manage Layouts",
-        b2: "Bus layouts",
+        b2: "Vehicle layouts",
         b3: "Index",
         link: false,
         name: "Buslayouts",

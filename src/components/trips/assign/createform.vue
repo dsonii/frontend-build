@@ -2,7 +2,7 @@
   <div>
     <b-form @submit.prevent="createAssign">
       <b-form-group
-        label="Bus Schedule"
+        label="Vehicle Schedule"
         label-for="name-input"
         label-cols-sm="4"
         label-cols-lg="3"

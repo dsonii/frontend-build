@@ -182,7 +182,7 @@ export default {
           sort: true,
         },
         {
-          label: "Bus Name",
+          label: "Vehicle Name",
           name: "bus_name",
           //   filter: {
           //     type: "simple",

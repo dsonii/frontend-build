@@ -27,7 +27,7 @@
               </p></b-col
             >
 
-            <b-col cols="4">Bus</b-col>
+            <b-col cols="4">Vehicle</b-col>
             <b-col cols="8">
               <p>
                 Name : {{ modalData.bus_reg_no }}<br />
