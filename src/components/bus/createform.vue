@@ -244,7 +244,7 @@
         >
           <template #first>
             <b-form-select-option :value="null" disabled
-              >-- Please select an bus layout --</b-form-select-option
+              >-- Please select an vehicle layout --</b-form-select-option
             >
           </template>
         </b-form-select>
