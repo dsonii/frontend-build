@@ -126,6 +126,23 @@
                 height="80"
               ></b-img>
             </b-form-group>
+            <b-form-group
+                label="Licence Expiry Date"
+                label-for="licence-expiry-date-input"
+                label-cols-sm="4"
+                label-cols-lg="3"
+                content-cols-sm
+                content-cols-lg="7"
+              >
+                <div>
+                  <b-form-input
+                  id="licence-expiry-date-input"
+                  v-model.trim="form.licence_expiry_date"
+                  type="date"
+                  placeholder="Select Date"
+                ></b-form-input>
+                </div>
+            </b-form-group>
 
             <b-form-group
               label="Adhar Card "
@@ -167,6 +184,23 @@
                 height="80"
                 :src="form.document_police_vertification"
               ></b-img>
+            </b-form-group>
+            <b-form-group
+              label="Police Varification Expiry Date"
+              label-for="police-varification-expiry-date-input"
+              label-cols-sm="4"
+              label-cols-lg="3"
+              content-cols-sm
+              content-cols-lg="7"
+            >
+              <div>
+                <b-form-input
+                id="police-varification-expiry-date-input"
+                v-model.trim="form.police_vertification_expiry_date"
+                type="date"
+                placeholder="Select Date"
+              ></b-form-input>
+              </div>
             </b-form-group>
           </b-form>
         </b-col>

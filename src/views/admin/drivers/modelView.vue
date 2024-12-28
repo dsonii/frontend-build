@@ -38,6 +38,13 @@
               :src="modalData.document_licence"
             ></b-img
           ></b-col>
+        
+          <b-col cols="4">Licence Expiry Date</b-col>
+          <b-col cols="8"
+            >
+            {{ dateConvert(modalData.licence_expiry_date, 'Y-MM-DD') }}
+            </b-col>
+
           <b-col cols="4">Adhar Card</b-col>
           <b-col cols="8"
             ><b-img
@@ -47,7 +54,7 @@
               :src="modalData.document_adhar_card"
             ></b-img
           ></b-col>
-          <b-col cols="4">Police vertification</b-col>
+          <b-col cols="4">Police vertification </b-col>
           <b-col cols="8"
             ><b-img
               class="img-fluid"
@@ -56,6 +63,13 @@
               :src="modalData.document_police_vertification"
             ></b-img
           ></b-col>
+          <b-col cols="4">Police vertification expiry date</b-col>
+          <b-col cols="8"
+            >
+            {{ dateConvert(modalData.police_vertification_expiry_date,
+            'Y-MM-DD') }}
+            </b-col>
+
           <b-col cols="4">Created At</b-col>
           <b-col cols="8">{{
             dateConvert(

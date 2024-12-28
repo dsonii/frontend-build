@@ -211,6 +211,11 @@
                 >
               </li>
               <li class="nav-item">
+                <router-link class="nav-link" :to="{ path: '/customer/create' }"
+                  >Create Customer</router-link
+                >
+              </li>
+              <li class="nav-item">
                 <router-link class="nav-link" :to="{ path: '/referrals' }"
                   >Referrals</router-link
                 >

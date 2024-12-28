@@ -325,6 +325,24 @@
                       </div>
                     </b-form-group>
                     <b-form-group
+                      label="Licence Expiry Date"
+                      label-for="licence-expiry-date-input"
+                      label-cols-sm="4"
+                      label-cols-lg="3"
+                      content-cols-sm
+                      content-cols-lg="7"
+                    >
+                      <div>
+                        <b-form-input
+                        id="licence-expiry-date-input"
+                        v-model.trim="$v.form.licence_expiry_date.$model"
+                        type="date"
+                        placeholder="Select Date"
+                      ></b-form-input>
+                      </div>
+                  </b-form-group>
+
+                    <b-form-group
                       label="National ICard"
                       label-for="national-icard-input"
                       label-cols-sm="4"
@@ -394,6 +412,24 @@
                         </button>
                       </div>
                     </b-form-group>
+                  <b-form-group
+                    label="Police Varification Expiry Date"
+                    label-for="police-varification-expiry-date-input"
+                    label-cols-sm="4"
+                    label-cols-lg="3"
+                    content-cols-sm
+                    content-cols-lg="7"
+                  >
+                    <div>
+                      <b-form-input
+                      id="police-varification-expiry-date-input"
+                      v-model.trim="$v.form.police_vertification_expiry_date.$model"
+                      type="date"
+                      placeholder="Select Date"
+                    ></b-form-input>
+                    </div>
+                  </b-form-group>
+
                   </b-card-text>
                 </b-card>
               </b-col>
@@ -441,6 +477,7 @@ import {
 } from "vuelidate/lib/validators";
 import { mapState } from "pinia";
 import { fetchUsers } from "../../../store/fetchUsers.js";
+import { getDateFormat } from "../../../helpers/utils";
 
 export default {
   name: "driveredit",
@@ -473,8 +510,10 @@ export default {
         country_code: null,
         picture: "",
         document_licence: "",
+        licence_expiry_date: "",
         document_national_icard: "",
         document_police_vertification: "",
+        police_vertification_expiry_date: "",
         status: "",
         type: "",
       },
@@ -518,6 +557,8 @@ export default {
           return status;
         },
       },
+      licence_expiry_date: {},
+      police_vertification_expiry_date: {},
       //   picture: { required },
       //   document_licence: { required },
       //   document_national_icard: { required },
@@ -575,6 +616,8 @@ export default {
       try {
         const response = await driverService.find(this.$route.params.id);
         if (response.status) {
+          response.data.licence_expiry_date = getDateFormat(response.data.licence_expiry_date, 'Y-MM-DD');
+          response.data.police_vertification_expiry_date = getDateFormat(response.data.police_vertification_expiry_date, 'Y-MM-DD');
           if (response.data.type === "assistant") {
             this.show = false;
           } else {

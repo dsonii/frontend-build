@@ -5,6 +5,7 @@ export const customerService = {
   getAll,
   tranform,
   deleteUser,
+  create,
   update,
   find,
   walletHistory,
@@ -108,6 +109,16 @@ function tranform(rows) {
     });
   });
   return selectableItems;
+}
+
+async function create(Objparams) {
+  try {
+    const privateAuth = useAuthApi();
+    const response = await privateAuth.post("users", Objparams);
+    return response.data;
+  } catch (e) {
+    return e.response;
+  }
 }
 
 async function update(id, Objparams) {

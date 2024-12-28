@@ -115,8 +115,10 @@ function tranform(rows) {
       type: item.type,
       profile_picture: item.picture,
       licence: item.document_licence,
+      licence_expiry_date: getDateFormat(item.licence_expiry_date),
       adhar_card: item.document_adhar_card,
       police_vertification: item.document_police_vertification,
+      police_vertification_expiry_date: getDateFormat(item.police_vertification_expiry_date),
       status: item.status == true ? "Active" : "Inactive",
       createdAt: getDateFormat(item.createdAt),
     });

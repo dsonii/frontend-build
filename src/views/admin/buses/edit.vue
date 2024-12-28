@@ -394,6 +394,24 @@
                   </div>
                 </b-form-group>
                 <b-form-group
+                  label="Certificate Pollution Expiry Date"
+                  label-for="certificate-pollution-expiry-date-input"
+                  label-cols-sm="4"
+                  label-cols-lg="3"
+                  content-cols-sm
+                  content-cols-lg="7"
+                >
+                  <div>
+                    <b-form-input
+                    id="certificate-pollution-expiry-date-input"
+                    v-model.trim="$v.form.certificate_pollution_expiry_date.$model"
+                    type="date"
+                    placeholder="Select Date"
+                  ></b-form-input>
+                  </div>
+                </b-form-group>
+                
+                <b-form-group
                   label="Certificate Insurance"
                   label-for="certificate-insurance-input"
                   label-cols-sm="4"
@@ -424,6 +442,23 @@
                     </button>
                   </div>
                 </b-form-group>
+                <b-form-group
+                  label="Certificate Insurance Expiry Date"
+                  label-for="certificate-insurance-expiry-date-input"
+                  label-cols-sm="4"
+                  label-cols-lg="3"
+                  content-cols-sm
+                  content-cols-lg="7"
+                >
+                  <div>
+                    <b-form-input
+                    id="certificate-insurance-expiry-date-input"
+                    v-model.trim="$v.form.certificate_insurance_expiry_date.$model"
+                    type="date"
+                    placeholder="Select Date"
+                  ></b-form-input>
+                  </div>
+                </b-form-group>  
 
                 <b-form-group
                   label="Certificate Fitness"
@@ -456,6 +491,23 @@
                     </button>
                   </div>
                 </b-form-group>
+                <b-form-group
+                  label="Certificate Fitness Expiry Date"
+                  label-for="certificate-fitness-expiry-date-input"
+                  label-cols-sm="4"
+                  label-cols-lg="3"
+                  content-cols-sm
+                  content-cols-lg="7"
+                >
+                  <div>
+                    <b-form-input
+                    id="certificate-fitness-expiry-date-input"
+                    v-model.trim="$v.form.certificate_fitness_expiry_date.$model"
+                    type="date"
+                    placeholder="Select Date"
+                  ></b-form-input>
+                  </div>
+                </b-form-group>
 
                 <b-form-group
                   label="Certificate Permit"
@@ -486,6 +538,23 @@
                     >
                       <i class="mdi mdi-close"></i>
                     </button>
+                  </div>
+                </b-form-group>
+                <b-form-group
+                  label="Certificate Permit Expiry Date"
+                  label-for="certificate-permit-expiry-date-input"
+                  label-cols-sm="4"
+                  label-cols-lg="3"
+                  content-cols-sm
+                  content-cols-lg="7"
+                >
+                  <div>
+                    <b-form-input
+                    id="certificate-permit-expiry-date-input"
+                    v-model.trim="$v.form.certificate_permit_expiry_date.$model"
+                    type="date"
+                    placeholder="Select Date"
+                  ></b-form-input>
                   </div>
                 </b-form-group>
 
@@ -526,6 +595,7 @@ import {
   minLength,
   helpers,
 } from "vuelidate/lib/validators";
+import { getDateFormat } from "../../../helpers/utils";
 
 export default {
   name: "busedit",
@@ -557,9 +627,13 @@ export default {
         amenities: [],
         certificate_registration: "",
         certificate_pollution: "",
+        certificate_pollution_expiry_date: "",
         certificate_insurance: "",
+        certificate_insurance_expiry_date: "",
         certificate_fitness: "",
+        certificate_fitness_expiry_date: "",
         certificate_permit: "",
+        certificate_permit_expiry_date: "",
         status: "",
       },
       submitted: false,
@@ -668,6 +742,10 @@ export default {
       amenities: { required },
       bustypeId: { required },
       buslayoutId: { required },
+      certificate_pollution_expiry_date: {},
+      certificate_insurance_expiry_date: {},
+      certificate_fitness_expiry_date: {},
+      certificate_permit_expiry_date: {},
       status: { required },
     },
   },
@@ -713,7 +791,12 @@ export default {
     async getbus() {
       try {
         const response = await busService.find(this.$route.params.id);
+        response.data.certificate_pollution_expiry_date = getDateFormat(response.data.certificate_pollution_expiry_date, 'Y-MM-DD');
+        response.data.certificate_insurance_expiry_date = getDateFormat(response.data.certificate_insurance_expiry_date, 'Y-MM-DD');
+        response.data.certificate_fitness_expiry_date = getDateFormat(response.data.certificate_fitness_expiry_date, 'Y-MM-DD');
+        response.data.certificate_permit_expiry_date = getDateFormat(response.data.certificate_permit_expiry_date, 'Y-MM-DD');
         if (response.status) {
+          console.log(response.data);
           this.form = response.data;
         }
       } catch (e) {

@@ -114,9 +114,13 @@ function tranform(rows) {
       status: item.status == true ? "Active" : "Inactive",
       certificate_registration: item.certificate_registration,
       certificate_pollution: item.certificate_pollution,
+      certificate_pollution_expiry_date: getDateFormat(item.certificate_pollution_expiry_date),
       certificate_insurance: item.certificate_insurance,
+      certificate_insurance_expiry_date: getDateFormat(item.certificate_insurance_expiry_date),
       certificate_fitness: item.certificate_fitness,
+      certificate_fitness_expiry_date: getDateFormat(item.certificate_fitness_expiry_date),
       certificate_permit: item.certificate_permit,
+      certificate_permit_expiry_date: getDateFormat(item.certificate_permit_expiry_date),
       createdAt: getDateFormat(item.createdAt),
     });
   });

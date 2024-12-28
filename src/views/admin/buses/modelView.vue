@@ -53,6 +53,15 @@
             ></b-img
           ></b-col>
 
+          <b-col cols="4">Certificate Pollution Expiry date</b-col>
+          <b-col cols="8">
+          {{ 
+            dateFormatDate(
+              modalData.certificate_pollution_expiry_date, 
+              'Y-MM-DD'
+            ) 
+          }}</b-col>
+
           <b-col cols="4">Certificate Insurance</b-col>
           <b-col cols="8"
             ><b-img
@@ -62,6 +71,14 @@
               :src="modalData.certificate_insurance"
             ></b-img
           ></b-col>
+          <b-col cols="4">Certificate Insurance Expiry date</b-col>
+          <b-col cols="8">
+          {{ 
+            dateFormatDate(
+              modalData.certificate_insurance_expiry_date, 
+              'Y-MM-DD'
+            ) 
+          }}</b-col>
 
           <b-col cols="4">Certificate Fitness</b-col>
           <b-col cols="8"
@@ -72,6 +89,14 @@
               :src="modalData.certificate_fitness"
             ></b-img
           ></b-col>
+          <b-col cols="4">Certificate Fitness Expiry date</b-col>
+          <b-col cols="8">
+           {{ 
+            dateFormatDate(
+              modalData.certificate_fitness_expiry_date, 
+              'Y-MM-DD'
+            ) 
+          }} </b-col>
 
           <b-col cols="4">Certificate permit</b-col>
           <b-col cols="8"
@@ -82,6 +107,15 @@
               :src="modalData.certificate_permit"
             ></b-img
           ></b-col>
+          <b-col cols="4">Certificate Permit Expiry date</b-col>
+          <b-col cols="8">
+          {{ 
+            dateFormatDate(
+              modalData.certificate_permit_expiry_date, 
+              'Y-MM-DD'
+            ) 
+          }}</b-col>
+
         </b-row>
       </b-container>
     </section>
@@ -90,6 +124,7 @@
 
 <script>
 import moment from "moment-timezone";
+import { getDateFormat } from "../../../helpers/utils";
 
 export default {
   name: "modelView",
@@ -97,6 +132,9 @@ export default {
   methods: {
     dateConvert(data) {
       return moment.utc(data).tz("Asia/Kolkata").format("LLL");
+    },
+    dateFormatDate(data, format) {
+      return getDateFormat(data, format);
     },
   },
 };

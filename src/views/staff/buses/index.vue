@@ -160,6 +160,22 @@ export default {
           sort: true,
         },
         {
+          label: "Certificate Pollution Expiry Date",
+          name: "certificate_pollution_expiry_date",
+        },
+        {
+          label: "Certificate Insurance Expiry Date",
+          name: "certificate_insurance_expiry_date",
+        },
+        {
+          label: "Certificate Fitness Expiry Date",
+          name: "certificate_fitness_expiry_date",
+        },
+        {
+          label: "Certificate Permit Expiry Date",
+          name: "certificate_permit_expiry_date",
+        },
+        {
           label: "CreatedAt",
           name: "createdAt",
         },
@@ -206,10 +222,14 @@ export default {
         picture: "",
         status: "",
         certificate_pollution: "",
+        certificate_pollution_expiry_date: "",
         certificate_registration: "",
         certification_insurance: "",
+        certificate_insurance_expiry_date: "",
         certificate_fitness: "",
+        certificate_fitness_expiry_date: "",
         certificate_permit: "",
+        certificate_permit_expiry_date: "",
         createdAt: "",
       },
       modalEdit: false,

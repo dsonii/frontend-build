@@ -690,6 +690,18 @@ const routes = [
         },
       },
       {
+        path: "customer/create",
+        name: "customercreate",
+        component: () => import("../views/customers/create"),
+        meta: {
+          requiresAuth: true,
+          authorize: ["admin"],
+          permission: ["master.admin", "customer.create"],
+          redirect: { name: "login" },
+          forbiddenRedirect: "/403",
+        },
+      },
+      {
         path: "customer/:id",
         name: "customeredit",
         component: () => import("../views/customers/edit"),

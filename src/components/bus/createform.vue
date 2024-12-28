@@ -354,6 +354,7 @@
             placeholder="Choose a certificate pollution or drop it here..."
             @change="onFileChange($event, 'certificate_pollution')"
           ></b-form-file>
+         
         </div>
         <div v-else>
           <img
@@ -370,6 +371,25 @@
           </button>
         </div>
       </b-form-group>
+
+      <b-form-group
+        label="Certificate Pollution Expiry Date"
+        label-for="certificate-pollution-expiry-date-input"
+        label-cols-sm="4"
+        label-cols-lg="3"
+        content-cols-sm
+        content-cols-lg="7"
+      >
+        <div>
+          <b-form-input
+          id="certificate-pollution-expiry-date-input"
+          v-model.trim="$v.form.certificate_pollution_expiry_date.$model"
+          type="date"
+          placeholder="Select Date"
+        ></b-form-input>
+        </div>
+  
+      </b-form-group>  
       <b-form-group
         label="Certificate Insurance"
         label-for="certificate-insurance-input"
@@ -401,7 +421,23 @@
           </button>
         </div>
       </b-form-group>
-
+      <b-form-group
+        label="Certificate Insurance Expiry Date"
+        label-for="certificate-insurance-expiry-date-input"
+        label-cols-sm="4"
+        label-cols-lg="3"
+        content-cols-sm
+        content-cols-lg="7"
+      >
+        <div>
+          <b-form-input
+          id="certificate-insurance-expiry-date-input"
+          v-model.trim="$v.form.certificate_insurance_expiry_date.$model"
+          type="date"
+          placeholder="Select Date"
+        ></b-form-input>
+        </div>
+      </b-form-group>  
       <b-form-group
         label="Certificate Fitness"
         label-for="certificate-fitness-input"
@@ -431,6 +467,23 @@
           >
             <i class="mdi mdi-close"></i>
           </button>
+        </div>
+      </b-form-group>
+      <b-form-group
+        label="Certificate Fitness Expiry Date"
+        label-for="certificate-fitness-expiry-date-input"
+        label-cols-sm="4"
+        label-cols-lg="3"
+        content-cols-sm
+        content-cols-lg="7"
+      >
+        <div>
+          <b-form-input
+          id="certificate-fitness-expiry-date-input"
+          v-model.trim="$v.form.certificate_fitness_expiry_date.$model"
+          type="date"
+          placeholder="Select Date"
+        ></b-form-input>
         </div>
       </b-form-group>
 
@@ -465,7 +518,23 @@
           </button>
         </div>
       </b-form-group>
-
+      <b-form-group
+        label="Certificate Permit Expiry Date"
+        label-for="certificate-permit-expiry-date-input"
+        label-cols-sm="4"
+        label-cols-lg="3"
+        content-cols-sm
+        content-cols-lg="7"
+      >
+        <div>
+          <b-form-input
+          id="certificate-permit-expiry-date-input"
+          v-model.trim="$v.form.certificate_permit_expiry_date.$model"
+          type="date"
+          placeholder="Select Date"
+        ></b-form-input>
+        </div>
+      </b-form-group>
       <b-form-group class="col-md-6 offset-md-5">
         <b-button type="submit" class="btn btn-lg btn-success text-center">
           <span
@@ -520,9 +589,13 @@ export default {
         amenities: [],
         certificate_registration: "",
         certificate_pollution: "",
+        certificate_pollution_expiry_date: "",
         certificate_insurance: "",
+        certificate_insurance_expiry_date: "",
         certificate_fitness: "",
+        certificate_fitness_expiry_date: "",
         certificate_permit: "",
+        certificate_permit_expiry_date: "",
         status: "",
       },
       submitted: false,
@@ -612,6 +685,10 @@ export default {
       bustypeId: { required },
       buslayoutId: { required },
       status: { required },
+      certificate_pollution_expiry_date: {},
+      certificate_insurance_expiry_date: {},
+      certificate_fitness_expiry_date: {},
+      certificate_permit_expiry_date: {},
       //certificate_registration: { required },
     },
   },
@@ -699,4 +776,26 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.b-form-btn-label-control.form-control {
+    display: flex;
+    align-items: stretch;
+    height: auto;
+    padding: 0;
+    background-image: none;
+
+    .form-control {
+      min-height: calc(1.5em + .75rem);
+      padding-left: .25rem;
+      margin: 0;
+      border: 0 !important;
+      outline: 0;
+      background: transparent;
+      word-break: break-word;
+      font-size: inherit;
+      white-space: normal;
+      cursor: pointer;
+      padding: 20px 0px 0px 5px;
+    }
+}
+</style>
