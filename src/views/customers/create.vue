@@ -8,7 +8,7 @@
             <div class="card-body">
               <b-form @submit.prevent="createUser">
 
-<b-form-group
+                <b-form-group
                   label="Company Name"
                   label-for="company-input"
                   label-cols-sm="4"
@@ -365,8 +365,8 @@ export default {
   },
   validations: {
     form: {
-      company: { required, alpha },
-      customer_code: { required, alpha },
+      company: { required },
+      customer_code: { required },
       email: { required, email },
       firstname: { required, alpha },
       lastname: { required, alpha },

@@ -12,6 +12,13 @@
               :src="modalData.ProfilePic"
             ></b-img
           ></b-col>
+
+          <b-col cols="4">Company Name</b-col>
+          <b-col cols="8">{{ modalData.company }} </b-col>
+
+          <b-col cols="4">Customer Code</b-col>
+          <b-col cols="8">{{ modalData.customer_code }} </b-col>
+
           <b-col cols="4">Full Name</b-col>
           <b-col cols="8">{{ modalData.fullname }} </b-col>
 

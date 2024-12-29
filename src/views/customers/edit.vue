@@ -9,6 +9,58 @@
           <div class="card">
             <div class="card-body">
               <b-form @submit.prevent="updateCustomer">
+
+              <b-form-group
+                  label="Company Name"
+                  label-for="company-input"
+                  label-cols-sm="4"
+                  label-cols-lg="3"
+                  content-cols-sm
+                  content-cols-lg="7"
+                >
+                  <b-form-input
+                    id="company-input"
+                    v-model.trim="form.company"
+                    type="text"
+                    placeholder="Enter company name"
+                    :class="{
+                      'is-invalid': submitted || $v.form.company.$error,
+                    }"
+                    :state="validateState('company')"
+                  ></b-form-input>
+                  <b-form-invalid-feedback
+                    v-if="submitted || !$v.form.company.required"
+                    class="invalid-feedback"
+                  >
+                    company name is required
+                  </b-form-invalid-feedback>
+                </b-form-group>
+
+                <b-form-group
+                  label="Customer Code"
+                  label-for="customer-code-input"
+                  label-cols-sm="4"
+                  label-cols-lg="3"
+                  content-cols-sm
+                  content-cols-lg="7"
+                >
+                  <b-form-input
+                    id="customer-code-input"
+                    v-model.trim="form.customer_code"
+                    type="text"
+                    placeholder="Enter customer code"
+                    :class="{
+                      'is-invalid': submitted || $v.form.customer_code.$error,
+                    }"
+                    :state="validateState('customer_code')"
+                  ></b-form-input>
+                  <b-form-invalid-feedback
+                    v-if="submitted || !$v.form.customer_code.required"
+                    class="invalid-feedback"
+                  >
+                    customer code name is required
+                  </b-form-invalid-feedback>
+                </b-form-group>
                 <b-form-group
                   label="First name"
                   label-for="firstname-input"
@@ -189,6 +241,8 @@ export default {
       },
       form: {
         id: "",
+        company: "",
+        customer_code: "",
         firstname: "",
         lastname: "",
         gender: "",
@@ -207,6 +261,8 @@ export default {
   },
   validations: {
     form: {
+      company: { required },
+      customer_code: { required },
       firstname: { required },
       lastname: { required },
       email: { required, email },
