@@ -342,7 +342,7 @@
           </router-link>
         </li> -->
 
-        <!--<li class="nav-item">
+        <li class="nav-item">
           <a class="nav-link" v-b-toggle="'trips'">
             <i class="menu-icon typcn typcn-user-outline"></i>
             <span class="menu-title">Manage Trips</span>
@@ -355,7 +355,6 @@
                   class="nav-link"
                   :to="{
                     path: '/trips/assign/create',
-                    // name: 'tripassigncreate',
                   }"
                   >Create</router-link
                 >
@@ -372,7 +371,7 @@
               </li>
             </ul>
           </b-collapse>
-        </li> -->
+        </li>
 
         <li class="nav-item">
           <a class="nav-link" v-b-toggle="'bookings'">
