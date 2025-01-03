@@ -607,7 +607,7 @@
             </ul>
           </b-collapse>
         </li>
-        <li v-if="getUser.role == 'admin'" class="nav-item">
+        <!-- <li v-if="getUser.role == 'admin'" class="nav-item">
           <a class="nav-link" v-b-toggle="'administration-tools'">
             <i class="menu-icon typcn typcn-document-add"></i>
             <span class="menu-title">Administration Tools</span>
@@ -661,7 +661,7 @@
               </li>
             </ul>
           </b-collapse>
-        </li>
+        </li> -->
       </ul>
     </nav>
   </section>
