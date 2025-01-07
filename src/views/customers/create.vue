@@ -265,6 +265,161 @@
                     type="text"
                 
                   ></b-form-input>
+                  <b-form-invalid-feedback
+                    v-if="submitted || !$v.form.refercode.required"
+                    class="invalid-feedback"
+                  >
+                    refercode is required
+                  </b-form-invalid-feedback>
+                </b-form-group>
+
+                <b-form-group
+                label="Pickup Location"
+                label-for="title-input"
+                label-cols-sm="4"
+                label-cols-lg="3"
+                content-cols-sm
+                content-cols-lg="7"
+              >
+                <multiselect
+                  v-model.trim="form.pickup_location[0].location"
+                  :options="locationOptions"
+                  placeholder="Pickup Location"
+                  label="title"
+                  track-by="title"
+                  :searchable="true"
+                  :loading="submitted"
+                  @search-change="fetchLocations"
+                >
+                  <template slot="option" slot-scope="props">
+                    {{ props.option.title }}
+                  </template>
+                  <template slot="noOptions">
+                    No stop found.</template
+                  >
+                  <template slot="noResult">
+                    stop searched not matched.</template
+                  >
+                </multiselect>
+              </b-form-group>
+
+              <b-form-group
+                label="Drop Location"
+                label-for="title-input"
+                label-cols-sm="4"
+                label-cols-lg="3"
+                content-cols-sm
+                content-cols-lg="7"
+              >
+                <multiselect
+                  v-model.trim="form.drop_location[0].location"
+                  :options="locationOptions"
+                  placeholder="Drop Location"
+                  label="title"
+                  track-by="title"
+                  :searchable="true"
+                  :loading="submitted"
+                  @search-change="fetchLocations"
+                  @select="onDropLocationSelect"
+                >
+                  <template slot="option" slot-scope="props">
+                    {{ props.option.title }}
+                  </template>
+                  <template slot="noOptions">
+                    No stop found.</template
+                  >
+                  <template slot="noResult">
+                    stop searched not matched.</template
+                  >
+                </multiselect>
+              </b-form-group>
+
+                <b-form-group
+                  label="Route"
+                  label-for="route-input"
+                  label-cols-sm="4"
+                  label-cols-lg="3"
+                  content-cols-sm
+                  content-cols-lg="7"
+                >
+                  <b-form-select
+                    v-model.trim="$v.form.route.$model"
+                    :options="routeOption"
+                    :class="{
+                      'is-invalid': submitted && $v.form.route.$error,
+                    }"
+                    :state="validateState('route')"
+                    @change="getBuses"
+                  >
+                    <template #first>
+                      <b-form-select-option
+                        class="text-sm"
+                        :value="null"
+                        disabled
+                        >-- Please select an Route
+                        --</b-form-select-option
+                      >
+                    </template>
+                  </b-form-select>
+                </b-form-group>
+
+
+                <b-form-group
+                  label="Bus"
+                  label-for="bus-input"
+                  label-cols-sm="4"
+                  label-cols-lg="3"
+                  content-cols-sm
+                  content-cols-lg="7"
+                >
+                  <b-form-select
+                    v-model.trim="$v.form.bus.$model"
+                    :options="buses"
+                    :class="{
+                      'is-invalid': submitted && $v.form.bus.$error,
+                    }"
+                    :state="validateState('bus')"
+                    @change="getAvaialbleSeats"
+                  >
+                    <template #first>
+                      <b-form-select-option
+                        class="text-sm"
+                        :value="null"
+                        disabled
+                        >-- Please select an Bus
+                        --</b-form-select-option
+                      >
+                    </template>
+                  </b-form-select>
+                </b-form-group>
+
+
+                <b-form-group
+                  label="Seat"
+                  label-for="seat-input"
+                  label-cols-sm="4"
+                  label-cols-lg="3"
+                  content-cols-sm
+                  content-cols-lg="7"
+                >
+                  <b-form-select
+                    v-model.trim="$v.form.seat.$model"
+                    :options="seats"
+                    :class="{
+                      'is-invalid': submitted && $v.form.seat.$error,
+                    }"
+                    :state="validateState('seat')"
+                  >
+                    <template #first>
+                      <b-form-select-option
+                        class="text-sm"
+                        :value="null"
+                        disabled
+                        >-- Please select an Seat
+                        --</b-form-select-option
+                      >
+                    </template>
+                  </b-form-select>
                 </b-form-group>
 
                 <b-form-group
@@ -310,6 +465,7 @@
 
 <script>
 import Breadcrumb from "../../components/breadcrumb";
+
 import { validationMixin } from "vuelidate";
 import {
   required,
@@ -319,7 +475,9 @@ import {
   maxLength,
   alpha
 } from "vuelidate/lib/validators";
-import { customerService, countryService } from "../../services";
+import { customerService, countryService, locationService, routeService, buslayoutService } from "../../services";
+import lodash from "lodash";
+import Multiselect from "vue-multiselect";
 
 export default {
   name: "customercreate",
@@ -334,18 +492,32 @@ export default {
         link: true,
         name: "customers",
       },
+      locationOptions: [],
+      loading: false,
       form: {
         company: "",
         customer_code: "",
         firstname: "",
         lastname: "",
         email: "",
-        country_code: "",
+        country_code: null,
         phone: "",
         gender: "",
         refercode: "",
         is_active: "",
-        
+        pickup_location: [
+          {
+            location: [{}],
+          },
+        ],
+        drop_location: [
+            {
+              location: [{}],
+            }
+        ],
+        route: null,
+        bus: null,
+        seat: null,
       },
       submitted: false,
       options: [
@@ -353,6 +525,9 @@ export default {
         { text: "Inactive", value: "false", default: true },
       ],
       countries: [],
+      routeOption: [],
+      buses: [],
+      seats: [],
       gender_options: [
         { text: "Male", value: "Male", default: 'Male' },
         { text: "Female", value: "Female"},
@@ -362,6 +537,7 @@ export default {
   },
   components: {
     Breadcrumb,
+    Multiselect
   },
   validations: {
     form: {
@@ -379,7 +555,10 @@ export default {
       is_active: { required },
       country_code: { required },
       gender: { required },
-      refercode: {},
+      refercode: { required },
+      route: {},
+      bus: {},
+      seat: {},
     },
   },
   mounted() {
@@ -395,6 +574,58 @@ export default {
         search: "",
       });
       this.countries = response.items;
+    },
+    fetchLocations(search, loading) {
+      if (search.length) {
+        let type = "PD";
+        this.search(loading, search, type, this);
+      }
+    },
+    search: lodash.debounce(async (loading, search, type, vm) => {
+      try {
+        const response = await locationService.search({
+          type: type,
+          search: search,
+        });
+        vm.locationOptions = response.items;
+      } catch (err) {
+        this.$toast.open({
+          message: err,
+          type: "error",
+          position: "top-right",
+          duration: 5000,
+        });
+      }
+    }, 350),
+    onDropLocationSelect () {
+      routeService.searchRoute({
+        pickup_lat:this.form.pickup_location[0].location.coordinates[1],
+        pickup_long:this.form.pickup_location[0].location.coordinates[0],
+        drop_lat:this.form.drop_location[0].location.coordinates[1],
+        drop_long:this.form.drop_location[0].location.coordinates[0],
+      }).then((response) => {
+        this.routeOption = response.data;
+      });
+      
+    },
+    getBuses () {
+      if (this.routeOption.length > 0) {
+        for (let i = 0; i < this.routeOption.length; i++) {
+          if (this.routeOption[i].value == this.form.route) {
+            this.buses = [{"text":this.routeOption[i].bus_details.name, "value": this.routeOption[i].route_busId}]
+          }
+        }
+      }
+    },
+    getAvaialbleSeats () {
+      console.log(this.form.bus);
+      buslayoutService.searchSeat(this.form.bus).then((response) => {
+        this.seats = response.data;
+        
+      });
+    },
+    async loadDropLocation () {
+
     },
     async createUser() {
       try {
@@ -438,3 +669,4 @@ export default {
 </script>
 
 <style lang="scss" scoped></style>
+<style src="vue-multiselect/dist/vue-multiselect.min.css"></style>

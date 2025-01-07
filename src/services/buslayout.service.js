@@ -8,6 +8,7 @@ export const buslayoutService = {
   tranform,
   find,
   load,
+  searchSeat,
 };
 
 async function load() {
@@ -45,6 +46,16 @@ async function update(id, Objparams) {
   try {
     const privateAuth = useAuthApi();
     const response = await privateAuth.patch("buslayouts/" + id, Objparams);
+    return response.data;
+  } catch (e) {
+    return e.response;
+  }
+}
+
+async function searchSeat(id) {
+  try {
+    const privateAuth = useAuthApi();
+    const response = await privateAuth.get("buslayouts/searchseat/" + id);
     return response.data;
   } catch (e) {
     return e.response;

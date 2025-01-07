@@ -89,6 +89,14 @@
                   "
                   >razorpay : <span v-html="props.row.payment_method"></span
                 ></b-badge>
+                <b-badge
+                  variant="primary"
+                  v-if="
+                    props.row.payment_method == 'cash' ||
+                    props.row.payment_method == 'CASH'
+                  "
+                  ><span v-html="props.row.payment_method"></span
+                ></b-badge>
               </span>
             </template>
 

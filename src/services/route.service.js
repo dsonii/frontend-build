@@ -16,6 +16,7 @@ export const routeService = {
   search,
   findStops,
   dataRoutes,
+  searchRoute,
 };
 
 async function dataRoutes() {
@@ -84,6 +85,20 @@ async function getAll(Objparams) {
   try {
     const privateAuth = useAuthApi();
     const response = await privateAuth.get("routes/search", {
+      params: Objparams,
+    });
+    return response.data;
+  } catch (e) {
+    if (e.response.status === 401) {
+      return e.response.data;
+    }
+  }
+}
+
+async function searchRoute(Objparams) {
+  try {
+    const privateAuth = useAuthApi();
+    const response = await privateAuth.post("routes/route-search", {
       params: Objparams,
     });
     return response.data;
