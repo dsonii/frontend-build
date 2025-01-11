@@ -166,20 +166,282 @@
                   ></b-form-input>
                 </b-form-group>
 
+                
                 <b-form-group
-                  label="Refer Code"
-                  label-for="refercode-input"
+                label="Pickup Location"
+                label-for="title-input"
+                label-cols-sm="4"
+                label-cols-lg="3"
+                content-cols-sm
+                content-cols-lg="7"
+              >
+                <multiselect
+                  v-model.trim="form.pickup_location[0].location"
+                  :options="locationOptions"
+                  placeholder="Pickup Location"
+                  label="title"
+                  track-by="title"
+                  :searchable="true"
+                  :loading="submitted"
+                  @search-change="fetchLocations"
+                >
+                  <template slot="option" slot-scope="props">
+                    {{ props.option.title }}
+                  </template>
+                  <template slot="noOptions">
+                    No stop found.</template
+                  >
+                  <template slot="noResult">
+                    stop searched not matched.</template
+                  >
+                </multiselect>
+              </b-form-group>
+
+              <b-form-group
+                label="Drop Location"
+                label-for="title-input"
+                label-cols-sm="4"
+                label-cols-lg="3"
+                content-cols-sm
+                content-cols-lg="7"
+              >
+                <multiselect
+                  v-model.trim="form.drop_location[0].location"
+                  :options="locationOptions"
+                  placeholder="Drop Location"
+                  label="title"
+                  track-by="title"
+                  :searchable="true"
+                  :loading="submitted"
+                  @search-change="fetchLocations"
+                  @select="onDropLocationSelect"
+                >
+                  <template slot="option" slot-scope="props">
+                    {{ props.option.title }}
+                  </template>
+                  <template slot="noOptions">
+                    No stop found.</template
+                  >
+                  <template slot="noResult">
+                    stop searched not matched.</template
+                  >
+                </multiselect>
+              </b-form-group>
+
+                <b-form-group
+                  label="Route"
+                  label-for="route-input"
                   label-cols-sm="4"
                   label-cols-lg="3"
                   content-cols-sm
                   content-cols-lg="7"
                 >
-                  <b-form-input
-                    id="refercode-input"
-                    v-model.trim="form.refercode"
-                    type="text"
-                    readonly
+                  <b-form-select
+                    v-model.trim="$v.form.route.$model"
+                    :options="routeOption"
+                    :class="{
+                      'is-invalid': submitted && $v.form.route.$error,
+                    }"
+                    :state="validateState('route')"
+                    @change="getBuses"
+                  >
+                    <template #first>
+                      <b-form-select-option
+                        class="text-sm"
+                        :value="null"
+                        disabled
+                        >-- Please select an Route
+                        --</b-form-select-option
+                      >
+                    </template>
+                  </b-form-select>
+                </b-form-group>
+
+
+                <b-form-group
+                  label="Vehicle"
+                  label-for="bus-input"
+                  label-cols-sm="4"
+                  label-cols-lg="3"
+                  content-cols-sm
+                  content-cols-lg="7"
+                >
+                  <b-form-select
+                    v-model.trim="$v.form.bus.$model"
+                    :options="buses"
+                    :class="{
+                      'is-invalid': submitted && $v.form.bus.$error,
+                    }"
+                    :state="validateState('bus')"
+                    @change="getAvaialbleSeats"
+                  >
+                    <template #first>
+                      <b-form-select-option
+                        class="text-sm"
+                        :value="null"
+                        disabled
+                        >-- Please select an Vehicle
+                        --</b-form-select-option
+                      >
+                    </template>
+                  </b-form-select>
+                </b-form-group>
+
+
+                <b-form-group
+                  label="Seat"
+                  label-for="seat-input"
+                  label-cols-sm="4"
+                  label-cols-lg="3"
+                  content-cols-sm
+                  content-cols-lg="7"
+                >
+                  <b-form-select
+                    v-model.trim="$v.form.seat.$model"
+                    :options="seats"
+                    :class="{
+                      'is-invalid': submitted && $v.form.seat.$error,
+                    }"
+                    :state="validateState('seat')"
+                  >
+                    <template #first>
+                      <b-form-select-option
+                        class="text-sm"
+                        :value="null"
+                        disabled
+                        >-- Please select an Seat
+                        --</b-form-select-option
+                      >
+                    </template>
+                  </b-form-select>
+                </b-form-group>
+                <div v-show="show">
+                  <b-form-group
+                    label="Return Route"
+                    label-for="returnroute-input"
+                    label-cols-sm="4"
+                    label-cols-lg="3"
+                    content-cols-sm
+                    content-cols-lg="7"
+                  >
+                  <b-form-select
+                    v-model.trim="$v.form.return_route.$model"
+                    :options="return_routeOption"
+                    :class="{
+                      'is-invalid': submitted && $v.form.return_route.$error,
+                    }"
+                    :state="validateState('return_route')"
+                    @change="getReturnBuses"
+                  >
+                    <template #first>
+                      <b-form-select-option
+                        class="text-sm"
+                        :value="null"
+                        disabled
+                        >-- Please select an Route
+                        --</b-form-select-option
+                      >
+                    </template>
+                  </b-form-select>
+                  </b-form-group>
+
+                  <b-form-group
+                    label="Return Vehicle"
+                    label-for="returnbus-input"
+                    label-cols-sm="4"
+                    label-cols-lg="3"
+                    content-cols-sm
+                    content-cols-lg="7"
+                  >
+                    <b-form-select
+                      v-model.trim="$v.form.return_bus.$model"
+                      :options="return_buses"
+                      :class="{
+                        'is-invalid': submitted && $v.form.return_bus.$error,
+                      }"
+                      :state="validateState('return_bus')"
+                      @change="getReturnAvaialbleSeats"
+                    >
+                      <template #first>
+                        <b-form-select-option
+                          class="text-sm"
+                          :value="null"
+                          disabled
+                          >-- Please select an Vehicle
+                          --</b-form-select-option
+                        >
+                      </template>
+                    </b-form-select>
+                  </b-form-group>
+
+                  <b-form-group
+                    label="Return Seat"
+                    label-for="returnseat-input"
+                    label-cols-sm="4"
+                    label-cols-lg="3"
+                    content-cols-sm
+                    content-cols-lg="7"
+                  >
+                    <b-form-select
+                      v-model.trim="$v.form.return_seat.$model"
+                      :options="return_seats"
+                      :class="{
+                        'is-invalid': submitted && $v.form.return_seat.$error,
+                      }"
+                      :state="validateState('return_seat')"
+                    >
+                      <template #first>
+                        <b-form-select-option
+                          class="text-sm"
+                          :value="null"
+                          disabled
+                          >-- Please select an Seat
+                          --</b-form-select-option
+                        >
+                      </template>
+                    </b-form-select>
+                  </b-form-group>
+                </div>
+                <b-form-group
+                  label="Is Return?"
+                  label-for="return-input"
+                  label-cols-sm="4"
+                  label-cols-lg="3"
+                  content-cols-sm
+                  content-cols-lg="7"
+                ><b-form-checkbox
+                id="checkbox-1"
+                v-model="$v.form.has_return.$model"
+                name="checkbox-1"
+                value="1"
+                unchecked-value="0"
+                @change='isReturn()'
+              >
+              </b-form-checkbox>
+            </b-form-group>
+                <b-form-group
+                  label="Time"
+                  label-for="time-input"
+                  label-cols-sm="4"
+                  label-cols-lg="3"
+                  content-cols-sm
+                  content-cols-lg="7"
+                ><b-form-input
+                    id="time-input"
+                    v-model.trim="$v.form.time_for_user.$model"
+                    type="time"
+                    placeholder="Enter time"
+                    :class="{
+                      'is-invalid': submitted || $v.form.time_for_user.$error,
+                    }"
+                    :state="validateState('time_for_user')"
                   ></b-form-input>
+                  <b-form-invalid-feedback
+                    v-if="submitted || !$v.form.time_for_user.required"
+                    class="invalid-feedback"
+                  >
+                    Time is required
+                  </b-form-invalid-feedback>
                 </b-form-group>
 
                 <b-form-group
@@ -223,14 +485,19 @@
 
 <script>
 import Breadcrumb from "../../components/breadcrumb";
-import { customerService, countryService } from "../../services";
 import { validationMixin } from "vuelidate";
 import { required, email } from "vuelidate/lib/validators";
+
+import { customerService, countryService, locationService, routeService, buslayoutService } from "../../services";
+import lodash from "lodash";
+import Multiselect from "vue-multiselect";
+
 export default {
   name: "customeredit",
   mixins: [validationMixin],
   data() {
     return {
+      show:false,
       breadcrumbs: {
         title: "Edit Customer",
         b1: "Manage customers",
@@ -239,6 +506,8 @@ export default {
         link: true,
         name: "customer",
       },
+      locationOptions: [],
+      loading: false,
       form: {
         id: "",
         company: "",
@@ -249,7 +518,27 @@ export default {
         country_code: "",
         phone: "",
         email: "",
+        time_for_user: "",
+        is_active: "",
+        busScheduleId: "",
         refercode: "",
+        pickup_location: [
+          {
+            location: [{}],
+          },
+        ],
+        drop_location: [
+            {
+              location: [{}],
+            }
+        ],
+        route: null,
+        bus: null,
+        seat: null,
+        return_route: null,
+        return_bus: null,
+        return_seat: null,
+        has_return:"",
       },
       options: [
         { text: "Active", value: "true" },
@@ -257,6 +546,17 @@ export default {
       ],
       submitted: false,
       countries: [],
+      routeOption: [],
+      return_routeOption: [],
+      buses: [],
+      return_buses: [],
+      seats: [],
+      return_seats: [],
+      gender_options: [
+        { text: "Male", value: "Male", default: 'Male' },
+        { text: "Female", value: "Female"},
+      ],
+      isLoading: false,
     };
   },
   validations: {
@@ -267,16 +567,36 @@ export default {
       lastname: { required },
       email: { required, email },
       country_code: { required },
+      gender: { required },
+      route: { required },
+      bus: { required },
+      seat: { required },
+      time_for_user: {},
+      busScheduleId: {},
+      refercode: {},
+      has_return: {},
+      return_route: {},
+      return_bus: {},
+      return_seat: {},
     },
   },
   components: {
     Breadcrumb,
+    Multiselect
   },
   mounted() {
     this.getcustomer();
     this.loadCountries();
   },
   methods: {
+    isReturn: function () {
+      if (this.form.has_return == 1) {
+        this.show = true;
+        this.searchReturnRoute();
+      } else {
+        this.show = false;
+      }
+    },
     validateState(name) {
       const { $dirty, $error } = this.$v.form[name];
       return $dirty ? !$error : null;
@@ -291,7 +611,17 @@ export default {
       try {
         const response = await customerService.find(this.$route.params.id);
         if (response.status) {
-          this.form = response.data;
+          this.form.company = response.data.company;
+          this.form.customer_code = response.data.customer_code;
+          this.form.firstname = response.data.firstname;
+          this.form.lastname = response.data.lastname;
+          this.form.gender = response.data.gender;
+          this.form.email = response.data.email;
+          this.form.phone = response.data.phone;
+          this.form.id = response.data.id;
+          this.form.refercode = response.data.refercode;
+          this.form.country_code = response.data.country_code;
+          this.form.status = response.data.status;
         }
       } catch (e) {
         console.log("params", e);
@@ -302,6 +632,96 @@ export default {
           duration: 5000,
         });
       }
+    },
+    fetchLocations(search, loading) {
+      if (search.length) {
+        let type = "PD";
+        this.search(loading, search, type, this);
+      }
+    },
+    search: lodash.debounce(async (loading, search, type, vm) => {
+      try {
+        const response = await locationService.search({
+          type: type,
+          search: search,
+        });
+        vm.locationOptions = response.items;
+      } catch (err) {
+        this.$toast.open({
+          message: err,
+          type: "error",
+          position: "top-right",
+          duration: 5000,
+        });
+      }
+    }, 350),
+    searchReturnRoute () {
+      routeService.searchRoute({
+        drop_lat:this.form.drop_location[0].location.coordinates[1],
+        drop_long:this.form.drop_location[0].location.coordinates[0],
+        pickup_lat:this.form.pickup_location[0].location.coordinates[1],
+        pickup_long:this.form.pickup_location[0].location.coordinates[0],
+      }).then((response) => {
+        this.return_routeOption = response.data;
+      });
+    },
+    onDropLocationSelect () {
+      routeService.searchRoute({
+        pickup_lat:this.form.pickup_location[0].location.coordinates[1],
+        pickup_long:this.form.pickup_location[0].location.coordinates[0],
+        drop_lat:this.form.drop_location[0].location.coordinates[1],
+        drop_long:this.form.drop_location[0].location.coordinates[0],
+      }).then((response) => {
+        this.routeOption = response.data;
+      });
+      
+    },
+    getBuses () {
+      if (this.routeOption.length > 0) {
+        for (let i = 0; i < this.routeOption.length; i++) {
+          if (this.routeOption[i].value == this.form.route) {
+            this.buses = [{"text":this.routeOption[i].bus_details.name, "value": this.routeOption[i].route_busId}]
+          }
+        }
+      }
+    },
+    getReturnBuses () {
+      if (this.return_routeOption.length > 0) {
+        for (let i = 0; i < this.return_routeOption.length; i++) {
+          if (this.return_routeOption[i].value == this.form.return_route) {
+            this.return_buses = [{"text":this.return_routeOption[i].bus_details.name, "value": this.return_routeOption[i].route_busId}]
+          }
+        }
+      }
+    },
+    getAvaialbleSeats () {
+      let busScheduleId = "";
+      if (this.routeOption.length > 0) {
+        for (let i = 0; i < this.routeOption.length; i++) {
+          if (this.routeOption[i].value == this.form.route) {
+            busScheduleId = this.routeOption[i].busScheduleId;
+            this.form.busScheduleId = this.routeOption[i].busScheduleId;
+          }
+        }
+      }
+
+      buslayoutService.searchSeat(this.form.bus, busScheduleId).then((response) => {
+        this.seats = response.data;
+      });
+    },
+    getReturnAvaialbleSeats () {
+      let returnBusScheduleId = "";
+      if (this.return_routeOption.length > 0) {
+        for (let i = 0; i < this.return_routeOption.length; i++) {
+          if (this.return_routeOption[i].value == this.form.return_route) {
+            returnBusScheduleId = this.return_routeOption[i].busScheduleId;
+            this.form.return_busScheduleId = this.return_routeOption[i].busScheduleId;
+          }
+        }
+      }
+      buslayoutService.searchSeat(this.form.bus, returnBusScheduleId).then((response) => {
+        this.return_seats = response.data;
+      });
     },
     async updateCustomer() {
       try {
@@ -346,3 +766,4 @@ export default {
 </script>
 
 <style lang="scss" scoped></style>
+<style src="vue-multiselect/dist/vue-multiselect.min.css"></style>

@@ -616,6 +616,7 @@ export default {
         time_for_user: "",
         is_active: "",
         busScheduleId: "",
+        refercode: "",
         pickup_location: [
           {
             location: [{}],
@@ -674,11 +675,12 @@ export default {
       is_active: { required },
       country_code: { required },
       gender: { required },
-      route: {},
-      bus: {},
-      seat: {},
+      route: { required },
+      bus: { required },
+      seat: { required },
       time_for_user: {},
       busScheduleId: {},
+      refercode: {},
       has_return: {},
       return_route: {},
       return_bus: {},
@@ -731,10 +733,10 @@ export default {
     }, 350),
     searchReturnRoute () {
       routeService.searchRoute({
-        pickup_lat:this.form.drop_location[0].location.coordinates[1],
-        pickup_long:this.form.drop_location[0].location.coordinates[0],
-        drop_lat:this.form.pickup_location[0].location.coordinates[1],
-        drop_long:this.form.pickup_location[0].location.coordinates[0],
+        drop_lat:this.form.drop_location[0].location.coordinates[1],
+        drop_long:this.form.drop_location[0].location.coordinates[0],
+        pickup_lat:this.form.pickup_location[0].location.coordinates[1],
+        pickup_long:this.form.pickup_location[0].location.coordinates[0],
       }).then((response) => {
         this.return_routeOption = response.data;
       });
@@ -800,7 +802,7 @@ export default {
     async createUser() {
       try {
         this.submitted = true;
-
+        this.form.refercode = Date.now().toString(36) + Math.random().toString(36).substr(2);
         // stop here if form is invalid
         this.$v.$touch();
         if (this.$v.$invalid) {
