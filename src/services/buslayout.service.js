@@ -52,10 +52,12 @@ async function update(id, Objparams) {
   }
 }
 
-async function searchSeat(id) {
+async function searchSeat(id, Objparams) {
   try {
     const privateAuth = useAuthApi();
-    const response = await privateAuth.get("buslayouts/searchseat/" + id);
+    const response = await privateAuth.get("buslayouts/searchseat/"+id, {
+      params: {"scheduleId": Objparams},
+    });
     return response.data;
   } catch (e) {
     return e.response;

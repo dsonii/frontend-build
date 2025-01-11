@@ -252,28 +252,6 @@
                 </b-form-group>
 
                 <b-form-group
-                  label="Refer Code"
-                  label-for="refercode-input"
-                  label-cols-sm="4"
-                  label-cols-lg="3"
-                  content-cols-sm
-                  content-cols-lg="7"
-                >
-                  <b-form-input
-                    id="refercode-input"
-                    v-model.trim="$v.form.refercode.$model"
-                    type="text"
-                
-                  ></b-form-input>
-                  <b-form-invalid-feedback
-                    v-if="submitted || !$v.form.refercode.required"
-                    class="invalid-feedback"
-                  >
-                    refercode is required
-                  </b-form-invalid-feedback>
-                </b-form-group>
-
-                <b-form-group
                 label="Pickup Location"
                 label-for="title-input"
                 label-cols-sm="4"
@@ -365,7 +343,7 @@
 
 
                 <b-form-group
-                  label="Bus"
+                  label="Vehicle"
                   label-for="bus-input"
                   label-cols-sm="4"
                   label-cols-lg="3"
@@ -386,7 +364,7 @@
                         class="text-sm"
                         :value="null"
                         disabled
-                        >-- Please select an Bus
+                        >-- Please select an Vehicle
                         --</b-form-select-option
                       >
                     </template>
@@ -421,6 +399,48 @@
                     </template>
                   </b-form-select>
                 </b-form-group>
+                
+                <b-form-group
+                  label="Is Return?"
+                  label-for="return-input"
+                  label-cols-sm="4"
+                  label-cols-lg="3"
+                  content-cols-sm
+                  content-cols-lg="7"
+                ><b-form-checkbox
+                id="checkbox-1"
+                v-model="$v.form.has_return.$model"
+                name="checkbox-1"
+                value="1"
+                unchecked-value="0"
+              >
+                
+              </b-form-checkbox>
+            </b-form-group>
+                <b-form-group
+                  label="Time"
+                  label-for="time-input"
+                  label-cols-sm="4"
+                  label-cols-lg="3"
+                  content-cols-sm
+                  content-cols-lg="7"
+                ><b-form-input
+                    id="time-input"
+                    v-model.trim="$v.form.time_for_user.$model"
+                    type="time"
+                    placeholder="Enter time"
+                    :class="{
+                      'is-invalid': submitted || $v.form.time_for_user.$error,
+                    }"
+                    :state="validateState('time_for_user')"
+                  ></b-form-input>
+                  <b-form-invalid-feedback
+                    v-if="submitted || !$v.form.time_for_user.required"
+                    class="invalid-feedback"
+                  >
+                    Time is required
+                  </b-form-invalid-feedback>
+                </b-form-group>
 
                 <b-form-group
                   label="Status "
@@ -446,7 +466,8 @@
                     >Please select status</b-form-invalid-feedback
                   >
                 </b-form-group>
-
+                
+                  
                 <b-form-group class="col-md-6 offset-md-4">
                   <b-button
                     type="submit"
@@ -503,8 +524,9 @@ export default {
         country_code: null,
         phone: "",
         gender: "",
-        refercode: "",
+        time_for_user: "",
         is_active: "",
+        busScheduleId: "",
         pickup_location: [
           {
             location: [{}],
@@ -518,6 +540,7 @@ export default {
         route: null,
         bus: null,
         seat: null,
+        has_return:"",
       },
       submitted: false,
       options: [
@@ -555,10 +578,12 @@ export default {
       is_active: { required },
       country_code: { required },
       gender: { required },
-      refercode: { required },
       route: {},
       bus: {},
       seat: {},
+      time_for_user: {},
+      busScheduleId: {},
+      has_return: {},
     },
   },
   mounted() {
@@ -618,14 +643,19 @@ export default {
       }
     },
     getAvaialbleSeats () {
-      console.log(this.form.bus);
-      buslayoutService.searchSeat(this.form.bus).then((response) => {
-        this.seats = response.data;
-        
-      });
-    },
-    async loadDropLocation () {
+      let busScheduleId = "";
+      if (this.routeOption.length > 0) {
+        for (let i = 0; i < this.routeOption.length; i++) {
+          if (this.routeOption[i].value == this.form.route) {
+            busScheduleId = this.routeOption[i].busScheduleId;
+            this.form.busScheduleId = this.routeOption[i].busScheduleId;
+          }
+        }
+      }
 
+      buslayoutService.searchSeat(this.form.bus, busScheduleId).then((response) => {
+        this.seats = response.data;
+      });
     },
     async createUser() {
       try {
