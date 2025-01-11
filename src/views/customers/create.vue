@@ -399,7 +399,95 @@
                     </template>
                   </b-form-select>
                 </b-form-group>
-                
+                <div v-show="show">
+                  <b-form-group
+                    label="Return Route"
+                    label-for="returnroute-input"
+                    label-cols-sm="4"
+                    label-cols-lg="3"
+                    content-cols-sm
+                    content-cols-lg="7"
+                  >
+                  <b-form-select
+                    v-model.trim="$v.form.return_route.$model"
+                    :options="return_routeOption"
+                    :class="{
+                      'is-invalid': submitted && $v.form.return_route.$error,
+                    }"
+                    :state="validateState('return_route')"
+                    @change="getReturnBuses"
+                  >
+                    <template #first>
+                      <b-form-select-option
+                        class="text-sm"
+                        :value="null"
+                        disabled
+                        >-- Please select an Route
+                        --</b-form-select-option
+                      >
+                    </template>
+                  </b-form-select>
+                </b-form-group>
+
+
+                <b-form-group
+                  label="Return Vehicle"
+                  label-for="returnbus-input"
+                  label-cols-sm="4"
+                  label-cols-lg="3"
+                  content-cols-sm
+                  content-cols-lg="7"
+                >
+                  <b-form-select
+                    v-model.trim="$v.form.return_bus.$model"
+                    :options="return_buses"
+                    :class="{
+                      'is-invalid': submitted && $v.form.return_bus.$error,
+                    }"
+                    :state="validateState('return_bus')"
+                    @change="getReturnAvaialbleSeats"
+                  >
+                    <template #first>
+                      <b-form-select-option
+                        class="text-sm"
+                        :value="null"
+                        disabled
+                        >-- Please select an Vehicle
+                        --</b-form-select-option
+                      >
+                    </template>
+                  </b-form-select>
+                </b-form-group>
+
+
+                <b-form-group
+                  label="Return Seat"
+                  label-for="returnseat-input"
+                  label-cols-sm="4"
+                  label-cols-lg="3"
+                  content-cols-sm
+                  content-cols-lg="7"
+                >
+                  <b-form-select
+                    v-model.trim="$v.form.return_seat.$model"
+                    :options="return_seats"
+                    :class="{
+                      'is-invalid': submitted && $v.form.return_seat.$error,
+                    }"
+                    :state="validateState('return_seat')"
+                  >
+                    <template #first>
+                      <b-form-select-option
+                        class="text-sm"
+                        :value="null"
+                        disabled
+                        >-- Please select an Seat
+                        --</b-form-select-option
+                      >
+                    </template>
+                  </b-form-select>
+                </b-form-group>
+                </div>
                 <b-form-group
                   label="Is Return?"
                   label-for="return-input"
@@ -413,8 +501,8 @@
                 name="checkbox-1"
                 value="1"
                 unchecked-value="0"
+                @change='isReturn()'
               >
-                
               </b-form-checkbox>
             </b-form-group>
                 <b-form-group
@@ -505,6 +593,7 @@ export default {
   mixins: [validationMixin],
   data() {
     return {
+      show:false,
       breadcrumbs: {
         title: "Create Customer",
         b1: "Manage Customers",
@@ -540,7 +629,11 @@ export default {
         route: null,
         bus: null,
         seat: null,
+        return_route: null,
+        return_bus: null,
+        return_seat: null,
         has_return:"",
+        
       },
       submitted: false,
       options: [
@@ -549,8 +642,11 @@ export default {
       ],
       countries: [],
       routeOption: [],
+      return_routeOption: [],
       buses: [],
+      return_buses: [],
       seats: [],
+      return_seats: [],
       gender_options: [
         { text: "Male", value: "Male", default: 'Male' },
         { text: "Female", value: "Female"},
@@ -584,12 +680,23 @@ export default {
       time_for_user: {},
       busScheduleId: {},
       has_return: {},
+      return_route: {},
+      return_bus: {},
+      return_seat: {},
     },
   },
   mounted() {
     this.loadCountries();
   },
   methods: {
+    isReturn: function () {
+      if (this.form.has_return == 1) {
+        this.show = true;
+        this.searchReturnRoute ();
+      } else {
+        this.show = false;
+      }
+    },
     validateState(name) {
       const { $dirty, $error } = this.$v.form[name];
       return $dirty ? !$error : null;
@@ -622,6 +729,16 @@ export default {
         });
       }
     }, 350),
+    searchReturnRoute () {
+      routeService.searchRoute({
+        pickup_lat:this.form.drop_location[0].location.coordinates[1],
+        pickup_long:this.form.drop_location[0].location.coordinates[0],
+        drop_lat:this.form.pickup_location[0].location.coordinates[1],
+        drop_long:this.form.pickup_location[0].location.coordinates[0],
+      }).then((response) => {
+        this.return_routeOption = response.data;
+      });
+    },
     onDropLocationSelect () {
       routeService.searchRoute({
         pickup_lat:this.form.pickup_location[0].location.coordinates[1],
@@ -642,6 +759,15 @@ export default {
         }
       }
     },
+    getReturnBuses () {
+      if (this.return_routeOption.length > 0) {
+        for (let i = 0; i < this.return_routeOption.length; i++) {
+          if (this.return_routeOption[i].value == this.form.return_route) {
+            this.return_buses = [{"text":this.return_routeOption[i].bus_details.name, "value": this.return_routeOption[i].route_busId}]
+          }
+        }
+      }
+    },
     getAvaialbleSeats () {
       let busScheduleId = "";
       if (this.routeOption.length > 0) {
@@ -655,6 +781,20 @@ export default {
 
       buslayoutService.searchSeat(this.form.bus, busScheduleId).then((response) => {
         this.seats = response.data;
+      });
+    },
+    getReturnAvaialbleSeats () {
+      let returnBusScheduleId = "";
+      if (this.return_routeOption.length > 0) {
+        for (let i = 0; i < this.return_routeOption.length; i++) {
+          if (this.return_routeOption[i].value == this.form.return_route) {
+            returnBusScheduleId = this.return_routeOption[i].busScheduleId;
+            this.form.return_busScheduleId = this.return_routeOption[i].busScheduleId;
+          }
+        }
+      }
+      buslayoutService.searchSeat(this.form.bus, returnBusScheduleId).then((response) => {
+        this.return_seats = response.data;
       });
     },
     async createUser() {
