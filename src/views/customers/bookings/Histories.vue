@@ -163,6 +163,10 @@ export default {
           text: "Cancelled",
           value: "CANCELLED",
         },
+        {
+          text: "Processing",
+          value: "PROCESSING",
+        },
       ],
       rows: [],
       columns: [

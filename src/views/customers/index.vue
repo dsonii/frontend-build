@@ -114,6 +114,13 @@
                       History
                     </span></b-dropdown-item
                   >
+                  <b-dropdown-item
+                    :href="'#/admin-booking-history/' + props.row.ids"
+                    ><span class="text-primary">
+                      <i class="mdi mdi-account-card-details"></i> Admin Booking
+                      History
+                    </span></b-dropdown-item
+                  >
 
                   <b-dropdown-item :href="'#/customer/' + props.row.ids"
                     ><span class="text-primary">
