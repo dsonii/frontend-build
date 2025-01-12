@@ -10,6 +10,7 @@ export const locationService = {
   deleteLocation,
   find,
   markers,
+  searchLocation,
 };
 
 async function find(id) {
@@ -97,6 +98,18 @@ async function search(Objparams) {
     const privateAuth = useAuthApi();
     //locations/search
     const response = await privateAuth.get("locations/search", {
+      params: Objparams,
+    });
+    return response.data;
+  } catch (e) {
+    return e.response;
+  }
+}
+async function searchLocation(Objparams) {
+  try {
+    const privateAuth = useAuthApi();
+    //locations/search
+    const response = await privateAuth.get("locations/search-location", {
       params: Objparams,
     });
     return response.data;

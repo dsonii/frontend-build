@@ -641,7 +641,7 @@ export default {
     },
     search: lodash.debounce(async (loading, search, type, vm) => {
       try {
-        const response = await locationService.search({
+        const response = await locationService.searchLocation({
           type: type,
           search: search,
         });

@@ -7,12 +7,12 @@ $footer-color: color(dark);
 $border-color: #cdd6dc;
 $footer-height: 60px;
 $card-bg:#dde4eb;
-$card-accent-color: #030aac;
+$card-accent-color: #002c5f;
 $card-dropshadow: 0 0 0 0 rgba(90, 113, 208, 0.11),
 0 4px 16px 0 rgba(167, 175, 183, 0.33);
-$iconholder-primary-bg:#2944b5;
+$iconholder-primary-bg:#002c5f;
 $iconholder-primary-color: #fff;
-$iconholder-primary-border-color:#4e55c5;
+$iconholder-primary-border-color:#002c5f;
 $boxed-layout-bg: lighten(color(gray), 50%);
 ////////// COLOR VARIABLES //////////
 
@@ -22,9 +22,9 @@ $sidebar-width-mini: 185px;
 $sidebar-width-icon: 70px;
 $sidebar-light-bg: $white;
 $sidebar-box-shadow: 0 0 3px 1px #a7a3a3;
-$sidebar-gradient-color-1:#5768f3;
-$sidebar-gradient-color-2:#1c45ef;
-$sidebar-gradient-color-3:#3a8696;
+$sidebar-gradient-color-1:#002c5f;
+$sidebar-gradient-color-2:#002c5f;
+$sidebar-gradient-color-3:#002c5f;
 $sidebar-gradient:linear-gradient(to top, $sidebar-gradient-color-3, $sidebar-gradient-color-3);
 $sidebar-light-menu-color: #fff;
 $sidebar-light-submenu-color: $sidebar-light-menu-color;
@@ -50,7 +50,7 @@ $sidebar-nav-category-border-color:rgba(255, 255, 255, 0.13);
 $sidebar-nav-item-dot-color:#fff;
 
 
-$sidebar-dark-bg: #252C46;
+$sidebar-dark-bg: #002c5f;
 $sidebar-dark-menu-color: #9F9EA3;
 $sidebar-dark-menu-active-bg: lighten($sidebar-dark-bg, 5%);
 $sidebar-dark-menu-active-color: $white;
@@ -86,14 +86,14 @@ $rtl-sidebar-submenu-padding: 0 3.45rem 0 0;
 ///////// NAVBAR ////////
 $navbar-bg: #fff;
 $navbar-height: 63px;
-$navbar-light-color: #202339;
+$navbar-light-color: #002c5f;
 $navbar-font-size: $sidebar-menu-font-size;
 $navbar-icon-font-size: 1.25rem;
 $navbar-dropdown-toggle-arrow-color:grey;
 $navbar-count-indicator-bg:#FF0017;
 $navbar-dropdown-border-color:rgba(182, 182, 182, 0.1);
 $navbar-dropdown-box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.13);
-$navbar-menu-wrapper-color:#001737;
+$navbar-menu-wrapper-color:#002c5f;
 $navbar-menu-wrapper-box-shadow:0 4px 16px 0 rgba(167, 175, 183, 0.33);
 ///////// NAVBAR ////////
 $page-header-toolbar-btn-color: theme-color(primary);

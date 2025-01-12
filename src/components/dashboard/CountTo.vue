@@ -15,7 +15,7 @@
                       :to="{
                         path: '/customers',
                       }"
-                      style="text-decoration: none; color: #3a8696"
+                      style="text-decoration: none; color: #002c5f"
                     >
                       <countTo
                         :startVal="countCustomer.startVal"
@@ -41,7 +41,7 @@
                       :to="{
                         path: '/drivers',
                       }"
-                      style="text-decoration: none; color: #3a8696"
+                      style="text-decoration: none; color: #002c5f"
                     >
                       <countTo
                         :startVal="countDriver.startVal"
@@ -67,7 +67,7 @@
                       :to="{
                         path: '/help-and-support',
                       }"
-                      style="text-decoration: none; color: #3a8696"
+                      style="text-decoration: none; color: #002c5f"
                     >
                       <countTo
                         :startVal="countHelp.startVal"
@@ -102,7 +102,7 @@
                       :to="{
                         path: '/bookings/scheduled',
                       }"
-                      style="text-decoration: none; color: #3a8696"
+                      style="text-decoration: none; color: #002c5f"
                     >
                       <countTo
                         :startVal="countTotalBooking.startVal"
@@ -129,7 +129,7 @@
                       :to="{
                         path: '/bookings/scheduled',
                       }"
-                      style="text-decoration: none; color: #3a8696"
+                      style="text-decoration: none; color: #002c5f"
                     >
                       <countTo
                         :startVal="countTodayCompletedBooking.startVal"
@@ -139,7 +139,7 @@
                     </router-link>
                   </div>
                   <div class="wrapper text-center text-sm-left">
-                    <p class="card-text mb-0">Today Completed Booking</p>
+                    <p class="card-text mb-0">Completed Booking</p>
                     <div class="fluid-container"></div>
                   </div>
                 </div>
@@ -156,7 +156,7 @@
                       :to="{
                         path: '/bookings/scheduled',
                       }"
-                      style="text-decoration: none; color: #3a8696"
+                      style="text-decoration: none; color: #002c5f"
                     >
                       <countTo
                         :startVal="countScheduledBooking.startVal"
@@ -166,7 +166,7 @@
                     </router-link>
                   </div>
                   <div class="wrapper text-center text-sm-left">
-                    <p class="card-text mb-0">Today Scheduled Booking</p>
+                    <p class="card-text mb-0">Scheduled Booking</p>
                     <div class="fluid-container"></div>
                   </div>
                 </div>

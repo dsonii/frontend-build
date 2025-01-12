@@ -2,6 +2,35 @@
 .app-sidebar{
   background: $sidebar-gradient-color-3;
 }
+a, a:hover {
+  color: $sidebar-gradient-color-3;
+}
+.text-primary  {
+  color: $sidebar-gradient-color-3 !important;
+}
+.btn-success {
+  background-color: $sidebar-gradient-color-3;
+  border-color: $sidebar-gradient-color-3;
+}
+.btn-primary:not(:disabled):not(.disabled):active, .btn-primary:not(:disabled):not(.disabled).active, .show > .btn-primary.dropdown-toggle {
+  background-color: $sidebar-gradient-color-3;
+  border-color: $sidebar-gradient-color-3;
+}
+.page-link:hover, .page-item:hover {
+  background-color: $sidebar-gradient-color-3 !important;
+}
+.sidebar > .nav .nav-item:not(.hover-open) .collapse .sub-menu .nav-item .active:before, .sidebar > .nav .nav-item:not(.hover-open) .collapsing .sub-menu .nav-item .active:before {
+  color: #fff !important;
+  background: #fff !important;
+}
+
+.btn-group .btn.btn-success {
+  border-color: $sidebar-gradient-color-3 !important;
+}
+.btn-success:hover {
+  background-color: $sidebar-gradient-color-3;
+  border-color: $sidebar-gradient-color-3;
+}
 .sidebar {
   min-height: calc(100vh - #{$navbar-height});
   font-family: $type-2;
