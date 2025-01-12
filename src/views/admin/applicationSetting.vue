@@ -29,9 +29,7 @@
             <b-tab title="Notifications"
               ><b-card-text><Notification /></b-card-text
             ></b-tab>
-            <b-tab title="Referrals"
-              ><b-card-text><Referral /></b-card-text
-            ></b-tab>
+            
             <b-tab title="Terms And Condition"
               ><b-card-text> <Term /> </b-card-text
             ></b-tab>
@@ -53,8 +51,6 @@ import PrivacyPolicy from "../../components/settings/PrivacyPolicy";
 import AWS from "../../components/settings/aws";
 import SMTP from "../../components/settings/smtp";
 //import SMS from "../../components/settings/sms";
-import Referral from "../../components/settings/referral";
-import ReferralPolicy from "../../components/settings/referral_policy";
 // import Payment from "../../components/settings/payment";
 import Notification from "../../components/settings/notification";
 import Refund from "../../components/settings/refund";
@@ -82,8 +78,6 @@ export default {
     // SMS,
     Notification,
     Refund,
-    Referral,
-    ReferralPolicy,
     PrivacyPolicy,
   },
 };
