@@ -32,9 +32,6 @@
             <b-tab title="Referrals"
               ><b-card-text><Referral /></b-card-text
             ></b-tab>
-            <b-tab title="Referral Policy">
-              <b-card-text><ReferralPolicy /></b-card-text>
-            </b-tab>
             <b-tab title="Terms And Condition"
               ><b-card-text> <Term /> </b-card-text
             ></b-tab>
