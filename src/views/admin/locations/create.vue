@@ -412,7 +412,7 @@ export default {
     },
     async loadMarkerItems() {
       const response = await locationService.markers();
-      if (response.status) {
+      if (typeof response.status != 'undefined' && response.status) {
         this.markers = response.data;
       }
     },

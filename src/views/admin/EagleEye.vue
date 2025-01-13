@@ -1,4 +1,10 @@
 <template>
+  <section class="dashboard">
+  <div class="row">
+      <div class="col-lg-12">
+        <Breadcrumb :breadcrumbs="breadcrumbs" />
+      </div>
+  </div>
   <b-card>
     <b-card-text>
       <b-row>
@@ -73,16 +79,30 @@
       </b-row>
     </b-card-text>
   </b-card>
+</section>
 </template>
 
 <script>
 import { ref, onMounted, watch } from "vue";
 import { mapService } from "../../services";
 import MapView from "../../components/googlemap/MapView.vue";
+import Breadcrumb from "../../components/breadcrumb";
 //import mapData from "./mapStyle.json";
 
 export default {
-  components: { MapView },
+  data(){
+    return {
+      breadcrumbs: {
+        title: "Eagle Eyes",
+        b1: "",
+        b2: "",
+        b3: "",
+        link: false,
+        name: "Eagle",
+      },
+    }
+  },
+  components: { MapView, Breadcrumb },
   setup() {
     let loading = ref(false);
     let onlinepressed = ref(false);

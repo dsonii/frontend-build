@@ -38,6 +38,7 @@
               type="search"
               class="form-control"
               placeholder="Search Here"
+              style="display:none"
             />
           </div>
         </form>

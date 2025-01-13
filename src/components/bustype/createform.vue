@@ -44,6 +44,10 @@
                 :options="options"
                 v-model="form.status"
                 name="status"
+                :class="{
+                  'is-invalid': submitted && $v.form.status.$error,
+                }"
+                :state="validateState('status')"
               ></b-form-radio-group>
 
               <b-form-invalid-feedback

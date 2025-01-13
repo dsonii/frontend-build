@@ -104,7 +104,7 @@
           id="input-1-live-feedback"
           >Only alphanumerics characters are allowed</b-form-invalid-feedback
         >
-        <b-form-invalid-feedback v-if="!$v.form.reg_no.uniqueModelNo">
+        <b-form-invalid-feedback v-if="$v.form.model_no.$model != '' && $v.form.reg_no.uniqueModelNo == false">
           This Model number is already registered.
         </b-form-invalid-feedback>
       </b-form-group>
@@ -138,8 +138,8 @@
           id="input-1-live-feedback"
           >Only alphanumerics characters are allowed</b-form-invalid-feedback
         >
-        <b-form-invalid-feedback v-if="!$v.form.reg_no.uniqueChassisNo">
-          This chassis number is already registered.
+        <b-form-invalid-feedback v-if="$v.form.reg_no.$model != '' &&  $v.form.reg_no.uniqueChassisNo ==false">
+          This chassis number is already registered .
         </b-form-invalid-feedback>
       </b-form-group>
 

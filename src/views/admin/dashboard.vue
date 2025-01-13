@@ -1,5 +1,10 @@
 <template lang="html">
   <section class="dashboard">
+    <div class="row">
+        <div class="col-lg-12">
+          <Breadcrumb :breadcrumbs="breadcrumbs" />
+        </div>
+    </div>
     <count-to />
 
     <div class="row">
@@ -41,11 +46,19 @@
 import walletLine from "../../components/charts/walletLine"
 import bookingBar from "../../components/charts/bookingBar"
 import  CountTo from '../../components/dashboard/CountTo';
-
+import Breadcrumb from "../../components/breadcrumb";
 export default {
   name: 'admindashboard',
    data() {
     return {
+      breadcrumbs: {
+        title: "Dashboard",
+        b1: "",
+        b2: "",
+        b3: "",
+        link: false,
+        name: "Dashboard",
+      },
       countDriver:{
         startVal: 10,
         endVal: 0
@@ -71,7 +84,8 @@ export default {
   components: {
     CountTo,
     walletLine,
-    bookingBar
+    bookingBar,
+    Breadcrumb,
    // statsLineGraph1,
     //statsLineGraph2,
    // statsLineGraph3,
