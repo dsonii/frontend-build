@@ -97,7 +97,6 @@
               +91-{{ getUser.phone }} <br />
             </p>
           </b-card-body>
-          <b-card-footer> </b-card-footer>
         </div>
       </div>
     </div>
