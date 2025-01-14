@@ -230,7 +230,7 @@
                 >
               </b-form-group>
 
-              <b-form-group class="col-md-5 offset-md-4">
+              <b-form-group class="col-md-6 offset-md-4">
                 <b-button
                   type="submit"
                   class="btn btn-success btn-lg text-center mr-2"

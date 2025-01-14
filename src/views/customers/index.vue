@@ -225,77 +225,36 @@ export default {
         {
           label: "Name",
           name: "fullname",
-          filter: {
-            type: "simple",
-            placeholder: "Enter full name",
-          },
           sort: true,
         },
         {
           label: "Gender",
           name: "gender",
-          filter: {
-            type: "select",
-            placeholder: "Select Gender",
-            mode: "multi",
-            options: [
-              {
-                name: "Male",
-                value: "Male",
-              },
-              {
-                name: "Female",
-                value: "Female",
-              },
-            ],
-          },
+          
           sort: true,
         },
         {
           label: "Phone",
           name: "phone",
-          filter: {
-            type: "simple",
-            placeholder: "Enter phone number",
-          },
+          
           sort: true,
         },
         {
           label: "Wallet",
           name: "wallet_balance",
-          filter: {
-            type: "simple",
-            placeholder: "Enter Wallet",
-          },
+          
           sort: true,
         },
         {
           label: "Referral",
           name: "refercode",
-          filter: {
-            type: "simple",
-            placeholder: "Enter refercode",
-          },
+          
           sort: true,
         },
         {
           label: "Status",
           name: "status",
-          filter: {
-            type: "select",
-            placeholder: "Select Status",
-            mode: "multi",
-            options: [
-              {
-                name: "Active",
-                value: true,
-              },
-              {
-                name: "InActive",
-                value: false,
-              },
-            ],
-          },
+          
           sort: true,
         },
         {

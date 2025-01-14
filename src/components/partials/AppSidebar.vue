@@ -211,18 +211,7 @@
                   >Create Customer</router-link
                 >
               </li>
-              <li class="nav-item">
-                <router-link class="nav-link" :to="{ path: '/referrals' }"
-                  >Referrals</router-link
-                >
-              </li>
-              <li class="nav-item">
-                <router-link
-                  class="nav-link"
-                  :to="{ path: '/customers/wallet-recharge' }"
-                  >Wallet Recharge</router-link
-                >
-              </li>
+              
               <li class="nav-item">
                 <router-link class="nav-link" :to="{ path: '/suggests' }"
                   >Suggestions</router-link

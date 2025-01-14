@@ -129,43 +129,13 @@ export default {
           label: "Type",
           name: "type",
           sort: true,
-          filter: {
-            type: "select",
-            mode: "type",
-            closeDropdownOnSelection: true,
-            placeholder: "Select type",
-            options: [
-              {
-                name: "Departure / Arrival location",
-                value: "DA",
-              },
-              {
-                name: "Pick-up / Drop off location",
-                value: "PD",
-              },
-            ],
-          },
+          
         },
         {
           label: "Status",
           name: "status",
           sort: true,
-          filter: {
-            type: "select",
-            mode: "status",
-            closeDropdownOnSelection: true,
-            placeholder: "Select status",
-            options: [
-              {
-                name: "Active",
-                value: true,
-              },
-              {
-                name: "Inactive",
-                value: false,
-              },
-            ],
-          },
+          
         },
         { label: "Action", name: "action", sort: false },
       ],

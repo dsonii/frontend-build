@@ -51,23 +51,18 @@
             </template>
 
             <template slot="is_active" slot-scope="props">
-              <b-form-select
-                v-model="props.row.is_active"
-                v-if="props.column.name == 'is_active'"
-                :class="
-                  props.row.is_active == 'Active'
-                    ? 'text-success'
-                    : 'text-danger'
-                "
-                :options="options"
-                @change="
-                  updateStatus(
-                    props.row.is_active,
-                    props.row.role,
-                    props.row.ids
-                  )
-                "
-              ></b-form-select>
+              <span v-if="props.column.name == 'is_active'">
+              <b-badge
+                  variant="success"
+                  v-if="props.row.is_active == 'Active'"
+                  >Active</b-badge
+                >
+                <b-badge
+                  variant="warning"
+                  v-else-if="props.row.is_active == 'Inactive'"
+                  >InActive</b-badge
+                >
+              </span>
             </template>
             <template slot="createdAt" slot-scope="props">
               {{ momentFormat(props.row.createdAt, dateFormat.value) }}
@@ -198,21 +193,7 @@ export default {
         {
           label: "Status",
           name: "is_active",
-          filter: {
-            type: "select",
-            placeholder: "Select Status",
-            mode: "multi",
-            options: [
-              {
-                name: "Active",
-                value: true,
-              },
-              {
-                name: "InActive",
-                value: false,
-              },
-            ],
-          },
+          
           sort: false,
         },
         { label: "CreatedAt", name: "createdAt", sort: true },

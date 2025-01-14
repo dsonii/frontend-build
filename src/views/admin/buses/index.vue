@@ -142,28 +142,16 @@ export default {
         {
           label: "Name",
           name: "name",
-          filter: {
-            type: "simple",
-            placeholder: "Enter name",
-          },
           sort: true,
         },
         {
           label: "Max Seats",
           name: "max_seats",
-          filter: {
-            type: "simple",
-            placeholder: "Enter max seats",
-          },
           sort: true,
         },
         {
           label: "Reg No",
           name: "reg_no",
-          filter: {
-            type: "simple",
-            placeholder: "Enter Reg No",
-          },
           sort: true,
         },
         {
@@ -174,21 +162,6 @@ export default {
         {
           label: "Status",
           name: "status",
-          filter: {
-            type: "select",
-            placeholder: "Select Status",
-            mode: "multi",
-            options: [
-              {
-                name: "Active",
-                value: true,
-              },
-              {
-                name: "InActive",
-                value: false,
-              },
-            ],
-          },
           sort: true,
         },
         {

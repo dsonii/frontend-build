@@ -162,48 +162,21 @@ export default {
         {
           label: "Full name",
           name: "fullname",
-          filter: {
-            type: "simple",
-            placeholder: "Enter fullname",
-          },
           sort: true,
         },
         {
           label: "Phone",
           name: "phone",
-          filter: {
-            type: "simple",
-            placeholder: "Enter phone",
-          },
           sort: true,
         },
         {
           label: "National ID",
           name: "national_id",
-          filter: {
-            type: "simple",
-            placeholder: "Enter national id",
-          },
           sort: true,
         },
         {
           label: "Type",
           name: "type",
-          filter: {
-            type: "select",
-            placeholder: "Select type",
-            mode: "multi",
-            options: [
-              {
-                name: "Driver",
-                value: "driver",
-              },
-              {
-                name: "Assistant",
-                value: "assistant",
-              },
-            ],
-          },
           sort: true,
         },
         {

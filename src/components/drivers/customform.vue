@@ -321,6 +321,7 @@
                   label-cols-lg="3"
                   content-cols-sm
                   content-cols-lg="7"
+                  v-if="show"
                 >
                   <div>
                     <b-form-input

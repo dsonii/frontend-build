@@ -39,13 +39,19 @@
       </template>
 
       <template slot="status" slot-scope="props">
-        <b-form-select
-          v-model="props.row.status"
-          v-if="props.column.name == 'status'"
-          :class="props.row.status == 'Active' ? 'text-success' : 'text-danger'"
-          :options="options"
-          @change="updateStatus(props.row.status, props.row.ids)"
-        ></b-form-select>
+       
+        <span v-if="props.column.name == 'status'">
+            <b-badge
+              variant="success"
+              v-if="props.row.status == 'Active'"
+              >Active</b-badge
+            >
+            <b-badge
+              variant="warning"
+              v-else-if="props.row.status == 'Inactive'"
+              >InActive</b-badge
+            >
+          </span>
       </template>
 
       <template slot="action" slot-scope="props">
@@ -150,21 +156,6 @@ export default {
         {
           label: "Status",
           name: "status",
-          filter: {
-            type: "select",
-            placeholder: "Select Status",
-            mode: "multi",
-            options: [
-              {
-                name: "Active",
-                value: true,
-              },
-              {
-                name: "InActive",
-                value: false,
-              },
-            ],
-          },
           sort: false,
         },
 

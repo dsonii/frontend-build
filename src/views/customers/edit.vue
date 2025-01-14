@@ -657,10 +657,10 @@ export default {
     }, 350),
     searchReturnRoute () {
       routeService.searchRoute({
-        drop_lat:this.form.drop_location[0].location.coordinates[1],
-        drop_long:this.form.drop_location[0].location.coordinates[0],
-        pickup_lat:this.form.pickup_location[0].location.coordinates[1],
-        pickup_long:this.form.pickup_location[0].location.coordinates[0],
+        drop_lat:this.form.pickup_location[0].location.coordinates[1],
+        drop_long:this.form.pickup_location[0].location.coordinates[0],
+        pickup_lat:this.form.drop_location[0].location.coordinates[1],
+        pickup_long:this.form.drop_location[0].location.coordinates[0],
       }).then((response) => {
         this.return_routeOption = response.data;
       });

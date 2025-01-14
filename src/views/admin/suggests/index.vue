@@ -38,7 +38,7 @@
             <template slot="paginataion-next-button"> Next </template>
             <template slot="vbt-action-buttons">
               <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-9">
                   <div class="float-right">
                     <b-form inline>
                       <label class="mr-2">Date Range Filter :</label>
@@ -55,10 +55,10 @@
                     </b-form>
                   </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-3">
                   <div class="float-right">
                     <download-excel
-                      class="btn btn-success mr-5"
+                      class="btn btn-success"
                       :data="excelDownload"
                       :name="excelName"
                     >

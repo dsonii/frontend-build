@@ -45,13 +45,13 @@
             {{ dateConvert(modalData.licence_expiry_date, 'Y-MM-DD') }}
             </b-col>
 
-          <b-col cols="4">Adhar Card</b-col>
+          <b-col cols="4">National ID Card</b-col>
           <b-col cols="8"
             ><b-img
-              class="img-fluid"
+              class="img-fluid mt-2"
               width="350"
               height="200"
-              :src="modalData.document_adhar_card"
+              :src="modalData.document_national_icard"
             ></b-img
           ></b-col>
           <b-col cols="4">Police vertification </b-col>
