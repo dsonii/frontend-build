@@ -53,7 +53,7 @@ export default {
     return {
       breadcrumbs: {
         title: "Dashboard",
-        b1: "",
+        b1: "Home",
         b2: "",
         b3: "",
         link: false,

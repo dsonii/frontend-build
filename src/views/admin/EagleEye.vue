@@ -94,7 +94,7 @@ export default {
     return {
       breadcrumbs: {
         title: "Eagle Eyes",
-        b1: "",
+        b1: "Home",
         b2: "",
         b3: "",
         link: false,
