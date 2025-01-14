@@ -14,9 +14,9 @@
             <b-tab title="General" active
               ><b-card-text> <General /> </b-card-text
             ></b-tab>
-            <b-tab title="AWS S3"
+            <!-- <b-tab title="AWS S3"
               ><b-card-text><AWS /></b-card-text
-            ></b-tab>
+            ></b-tab> -->
             <b-tab title="Email"
               ><b-card-text><SMTP /></b-card-text
             ></b-tab>
@@ -48,7 +48,7 @@ import Breadcrumb from "../../components/breadcrumb";
 import General from "../../components/settings/general";
 import Term from "../../components/settings/term";
 import PrivacyPolicy from "../../components/settings/PrivacyPolicy";
-import AWS from "../../components/settings/aws";
+// import AWS from "../../components/settings/aws";
 import SMTP from "../../components/settings/smtp";
 //import SMS from "../../components/settings/sms";
 // import Payment from "../../components/settings/payment";
@@ -73,7 +73,7 @@ export default {
     Breadcrumb,
     General,
     Term,
-    AWS,
+    // AWS,
     SMTP,
     // SMS,
     Notification,

@@ -46,26 +46,11 @@
         <b-nav-item-dropdown right class="preview-list user-dropdown">
           <template slot="button-content">
             <div class="d-flex align-items-center">
-              <img
-                class="img-xs rounded-circle"
-                :src="getUser.picture"
-                alt="Profile image"
-              />
+              {{ getUser.firstname }} {{ getUser.lastname }}
             </div>
           </template>
           <b-dropdown-item>
-            <div class="dropdown-header text-center w-100">
-              <img
-                class="img-md rounded-circle"
-                :src="getUser.picture"
-                alt="Profile image"
-              />
-              <p class="mb-1 mt-3 font-weight-semibold">
-                {{ getUser.firstname }} {{ getUser.lastname }}
-              </p>
-              <p class="font-weight-light text-muted mb-0">
-                {{ getUser.email }}
-              </p>
+            <div class="dropdown-headerw-100 mt-0">{{ getUser.email }}
             </div>
           </b-dropdown-item>
           <b-dropdown-item>

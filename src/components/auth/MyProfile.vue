@@ -79,20 +79,12 @@
       <div class="col-md-4 grid-margin stretch-card">
         <div class="card card-user">
           <div class="card-image">
-            <img
-              src="https://ununsplash.imgix.net/photo-1431578500526-4d9613015464?fit=crop&fm=jpg&h=300&q=75&w=400"
-              alt="Profile image"
-            />
+            
           </div>
           <b-card-body>
             <div class="author">
               <a href="#">
-                <img
-                  class="avatar img-md rounded-circle"
-                  :src="getUser.picture"
-                  alt="Profile
-                image"
-                />
+                
                 <h4 class="title">
                   {{ getUser.firstname }} <br /><small
                     >{{ getUser.lastname }}
