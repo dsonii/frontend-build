@@ -122,7 +122,7 @@
           <b-modal
             ref="myModalRefUser"
             :title="title"
-            size="md"
+            size="xl"
             :ok-title="modaloktitle"
             @hidden="hideModal"
             @ok="handleOk"

@@ -1,38 +1,35 @@
 <template>
   <div>
     <section class="tables">
-      <b-container>
-        <b-row>
-          <b-col cols="4">Title</b-col>
-          <b-col cols="8">{{ form.title }}</b-col>
-
-          <b-col cols="4">Address</b-col>
-          <b-col cols="8">{{ form.location_address }}</b-col>
-
-          <b-col cols="4">Latitude</b-col>
-          <b-col cols="8">{{ form.location_lat }}</b-col>
-          <b-col cols="4">Longitude</b-col>
-          <b-col cols="8">{{ form.location_lng }}</b-col>
-          <b-col cols="4">Status</b-col>
-          <b-col cols="8">{{ form.status }}</b-col>
-          <b-col cols="4">Type</b-col>
-          <b-col cols="8">{{
+      <table class="table  table-bordered  table-striped">
+        <tr>
+          <td>Title</td>
+          <td>Address</td>
+          <td>Latitude</td>
+          <td>Longitude</td>
+          <td>Status</td>
+          <td>Type</td>
+          <td>Created At</td>
+        </tr>
+        <tr>
+          <td>{{ form.title }}</td>
+          <td>{{ form.location_address }}</td>
+          <td>{{ form.location_lat }}</td>
+          <td>{{ form.location_lng }}</td>
+          <td>{{ form.status }}</td>
+          <td>{{
             form.type == "DA"
               ? "Departure / Arrival location"
               : "Pick-up / Drop off location"
-          }}</b-col>
-
-          <b-col cols="4">Created At</b-col>
-          <b-col cols="8"
-            >{{
+          }}</td>
+          <td>{{
               dateConvert(
                 form.createdAt,
                 `${dateFormat.value} ${timeFormat.value}`
               )
-            }}
-          </b-col>
-        </b-row>
-      </b-container>
+            }}</td>
+        </tr>
+      </table>
     </section>
   </div>
 </template>

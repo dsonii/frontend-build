@@ -1,84 +1,35 @@
 <template>
   <div>
     <section class="tables">
-      <b-container>
-        <b-row>
-          <b-col cols="4">Full Name</b-col>
-          <b-col cols="8"
-            >{{ modalData.firstname }} {{ modalData.lastname }}</b-col
-          >
-          <b-col cols="4">Email Address</b-col>
-          <b-col cols="8">{{ modalData.email }}</b-col>
-          <b-col cols="4">Phone</b-col>
-          <b-col cols="8">{{ modalData.phone }}</b-col>
-          <b-col cols="4">Status</b-col>
-          <b-col cols="8">{{ modalData.status }}</b-col>
-          <b-col cols="4">Profile Picture</b-col>
-          <b-col cols="8"
-            ><b-img width="60" height="60" :src="modalData.picture"></b-img
-          ></b-col>
-          <b-col cols="12"
-            ><p><b class="text-uppercase mt-3 mb-3">Documents</b></p></b-col
-          >
-          <b-col cols="4">Profile Picture</b-col>
-          <b-col cols="8"
-            ><b-img
-              class="img-fluid mt-2"
-              width="350"
-              height="200"
-              :src="modalData.document_licence"
-            ></b-img
-          ></b-col>
-          <b-col cols="4">Licence</b-col>
-          <b-col cols="8"
-            ><b-img
-              class="img-fluid mt-2"
-              width="350"
-              height="200"
-              :src="modalData.document_licence"
-            ></b-img
-          ></b-col>
-        
-          <b-col cols="4">Licence Expiry Date</b-col>
-          <b-col cols="8"
+      <table class="table  table-bordered  table-striped">
+        <tr>
+          <td>Full Name</td>
+          <td>Email Address</td>
+          <td>Phone</td>
+          <td>Profile Picture</td>
+          <td>Licence</td>
+          <td>National ID Card</td>
+          <td>Police vertification</td>
+        </tr>
+        <tr>
+          <td>{{ modalData.firstname }} {{ modalData.lastname }}</td>
+          <td>{{ modalData.email }}</td>
+          <td>{{ modalData.phone }}</td>
+          <td><b-img width="60" height="60" :src="modalData.picture"></b-img
+            ></td>
+          <td><b-img width="60" height="60" :src="modalData.document_licence"></b-img
             >
-            {{ dateConvert(modalData.licence_expiry_date, 'Y-MM-DD') }}
-            </b-col>
-
-          <b-col cols="4">National ID Card</b-col>
-          <b-col cols="8"
-            ><b-img
-              class="img-fluid mt-2"
-              width="350"
-              height="200"
-              :src="modalData.document_national_icard"
-            ></b-img
-          ></b-col>
-          <b-col cols="4">Police vertification </b-col>
-          <b-col cols="8"
-            ><b-img
-              class="img-fluid"
-              width="350"
-              height="200"
-              :src="modalData.document_police_vertification"
-            ></b-img
-          ></b-col>
-          <b-col cols="4">Police vertification expiry date</b-col>
-          <b-col cols="8"
-            >
-            {{ dateConvert(modalData.police_vertification_expiry_date,
+            <br/><br/>Exp.: {{ dateConvert(modalData.licence_expiry_date, 'Y-MM-DD') }}</td>
+          <td><b-img width="60" height="60" :src="modalData.document_national_icard"></b-img
+            ></td>
+          <td><b-img width="60" height="60" :src="modalData.document_police_vertification"></b-img
+            ><br/><br/>
+            Exp.: {{ dateConvert(modalData.police_vertification_expiry_date,
             'Y-MM-DD') }}
-            </b-col>
-
-          <b-col cols="4">Created At</b-col>
-          <b-col cols="8">{{
-            dateConvert(
-              modalData.createdAt,
-              `${dateFormat.value} ${timeFormat.value}`
-            )
-          }}</b-col>
-        </b-row>
-      </b-container>
+          </td>
+           
+        </tr>
+      </table>
     </section>
   </div>
 </template>

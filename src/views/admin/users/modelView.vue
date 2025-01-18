@@ -1,36 +1,39 @@
 <template>
   <div>
     <section class="tables">
-      <b-container>
-        <b-row>
-          <b-col cols="4">Full Name</b-col>
-          <b-col cols="8">{{ modalData.fullname }} </b-col>
-
-          <b-col cols="4">Email Address</b-col>
-          <b-col cols="8">{{ modalData.email }}</b-col>
-          <b-col cols="4">Phone</b-col>
-          <b-col cols="8">{{ modalData.phone }}</b-col>
-          <b-col cols="4">Status</b-col>
-          <b-col cols="8">
-            <b-badge
+      <table class="table  table-bordered  table-striped">
+        <tr>
+          <td>Full Name</td>
+          <td>Email Address</td>
+          <td>Phone</td>
+          <td>Status</td>
+          <td>Profile Picture</td>
+          <td>Created By</td>
+        </tr>
+        <tr>
+          
+          <td>{{ modalData.fullname }}</td>
+          <td>{{ modalData.email }}</td>
+          <td>{{ modalData.phone }}</td>
+          <td><b-badge
               :variant="modalData.is_active == 'Active' ? 'success' : 'danger'"
               >{{ modalData.is_active }}</b-badge
-            ></b-col
-          >
-          <b-col cols="4">Profile Picture</b-col>
-          <b-col cols="8">
-            <b-img-lazy v-bind="mainProps" :src="modalData.picture"></b-img-lazy
-          ></b-col>
-
-          <b-col cols="4">Created At</b-col>
-          <b-col cols="8">{{
+            ></td>
+         <td><b-img
+              class="img-fluid"
+              width="50"
+              height="50"
+              :src="modalData.ProfilePic"
+            ></b-img
+          ></td>
+          <td>{{
             dateConvert(
               modalData.createdAt,
               `${dateFormat.value} ${timeFormat.value}`
             )
-          }}</b-col>
-        </b-row>
-      </b-container>
+          }}</td>
+        </tr>
+      </table>
     </section>
   </div>
 </template>

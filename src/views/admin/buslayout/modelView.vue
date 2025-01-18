@@ -1,19 +1,20 @@
 <template>
   <div>
     <section class="tables">
-      <b-container>
-        <b-row>
-          <b-col cols="4">Full Name</b-col>
-          <b-col cols="8">{{ modalData.name }} </b-col>
-
-          <b-col cols="4">Status</b-col>
-          <b-col cols="8">{{ modalData.status }}</b-col>
-          <b-col cols="4">Layout</b-col>
-          <b-col cols="8">{{ modalData.layout }}</b-col>
-          <b-col cols="4">Max Seats</b-col>
-          <b-col cols="8">{{ modalData.max_seats }}</b-col>
-          <b-col cols="4">Bus seats</b-col>
-          <b-col cols="8">
+      <table class="table  table-bordered  table-striped">
+        <tr>
+          <td>Full Name</td>
+          <td>Status</td>
+          <td>Layout</td>
+          <td>Max Seats</td>
+          <td>Bus seats</td>
+        </tr>
+        <tr>
+          <td>{{ modalData.name }}</td>
+          <td>{{ modalData.status }}</td>
+          <td>{{ modalData.layout }}</td>
+          <td>{{ modalData.max_seats }}</td>
+          <td>
             <div class="box-body row" id="layouts">
               <!----------- Left Row Start ---------->
               <div class="col-md-3 nopadding">
@@ -93,9 +94,9 @@
               </div>
               <!----------- Right Row Start ---------->
             </div>
-          </b-col>
-        </b-row>
-      </b-container>
+          </td>
+        </tr>
+      </table>
     </section>
   </div>
 </template>

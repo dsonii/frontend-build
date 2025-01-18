@@ -1,30 +1,29 @@
 <template>
   <div>
     <section class="tables">
-      <b-container>
-        <b-row>
-          <b-col cols="4">Route Name</b-col>
-          <b-col cols="8">{{ form.route_name }}</b-col>
-          <b-col cols="4">Vehicle Name</b-col>
-          <b-col cols="8">{{ form.bus_name }}</b-col>
-          <b-col cols="4">Departure To Arrival</b-col>
-          <b-col cols="8">{{ form.departure_to_arrival_time }}</b-col>
-          <b-col cols="4">Operations</b-col>
-          <b-col cols="8">{{ form.start_to_end }}</b-col>
-          <b-col cols="4">Status</b-col>
-          <b-col cols="8">{{ form.status }}</b-col>
-
-          <b-col cols="4">Created At</b-col>
-          <b-col cols="8"
-            >{{
+      <table class="table  table-bordered  table-striped">
+        <tr>
+          <td>Route Name</td>
+          <td>Vehicle Name</td>
+          <td>Departure To Arrival</td>
+          <td>Operations</td>
+          <td>Status</td>
+          <td>Created At</td>
+        </tr>
+        <tr>
+          <td>{{ form.route_name }}</td>
+          <td>{{ form.bus_name }}</td>
+          <td>{{ form.departure_to_arrival_time }}</td>
+          <td>{{ form.start_to_end }}</td>
+          <td>{{ form.status }}</td>
+          <td>{{
               dateConvert(
                 form.createdAt,
                 `${dateFormat.value} ${timeFormat.value}`
               )
-            }}
-          </b-col>
-        </b-row>
-      </b-container>
+            }}</td>
+        </tr>
+      </table>
     </section>
   </div>
 </template>

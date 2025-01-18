@@ -1,15 +1,16 @@
 <template>
   <div>
     <section class="tables">
-      <b-container>
-        <b-row>
-          <b-col cols="4">Name</b-col>
-          <b-col cols="8">{{ modalData.name }} </b-col>
-
-          <b-col cols="4">Status</b-col>
-          <b-col cols="8">{{ modalData.status }}</b-col>
-        </b-row>
-      </b-container>
+      <table class="table  table-bordered  table-striped">
+        <tr>
+          <td>Name</td>
+          <td>Status</td>
+        </tr>
+        <tr>
+          <td>{{ modalData.name }}</td>
+          <td>{{ modalData.status }}</td>
+        </tr>
+      </table>
     </section>
   </div>
 </template>

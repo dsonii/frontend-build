@@ -112,7 +112,7 @@
           <b-modal
             ref="myModalRefDriver"
             :title="title"
-            size="md"
+            size="xl"
             :ok-title="modaloktitle"
             @hidden="hideModal"
             @ok="handleOk"

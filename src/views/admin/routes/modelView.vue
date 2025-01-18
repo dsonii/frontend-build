@@ -1,29 +1,26 @@
 <template>
   <div>
     <section class="tables">
-      <b-container>
-        <b-row>
-          <b-col cols="4">Title</b-col>
-          <b-col cols="8">{{ form.title }}</b-col>
-
-          <b-col cols="4">Stops</b-col>
-          <b-col cols="8">{{ form.total_stops }}</b-col>
-          <!-- <b-col cols="4">Longitude</b-col>
-          <b-col cols="8">{{ form.location_lng }}</b-col> -->
-          <b-col cols="4">Status</b-col>
-          <b-col cols="8">{{ form.status }}</b-col>
-
-          <b-col cols="4">Created At</b-col>
-          <b-col cols="8"
-            >{{
+      <table class="table  table-bordered  table-striped">
+        <tr>
+          <td>Title</td>
+          <td>Stops</td>
+          <td>Status</td>
+          <td>Created At</td>
+        </tr>
+        <tr>
+          <td>{{ form.title }}</td>
+          <td>{{ form.total_stops }}</td>
+          <td>{{ form.status }}</td>
+          <td>{{
               dateConvert(
                 form.createdAt,
                 `${dateFormat.value} ${timeFormat.value}`
               )
-            }}
-          </b-col>
-        </b-row>
-      </b-container>
+            }}</td>
+        </tr>
+      </table>
+      
     </section>
   </div>
 </template>

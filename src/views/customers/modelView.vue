@@ -1,49 +1,36 @@
 <template>
   <div>
     <section class="tables">
-      <b-container>
-        <b-row>
-          <b-col cols="4">Profile Picture</b-col>
-          <b-col cols="8"
-            ><b-img
+      <table class="table  table-bordered  table-striped">
+        <tr>
+          <td>Profile Picture</td>
+          <td>Company Name</td>
+          <td>Customer Code</td>
+          <td>Full Name</td>
+          <td>Gender</td>
+          <td>Email</td>
+          <td>Phone</td>
+          <td>Status</td>
+          <td>Created By</td>
+        </tr>
+        <tr>
+          <td><b-img
               class="img-fluid"
               width="50"
               height="50"
               :src="modalData.ProfilePic"
             ></b-img
-          ></b-col>
-
-          <b-col cols="4">Company Name</b-col>
-          <b-col cols="8">{{ modalData.company }} </b-col>
-
-          <b-col cols="4">Customer Code</b-col>
-          <b-col cols="8">{{ modalData.customer_code }} </b-col>
-
-          <b-col cols="4">Full Name</b-col>
-          <b-col cols="8">{{ modalData.fullname }} </b-col>
-
-          <b-col cols="4">Gender</b-col>
-          <b-col cols="8">{{ modalData.gender }} </b-col>
-
-          <b-col cols="4">Email</b-col>
-          <b-col cols="8">{{ modalData.email }} </b-col>
-
-          <b-col cols="4">Phone</b-col>
-          <b-col cols="8"
-            >+{{ modalData.country_code }}{{ modalData.phone }}
-          </b-col>
-          <b-col cols="4">Refercode</b-col>
-          <b-col cols="8">{{ modalData.refercode }} </b-col>
-
-          <b-col cols="4">Wallet Balance</b-col>
-          <b-col cols="8">{{ modalData.wallet_balance }} </b-col>
-          <b-col cols="4">Status</b-col>
-          <b-col cols="8">{{ modalData.status }}</b-col>
-
-          <b-col cols="4">Created By</b-col>
-          <b-col cols="8">{{ modalData.created_by }}</b-col>
-        </b-row>
-      </b-container>
+          ></td>
+          <td>{{ modalData.company }}</td>
+          <td>{{ modalData.customer_code }}</td>
+          <td>{{ modalData.fullname }}</td>
+          <td>{{ modalData.gender }}</td>
+          <td>{{ modalData.email }}</td>
+          <td>+{{ modalData.country_code }}{{ modalData.phone }}</td>
+          <td>{{ modalData.status }}</td>
+          <td>{{ modalData.created_by }}</td>
+        </tr>
+      </table>
     </section>
   </div>
 </template>
