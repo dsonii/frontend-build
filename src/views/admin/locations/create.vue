@@ -39,6 +39,7 @@
             <div v-html="infoContent"></div>
           </gmap-info-window>
         </GmapMap>
+        
       </div>
       <div class="col-lg-3 offset-lg-0" style="position: absolute">
         <div class="card">

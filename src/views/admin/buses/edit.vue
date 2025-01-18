@@ -200,7 +200,19 @@
                   content-cols-sm
                   content-cols-lg="7"
                 >
-                  <b-form-select
+                <b-form-checkbox-group
+                v-model.trim="$v.form.amenities.$model"
+                :options="amenitieslists"
+                :class="{
+                    'is-invalid': submitted || $v.form.amenities.$error,
+                  }"
+                  :state="validateState('amenities')"
+              >
+              <b-form-invalid-feedback
+                    >Amenities is a required field.</b-form-invalid-feedback
+                  > 
+            </b-form-checkbox-group>
+                  <!-- <b-form-select
                     :options="amenitieslists"
                     v-model.trim="$v.form.amenities.$model"
                     :class="{
@@ -211,7 +223,7 @@
                   ></b-form-select>
                   <b-form-invalid-feedback
                     >Amenities is a required field.</b-form-invalid-feedback
-                  >
+                  > -->
                 </b-form-group>
 
                 <b-form-group
@@ -726,6 +738,7 @@ export default {
       chassis_no: {
         required,
         alphaNum,
+        maxLength: maxLength(20),
         async uniqueChassisNo(value) {
           if (value === "") return true;
 

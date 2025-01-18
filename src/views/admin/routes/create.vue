@@ -118,7 +118,8 @@
                   >
                     <td scope="row">
                       <div class="row">
-                        <div class="col-sm-12">
+                        <div class="col-sm-4">{{k+1}}</div>
+                        <div class="col-sm-8">
                           <div class="form-group">
                             <!-- <v-select
                               @search="fetchPDLocations"
@@ -145,7 +146,7 @@
                                 </div>
                               </template>
                             </v-select> -->
-
+                           
                             <multiselect
                               v-model.trim="data.location"
                               :options="options"
