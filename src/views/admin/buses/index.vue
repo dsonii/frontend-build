@@ -247,7 +247,7 @@ export default {
       return moment(created).format("DD MMM, YYYY");
     },
     viewRow(data) {
-      this.title = "Bus Details";
+      this.title = "Vehicle Details";
       this.modalView = true;
       this.modalEdit = false;
       this.modaloktitle = "Ok";

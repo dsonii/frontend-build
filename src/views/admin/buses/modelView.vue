@@ -18,7 +18,7 @@
           <!--END EDIT modal--->
         </div>
       </div>
-      <table class="table  table-bordered  table-striped">
+      <table class="table  table-bordered  table-striped styledClass">
         <tr>
           <td>Picture</td>
           <td>Registration</td>
@@ -197,4 +197,10 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+.styledClass img {
+    border-radius: 0 !important;
+    height: 100px !important;
+    width: 200px !important;
+}
+</style>

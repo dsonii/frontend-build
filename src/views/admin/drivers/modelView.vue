@@ -1,7 +1,7 @@
 <template>
   <div>
     <section class="tables">
-      <table class="table  table-bordered  table-striped">
+      <table class="table  table-bordered  table-striped styledClass">
         <tr>
           <td>Full Name</td>
           <td>Email Address</td>
@@ -52,4 +52,10 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+.styledClass img {
+    border-radius: 0 !important;
+    height: 100px !important;
+    width: 200px !important;
+}
+</style>
