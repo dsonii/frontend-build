@@ -98,7 +98,7 @@
           Driver name is required
         </b-form-invalid-feedback>
       </b-form-group>
-      <b-form-group
+      <!-- <b-form-group
         label="Assistant"
         label-for="name-input"
         label-cols-sm="4"
@@ -138,7 +138,7 @@
         >
           Assistant name is required
         </b-form-invalid-feedback>
-      </b-form-group>
+      </b-form-group> -->
 
       <b-form-group
         label="Date Time"
@@ -250,7 +250,7 @@ export default {
     form: {
       route: { required },
       driver: { required },
-      assistant: { required },
+      assistant: {},
     },
   },
   computed: {

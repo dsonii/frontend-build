@@ -28,29 +28,29 @@
           <td>Permit</td>
          </tr>
          <tr>
-          <td><b-img
+          <td><a :href="`${modalData.picture}`" target="_blank"><b-img
               class="img-fluid"
                width="150"
               height="50"
               :src="modalData.picture"
-            ></b-img>
+            ></b-img></a>
           </td>
           
-          <td><b-img
+          <td><a :href="`${modalData.certificate_registration}`" target="_blank"><b-img
               class="img-fluid"
                width="150"
               height="50"
               :src="modalData.certificate_registration"
             ></b-img
-          ></td>
+          ></a></td>
 
-          <td><b-img
+          <td><a :href="`${modalData.certificate_pollution}`" target="_blank"><b-img
               class="img-fluid"
               width="150"
               height="50"
               :src="modalData.certificate_pollution"
             ></b-img
-          ><br/>Exp.: {{ 
+          ></a><br/><br/>Exp.: {{ 
             dateFormatDate(
               modalData.certificate_pollution_expiry_date, 
               'Y-MM-DD'
@@ -58,26 +58,26 @@
           }}</td>
 
           
-          <td><b-img
+          <td><a :href="`${modalData.certificate_fitness}`" target="_blank"><b-img
               class="img-fluid"
                width="150"
               height="50"
               :src="modalData.certificate_fitness"
             ></b-img
-          ><br/>Exp.: {{ 
+          ></a><br/><br/>Exp.: {{ 
             dateFormatDate(
               modalData.certificate_fitness_expiry_date, 
               'Y-MM-DD'
             ) 
           }}</td>
           
-          <td><b-img
+          <td><a :href="`${modalData.certificate_insurance}`" target="_blank"><b-img
               class="img-fluid"
               width="150"
               height="50"
               :src="modalData.certificate_insurance"
             ></b-img
-          ><br/>Exp.: {{ 
+          ></a><br/><br/>Exp.: {{ 
             dateFormatDate(
               modalData.certificate_insurance_expiry_date, 
               'Y-MM-DD'
@@ -85,13 +85,13 @@
           }}</td>
 
           
-          <td><b-img
+          <td><a :href="`${modalData.certificate_permit}`" target="_blank"><b-img
               class="img-fluid"
               width="150"
               height="50"
               :src="modalData.certificate_permit"
             ></b-img
-          ><br/>Exp.: {{ 
+          ></a><br/><br/>Exp.: {{ 
             dateFormatDate(
               modalData.certificate_permit_expiry_date, 
               'Y-MM-DD'
@@ -199,8 +199,9 @@ export default {
 
 <style>
 .styledClass img {
+  width: 100% !important;
+    object-fit: contain;
+    height: 150px !important;
     border-radius: 0 !important;
-    height: 100px !important;
-    width: 200px !important;
 }
 </style>

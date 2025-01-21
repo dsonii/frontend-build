@@ -129,14 +129,14 @@
           </template>
         </v-select> -->
       </b-form-group>
-      <b-form-group
+      <!-- <b-form-group
         label="Assistant"
         label-for="name-input"
         label-cols-sm="4"
         label-cols-lg="3"
         content-cols-sm
         content-cols-lg="7"
-      >
+      > -->
         <!-- <b-form-input
           v-model.trim="form.assistant"
           list="assistants-list"
@@ -166,7 +166,7 @@
           :state="validateState('assistant')"
         -->
 
-        <multiselect
+        <!-- <multiselect
           v-model.trim="$v.form.assistant.$model"
           :class="{
             'is-invalid': submitted || $v.form.assistant.$error,
@@ -197,7 +197,7 @@
           v-if="submitted || !$v.form.assistant.required"
         >
           Assistant name is required
-        </b-form-invalid-feedback>
+        </b-form-invalid-feedback> -->
 
         <!-- <v-select
           multiple
@@ -221,7 +221,7 @@
             </div>
           </template>
         </v-select> -->
-      </b-form-group>
+      <!-- </b-form-group> -->
 
       <b-form-group
         label="Dates"
@@ -343,7 +343,7 @@ export default {
     form: {
       route: { required },
       driver: { required },
-      assistant: { required },
+      assistant: {},
       //date_time: { required },
     },
   },

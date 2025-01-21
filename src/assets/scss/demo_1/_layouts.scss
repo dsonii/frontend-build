@@ -9,6 +9,21 @@
   background-image: linear-gradient(120deg, #002c5f, rgba(0, 0, 0, 0.8)) !important;
 
 }
+.was-validated .custom-control-input:valid ~ .custom-control-label, .custom-control-input.is-valid ~ .custom-control-label {
+  color:$sidebar-dark-bg !important;
+}
+.was-validated .custom-select:valid, .custom-select.is-valid {
+  border-color:$sidebar-dark-bg !important;}
+.was-validated .custom-control-input:valid:checked ~ .custom-control-label::before, .custom-control-input.is-valid:checked ~ .custom-control-label::before {
+  border-color: $sidebar-dark-bg !important;
+  background-color: $sidebar-dark-bg !important;
+}
+.was-validated .form-control:valid, .form-control.is-valid {
+  border-color:$sidebar-dark-bg !important;
+}
+.was-validated .custom-control-input:valid ~ .custom-control-label::before, .custom-control-input.is-valid ~ .custom-control-label::before {
+  border-color: $sidebar-dark-bg;
+}
 // Sidebar Icon Only
 .sidebar-icon-only {
   @media (min-width: 992px) {

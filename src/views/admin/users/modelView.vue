@@ -71,8 +71,9 @@ export default {
 
 <style>
 .styledClass img {
+  width: 100% !important;
+    object-fit: contain;
+    height: 150px !important;
     border-radius: 0 !important;
-    height: 100px !important;
-    width: 200px !important;
 }
 </style>
