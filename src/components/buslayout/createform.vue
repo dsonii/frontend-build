@@ -358,7 +358,7 @@ export default {
       // }
       // console.log("last_row", this.last_row);
 
-      var layout_divide = [0, 2, 3, 3, 4, 4, 4];
+      var layout_divide = [0, 2, 3, 3, 4, 5, 5];
       var layout_name = this.form.layout.split("-");
       this.layout_name = layout_name;
       var layout_type = parseInt(layout_name[1]);
@@ -510,9 +510,9 @@ export default {
           .join(" , ");
         this.form.seat_numbers += " , " + last_row;
       }
-      // console.log(this.form.seat_numbers);
+       console.log(this.form.seat_numbers);
 
-      // console.log(this.seat_details);
+       console.log(this.seat_details);
 
       // var number,
       //   num = 0;
@@ -608,7 +608,7 @@ export default {
   height: 41px;
 }
 .sleeper-pink {
-  background-image: url("../../assets/seats/pink.png");
+  background-image: url("../../assets/seats/seat.png");
   background-repeat: no-repeat;
   width: 46px;
   margin-top: 10px;
