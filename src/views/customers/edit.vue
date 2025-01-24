@@ -187,7 +187,49 @@
                   </b-form-invalid-feedback>
                 </b-form-group>
 
-                
+                <b-form-group
+                  label="Time"
+                  label-for="time-input"
+                  label-cols-sm="4"
+                  label-cols-lg="3"
+                  content-cols-sm
+                  content-cols-lg="7"
+                ><b-form-input
+                    id="time-input"
+                    v-model.trim="$v.form.time_for_user.$model"
+                    type="time"
+                    placeholder="Enter time"
+                    :class="{
+                      'is-invalid': submitted || $v.form.time_for_user.$error,
+                    }"
+                    :state="validateState('time_for_user')"
+                  ></b-form-input>
+                  <b-form-invalid-feedback
+                    v-if="submitted || !$v.form.time_for_user.required"
+                    class="invalid-feedback"
+                  >
+                    Time is required
+                  </b-form-invalid-feedback>
+                </b-form-group>
+
+                <b-form-group
+                  label="Status "
+                  label-for="status-input"
+                  invalid-feedback="status is required"
+                  class="mt-3"
+                  label-cols-sm="4"
+                  label-cols-lg="3"
+                  content-cols-sm
+                  content-cols-lg="7"
+                >
+                  <b-form-radio-group
+                    :options="options"
+                    v-model="form.status"
+                    name="status"
+                  ></b-form-radio-group>
+                </b-form-group>
+
+                <div v-show="showroute">
                 <b-form-group
                 label="Pickup Location"
                 label-for="title-input"
@@ -440,48 +482,23 @@
               >
               </b-form-checkbox>
             </b-form-group>
-                <b-form-group
-                  label="Time"
-                  label-for="time-input"
-                  label-cols-sm="4"
-                  label-cols-lg="3"
-                  content-cols-sm
-                  content-cols-lg="7"
-                ><b-form-input
-                    id="time-input"
-                    v-model.trim="$v.form.time_for_user.$model"
-                    type="time"
-                    placeholder="Enter time"
-                    :class="{
-                      'is-invalid': submitted || $v.form.time_for_user.$error,
-                    }"
-                    :state="validateState('time_for_user')"
-                  ></b-form-input>
-                  <b-form-invalid-feedback
-                    v-if="submitted || !$v.form.time_for_user.required"
-                    class="invalid-feedback"
-                  >
-                    Time is required
-                  </b-form-invalid-feedback>
-                </b-form-group>
-
-                <b-form-group
-                  label="Status "
-                  label-for="status-input"
-                  invalid-feedback="status is required"
-                  class="mt-3"
-                  label-cols-sm="4"
-                  label-cols-lg="3"
-                  content-cols-sm
-                  content-cols-lg="7"
-                >
-                  <b-form-radio-group
-                    :options="options"
-                    v-model="form.status"
-                    name="status"
-                  ></b-form-radio-group>
-                </b-form-group>
-
+            </div>
+              <div class="d-flex justify-content-center ">
+                <input v-if="showroute == false"
+                  name="addpd"
+                  @click="addnewbooking"
+                  class="btn btn-outline-primary mb-4"
+                  type="button"
+                  value="+ Create new default booking"
+                />
+                <input v-if="showroute == true"
+                  name="addpd"
+                  @click="addnewbooking"
+                  class="btn btn-outline-primary mb-4"
+                  type="button"
+                  value="+ Reset default booking"
+                />
+              </div>
                 <b-form-group class="col-md-6 offset-md-4">
                   <b-button
                     type="submit"
@@ -519,6 +536,7 @@ export default {
   data() {
     return {
       show:false,
+      showroute:false,
       breadcrumbs: {
         title: "Edit Customer",
         b1: "Manage customers",
@@ -622,6 +640,22 @@ export default {
     this.loadCountries();
   },
   methods: {
+    addnewbooking: function() {
+      if (this.showroute == true) {
+        this.showroute = false;
+        this.form.pickup_location[0].location = "";
+        this.form.drop_location[0].location = "";
+        this.route = "";
+        this.bus = "";
+        this.seat = "";
+        this.return_route = "";
+        this.return_bus = "";
+        this.return_seat = "";
+        this.show = false;
+      } else {
+        this.showroute = true;
+      }
+    },
     isReturn: function () {
       if (this.form.has_return == 1) {
         this.show = true;
