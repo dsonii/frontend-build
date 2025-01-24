@@ -12,6 +12,7 @@ export const customerService = {
   bookingHistory,
   q,
   //load,
+  isExists,
 };
 
 // async function load() {
@@ -65,6 +66,16 @@ async function getAll(Objparams) {
     const response = await privateAuth.get("users/search", {
       params: Objparams,
     });
+    return response.data;
+  } catch (e) {
+    return e.response;
+  }
+}
+
+async function isExists(Objparams) {
+  try {
+    const privateAuth = useAuthApi();
+    const response = await privateAuth.post("users/is-exists", Objparams);
     return response.data;
   } catch (e) {
     return e.response;

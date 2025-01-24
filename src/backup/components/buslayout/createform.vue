@@ -608,7 +608,7 @@ export default {
   height: 41px;
 }
 .sleeper-pink {
-  background-image: url("../../assets/seats/pink.png");
+  background-image: url("../../assets/seats/seat.png");
   background-repeat: no-repeat;
   width: 46px;
   margin-top: 10px;

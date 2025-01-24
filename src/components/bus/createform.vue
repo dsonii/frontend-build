@@ -104,7 +104,7 @@
           id="input-1-live-feedback"
           >Only alphanumerics characters are allowed</b-form-invalid-feedback
         >
-        <b-form-invalid-feedback v-if="!$v.form.reg_no.uniqueModelNo">
+        <b-form-invalid-feedback v-if="!$v.form.model_no.uniqueModelNo">
           This Model number is already registered.
         </b-form-invalid-feedback>
       </b-form-group>
@@ -138,7 +138,7 @@
           id="input-1-live-feedback"
           >Only alphanumerics characters are allowed</b-form-invalid-feedback
         >
-        <b-form-invalid-feedback v-if="!$v.form.reg_no.uniqueChassisNo">
+        <b-form-invalid-feedback v-if="!$v.form.chassis_no.uniqueChassisNo">
           This chassis number is already registered.
         </b-form-invalid-feedback>
       </b-form-group>
@@ -751,12 +751,19 @@ export default {
         // stop here if form is invalid
         this.$v.$touch();
         if (this.$v.$invalid) {
+          this.submitted = false;
+          window.scrollTo({
+            top: 10,
+            left: 0,
+            behavior: "smooth",
+          });
           return;
         }
 
         this.form.adminId = this.getUser.id; // admin Id
         const reponse = await busService.create(this.form);
         if (reponse.status) {
+          this.submitted = false;
           this.$toast.open({
             message: reponse.message,
             type: "success",
@@ -771,6 +778,7 @@ export default {
               }),
             3000
           );
+          this.submitted = false;
         }
       } catch (e) {
         this.$toast.open({

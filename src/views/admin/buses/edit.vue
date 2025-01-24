@@ -116,7 +116,7 @@
                     >Only alphanumerics characters are
                     allowed</b-form-invalid-feedback
                   >
-                  <b-form-invalid-feedback v-if="!$v.form.reg_no.uniqueModelNo">
+                  <b-form-invalid-feedback v-if="!$v.form.model_no.uniqueModelNo">
                     This Model number is already registered.
                   </b-form-invalid-feedback>
                 </b-form-group>
@@ -154,7 +154,7 @@
                   >
 
                   <b-form-invalid-feedback
-                    v-if="$v.form.reg_no.uniqueChassisNo"
+                    v-if="$v.form.chassis_no.uniqueChassisNo"
                   >
                     This chassis number is already registered.
                   </b-form-invalid-feedback>
@@ -859,6 +859,7 @@ export default {
               }),
             2000
           );
+          this.submitted = false;
         }
       } catch (e) {
         this.$toast.open({

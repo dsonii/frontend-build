@@ -163,7 +163,28 @@
                     id="phone-input"
                     v-model.trim="form.phone"
                     placeholder="Enter phone number"
+                    :class="{
+                      'is-invalid': submitted || $v.form.phone.$error,
+                    }"
                   ></b-form-input>
+                  <b-form-invalid-feedback
+                    v-if="submitted || !$v.form.phone.required"
+                    class="invalid-feedback"
+                  >
+                    mobile number is required
+                  </b-form-invalid-feedback>
+                  <b-form-invalid-feedback v-if="!$v.form.phone.minLength">
+                    mobile number must have at least
+                    {{ $v.form.phone.$params.minLength.min }} letters.
+                  </b-form-invalid-feedback>
+
+                  <b-form-invalid-feedback v-if="!$v.form.phone.maxLength">
+                    mobile number must have at least
+                    {{ $v.form.phone.$params.maxLength.max }} letters.
+                  </b-form-invalid-feedback>
+                  <b-form-invalid-feedback v-if="!$v.form.phone.uniquePhone">
+                    Phone number already exists.
+                  </b-form-invalid-feedback>
                 </b-form-group>
 
                 
@@ -486,7 +507,7 @@
 <script>
 import Breadcrumb from "../../components/breadcrumb";
 import { validationMixin } from "vuelidate";
-import { required, email } from "vuelidate/lib/validators";
+import { required, email, numeric, minLength, maxLength } from "vuelidate/lib/validators";
 
 import { customerService, countryService, locationService, routeService, buslayoutService } from "../../services";
 import lodash from "lodash";
@@ -566,6 +587,18 @@ export default {
       firstname: { required },
       lastname: { required },
       email: { required, email },
+      phone: {
+        required,
+        numeric,
+        minLength: minLength(10),
+        maxLength: maxLength(10),
+        async uniquePhone(value) {
+          if (value === "") return true;
+
+          const { status } = await customerService.isExists({ phone: value, id: this.$route.params.id });
+          return status;
+        },
+      },
       country_code: { required },
       gender: { required },
       route: {},

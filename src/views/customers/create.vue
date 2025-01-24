@@ -249,6 +249,9 @@
                     mobile number must have at least
                     {{ $v.form.phone.$params.maxLength.max }} letters.
                   </b-form-invalid-feedback>
+                  <b-form-invalid-feedback v-if="!$v.form.phone.uniquePhone">
+                    Phone number already exists.
+                  </b-form-invalid-feedback>
                 </b-form-group>
 
                 <b-form-group
@@ -671,6 +674,12 @@ export default {
         numeric,
         minLength: minLength(10),
         maxLength: maxLength(10),
+        async uniquePhone(value) {
+          if (value === "") return true;
+
+          const { status } = await customerService.isExists({ phone: value, id: '' });
+          return status;
+        },
       },
       is_active: { required },
       country_code: { required },
