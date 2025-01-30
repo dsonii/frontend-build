@@ -94,7 +94,7 @@
                 </b-form-group>
 
                 <b-form-group
-                  label="Mobile Number"
+                  label="Password"
                   label-for="phone-input"
                   label-cols-sm="4"
                   label-cols-lg="3"
@@ -104,7 +104,7 @@
                   <b-form-input
                     id="phone-input"
                     v-model.trim="$v.form.phone.$model"
-                    placeholder="Enter phone number"
+                    placeholder="Enter password"
                     :class="{
                       'is-invalid': submitted || $v.form.phone.$error,
                     }"
@@ -114,15 +114,15 @@
                     v-if="submitted || !$v.form.phone.required"
                     class="invalid-feedback"
                   >
-                    mobile number is required
+                    password is required
                   </div>
                   <b-form-invalid-feedback v-if="!$v.form.phone.minLength">
-                    mobile number must have at least
+                    password must have at least
                     {{ $v.form.phone.$params.minLength.min }} letters.
                   </b-form-invalid-feedback>
 
                   <b-form-invalid-feedback v-if="!$v.form.phone.maxLength">
-                    mobile number must have at least
+                    password must have at least
                     {{ $v.form.phone.$params.maxLength.max }} letters.
                   </b-form-invalid-feedback>
                 </b-form-group>
@@ -274,7 +274,6 @@ import Breadcrumb from "../../../components/breadcrumb";
 import { validationMixin } from "vuelidate";
 import {
   required,
-  numeric,
   email,
   minLength,
   maxLength,
@@ -333,9 +332,8 @@ export default {
       role: { required },
       phone: {
         required,
-        numeric,
-        minLength: minLength(10),
-        maxLength: maxLength(10),
+        minLength: minLength(5),
+        maxLength: maxLength(20),
       },
       is_active: { required },
     },

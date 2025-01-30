@@ -285,6 +285,13 @@ export default {
     editRow(data) {
       console.log(data);
     },
+    loadItems() {
+      userService.getAll(this.queryParams).then((response) => {
+        this.total_rows = response.data.totalRecords;
+        this.rows = response.data.admins;
+        this.showLoader = false;
+      });
+    },
     async deleteRow(id) {
       try {
         this.$swal
@@ -318,6 +325,17 @@ export default {
                   this.$toast.open({
                     message: response.message,
                     type: "success",
+                    position: "top-right",
+                    duration: 3000,
+                    // all of other options may go here
+                  });
+                  this.showLoader = false;
+                  this.loadItems();
+                } else {
+                  this.$swal.fire("Failed!", response.message, "danger");
+                  this.$toast.open({
+                    message: response.message,
+                    type: "danger",
                     position: "top-right",
                     duration: 3000,
                     // all of other options may go here
