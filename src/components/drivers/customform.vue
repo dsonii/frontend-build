@@ -162,7 +162,7 @@
               </b-form-group>
 
               <b-form-group
-                label="National ID"
+                label="Aadhar No"
                 label-for="national-id-input"
                 label-cols-sm="4"
                 label-cols-lg="3"
@@ -172,7 +172,7 @@
                 <b-form-input
                   id="national-id-input"
                   v-model.trim="$v.form.national_id.$model"
-                  placeholder="Enter national id number"
+                  placeholder="Enter Aadhar No"
                   :class="{
                     'is-invalid': submitted || $v.form.national_id.$error,
                   }"
@@ -182,13 +182,13 @@
                 <b-form-invalid-feedback
                   v-if="submitted || !$v.form.national_id.required"
                 >
-                  National Id number is required
+                Aadhar No is required
                 </b-form-invalid-feedback>
 
                 <b-form-invalid-feedback
                   v-if="!$v.form.national_id.uniqueNationalId"
                 >
-                  This National Id number is already registered.
+                  This Aadhar No is already registered.
                 </b-form-invalid-feedback>
               </b-form-group>
 
@@ -252,7 +252,7 @@
           <b-card title="Documents">
             <b-card-text>
               <b-form-group
-                label="Profile picture"
+                label="Profile Picture"
                 label-for="picture-input"
                 label-cols-sm="4"
                 label-cols-lg="3"
@@ -263,7 +263,7 @@
                   <b-form-file
                     id="picture-input"
                     accept="image/jpeg, image/png, image/jpg"
-                    placeholder="Choose a Profile picture or drop it here..."
+                    placeholder="Choose a Profile Picture or drop it here..."
                     @change="onFileChange($event, 'picture')"
                   ></b-form-file>
                 </div>
@@ -367,8 +367,8 @@
                 </div>
               </b-form-group>
               <b-form-group
-                label="Police Vertification"
-                label-for="police-vertification-input"
+                label="Police Verification"
+                label-for="police-verification-input"
                 label-cols-sm="4"
                 label-cols-lg="3"
                 content-cols-sm
@@ -378,7 +378,7 @@
                   <b-form-file
                     id="police-vertification-input"
                     accept="image/jpeg, image/png, image/gif"
-                    placeholder="Choose a Police Vertification or drop it here..."
+                    placeholder="Choose a Police Verification or drop it here..."
                     @change="
                       onFileChange($event, 'document_police_vertification')
                     "
@@ -400,7 +400,7 @@
                 </div>
               </b-form-group>
               <b-form-group
-                label="Police Varification Expiry Date"
+                label="Police Verification Expiry Date"
                 label-for="police-varification-expiry-date-input"
                 label-cols-sm="4"
                 label-cols-lg="3"
@@ -451,7 +451,7 @@
 </template>
 
 <script>
-import { driverService, countryService } from "../../services";
+import { driverService } from "../../services";
 import { validationMixin } from "vuelidate";
 import {
   required,
@@ -487,7 +487,7 @@ export default {
         firstname: "",
         lastname: "",
         email: "",
-        country_code: null,
+        country_code: '91',
         phone: "",
         national_id: "",
         picture: "",
@@ -563,10 +563,10 @@ export default {
   },
   methods: {
     async loadCountries() {
-      const response = await countryService.load({
-        search: "",
-      });
-      this.countries = response.items;
+      // const response = await countryService.load({
+      //   search: "",
+      // });
+      this.countries = [{text:"India (+91)",value:"91", default:true}];
     },
     checkType(val) {
       if (val === "assistant") {

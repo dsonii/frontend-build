@@ -5,7 +5,7 @@
         <tr>
           <td>Profile Picture</td>
           <td>Company Name</td>
-          <td>Customer Code</td>
+          <td>Employee Code</td>
           <td>Full Name</td>
           <td>Gender</td>
           <td>Email</td>

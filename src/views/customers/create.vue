@@ -42,7 +42,7 @@
                 </b-form-group>
 
                 <b-form-group
-                  label="Customer Code"
+                  label="Employee Code"
                   label-for="customer-code-input"
                   label-cols-sm="4"
                   label-cols-lg="3"
@@ -53,7 +53,7 @@
                     id="customer-code-input"
                     v-model.trim="$v.form.customer_code.$model"
                     type="text"
-                    placeholder="Enter customer code"
+                    placeholder="Enter Employee code"
                     :class="{
                       'is-invalid': submitted || $v.form.customer_code.$error,
                     }"
@@ -63,7 +63,7 @@
                     v-if="submitted || !$v.form.customer_code.required"
                     class="invalid-feedback"
                   >
-                    customer code name is required
+                  Employee code name is required
                   </b-form-invalid-feedback>
 
                   <b-form-invalid-feedback
@@ -587,7 +587,7 @@ import {
   maxLength,
   alpha
 } from "vuelidate/lib/validators";
-import { customerService, countryService, locationService, routeService, buslayoutService } from "../../services";
+import { customerService, locationService, routeService, buslayoutService } from "../../services";
 import lodash from "lodash";
 import Multiselect from "vue-multiselect";
 
@@ -598,9 +598,9 @@ export default {
     return {
       show:false,
       breadcrumbs: {
-        title: "Create Customer",
-        b1: "Manage Customers",
-        b2: "Customers",
+        title: "Create Employee",
+        b1: "Manage Employee",
+        b2: "Employees",
         b3: "Index",
         link: true,
         name: "customers",
@@ -613,7 +613,7 @@ export default {
         firstname: "",
         lastname: "",
         email: "",
-        country_code: null,
+        country_code: "91",
         phone: "",
         gender: "",
         time_for_user: "",
@@ -713,10 +713,8 @@ export default {
       return $dirty ? !$error : null;
     },
     async loadCountries() {
-      const response = await countryService.load({
-        search: "",
-      });
-      this.countries = response.items;
+      
+      this.countries = [{text:"India (+91)",value:"91", default:true}];
     },
     fetchLocations(search, loading) {
       if (search.length) {

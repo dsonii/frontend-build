@@ -334,7 +334,7 @@
                     <b-form-file
                       id="picture-input"
                       accept="image/jpeg, image/png, image/jpg"
-                      placeholder="Choose a Profile picture or drop it here..."
+                      placeholder="Choose a Profile Picture or drop it here..."
                       @change="onFileChange($event, 'picture')"
                     ></b-form-file>
                   </div>

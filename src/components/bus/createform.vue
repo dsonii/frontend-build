@@ -36,7 +36,7 @@
         </b-form-invalid-feedback>
       </b-form-group>
       <b-form-group
-        label="Plate/Registration Number"
+        label="Registration Number"
         label-for="reg-no-input"
         label-cols-sm="4"
         label-cols-lg="3"
@@ -47,14 +47,14 @@
           id="reg-no-input"
           v-model.trim="$v.form.reg_no.$model"
           type="text"
-          placeholder="Enter plate/registration number"
+          placeholder="Enter registration number"
           :class="{
             'is-invalid': submitted || $v.form.reg_no.$error,
           }"
           :state="validateState('reg_no')"
         ></b-form-input>
         <b-form-invalid-feedback v-if="submitted || !$v.form.reg_no.required">
-          plate/registration number is required
+         registration number is required
         </b-form-invalid-feedback>
 
         <b-form-invalid-feedback
@@ -65,16 +65,16 @@
         >
 
         <b-form-invalid-feedback v-if="!$v.form.reg_no.minLength">
-          Plate/registration number must hav at min
+          registration number must hav at min
           {{ $v.form.reg_no.$params.minLength.min }} letters.
         </b-form-invalid-feedback>
         <b-form-invalid-feedback v-if="!$v.form.reg_no.maxLength">
-          Plate/registration number must have at max
+          registration number must have at max
           {{ $v.form.reg_no.$params.maxLength.max }} letters.
         </b-form-invalid-feedback>
 
         <b-form-invalid-feedback v-if="!$v.form.reg_no.uniqueRegNo">
-          This plate/registration number is already registered.
+          This registration number is already registered.
         </b-form-invalid-feedback>
       </b-form-group>
 
@@ -174,14 +174,14 @@
         >
       </b-form-group>
 
-      <b-form-group
+      <!-- <b-form-group
         label="Amenities"
         label-for="tags-pills"
         label-cols-sm="4"
         label-cols-lg="3"
         content-cols-sm
         content-cols-lg="7"
-      >
+      > -->
         <!-- <b-form-select
           :options="amenitieslists"
           v-model.trim="$v.form.amenities.$model"
@@ -194,7 +194,7 @@
         <b-form-invalid-feedback
           >Amenities is a required field.</b-form-invalid-feedback
         > -->
-        <b-form-checkbox-group
+        <!-- <b-form-checkbox-group
                 v-model.trim="$v.form.amenities.$model"
                 :options="amenitieslists"
                 :class="{
@@ -206,7 +206,7 @@
                     >Amenities is a required field.</b-form-invalid-feedback
                   > 
             </b-form-checkbox-group>
-      </b-form-group>
+      </b-form-group> -->
 
       <b-form-group
         label="Vehicle Type"
@@ -295,7 +295,7 @@
       <p class="card-description fw-500"><b>Documents</b></p>
       <br />
       <b-form-group
-        label="Vehicle picture"
+        label="Vehicle Picture"
         label-for="picture-input"
         label-cols-sm="4"
         label-cols-lg="3"
@@ -306,7 +306,7 @@
           <b-form-file
             id="picture-input"
             accept="image/jpeg, image/png, image/jpg"
-            placeholder="Choose a Profile picture or drop it here..."
+            placeholder="Choose a Profile Picture or drop it here..."
             @change="onFileChange($event, 'picture')"
           ></b-form-file>
         </div>
@@ -321,7 +321,7 @@
         </div>
       </b-form-group>
       <b-form-group
-        label="Certificate registration"
+        label="Registration Certificate"
         label-for="certificate-registration-input"
         label-cols-sm="4"
         label-cols-lg="3"
@@ -352,7 +352,7 @@
         </div>
       </b-form-group>
       <b-form-group
-        label="Certificate Pollution"
+        label="PUC"
         label-for="certificate-pollution-input"
         label-cols-sm="4"
         label-cols-lg="3"
@@ -363,7 +363,7 @@
           <b-form-file
             id="certificate-pollution-input"
             accept="image/jpeg, image/png, image/gif"
-            placeholder="Choose a certificate pollution or drop it here..."
+            placeholder="Choose a PUC or drop it here..."
             @change="onFileChange($event, 'certificate_pollution')"
           ></b-form-file>
          
@@ -385,7 +385,7 @@
       </b-form-group>
 
       <b-form-group
-        label="Certificate Pollution Expiry Date"
+        label="PUC Expiry Date"
         label-for="certificate-pollution-expiry-date-input"
         label-cols-sm="4"
         label-cols-lg="3"
@@ -403,7 +403,7 @@
   
       </b-form-group>  
       <b-form-group
-        label="Certificate Insurance"
+        label="Insurance Certificate"
         label-for="certificate-insurance-input"
         label-cols-sm="4"
         label-cols-lg="3"
@@ -414,7 +414,7 @@
           <b-form-file
             id="certificate-insurance-input"
             accept="image/jpeg, image/png, image/gif"
-            placeholder="Choose a certificate insurance or drop it here..."
+            placeholder="Choose a Insurance Certificate or drop it here..."
             @change="onFileChange($event, 'certificate_insurance')"
           ></b-form-file>
         </div>
@@ -434,7 +434,7 @@
         </div>
       </b-form-group>
       <b-form-group
-        label="Certificate Insurance Expiry Date"
+        label="Insurance Certificate Expiry Date"
         label-for="certificate-insurance-expiry-date-input"
         label-cols-sm="4"
         label-cols-lg="3"
@@ -451,7 +451,7 @@
         </div>
       </b-form-group>  
       <b-form-group
-        label="Certificate Fitness"
+        label="Fitness Certificate"
         label-for="certificate-fitness-input"
         label-cols-sm="4"
         label-cols-lg="3"
@@ -462,7 +462,7 @@
           <b-form-file
             id="certificate-fitness-input"
             accept="image/jpeg, image/png, image/gif"
-            placeholder="Choose a certificate fitness or drop it here..."
+            placeholder="Choose a Fitness Certificate or drop it here..."
             @change="onFileChange($event, 'certificate_fitness')"
           ></b-form-file>
         </div>
@@ -482,7 +482,7 @@
         </div>
       </b-form-group>
       <b-form-group
-        label="Certificate Fitness Expiry Date"
+        label="Fitness Certificate Expiry Date"
         label-for="certificate-fitness-expiry-date-input"
         label-cols-sm="4"
         label-cols-lg="3"
@@ -500,7 +500,7 @@
       </b-form-group>
 
       <b-form-group
-        label="Certificate Permit"
+        label="Permit Certificate"
         label-for="certificate-permit-input"
         label-cols-sm="4"
         label-cols-lg="3"
@@ -511,7 +511,7 @@
           <b-form-file
             id="certificate-ermit-input"
             accept="image/jpeg, image/png, image/gif"
-            placeholder="Choose a certificate permit or drop it here..."
+            placeholder="Choose a Permit Certificate or drop it here..."
             @change="onFileChange($event, 'certificate_permit')"
           ></b-form-file>
         </div>
@@ -531,7 +531,7 @@
         </div>
       </b-form-group>
       <b-form-group
-        label="Certificate Permit Expiry Date"
+        label="Permit Certificate Expiry Date"
         label-for="certificate-permit-expiry-date-input"
         label-cols-sm="4"
         label-cols-lg="3"
@@ -598,7 +598,7 @@ export default {
         bustypeId: null,
         buslayoutId: null,
         picture: "",
-        amenities: [],
+        amenities: ["gps"],
         certificate_registration: "",
         certificate_pollution: "",
         certificate_pollution_expiry_date: "",
@@ -615,34 +615,34 @@ export default {
       buslayouts: [],
       bustypes: [],
       amenitieslists: [
-        {
-          text: "AC",
-          value: "ac",
-        },
-        {
-          value: "snacks-and-drinks",
-          text: "Snacks and drinks",
-        },
-        {
-          text: "WC",
-          value: "wc",
-        },
-        {
-          text: "WIFI",
-          value: "wifi",
-        },
-        {
-          text: "GPS Tracking",
-          value: "gps",
-        },
-        {
-          value: "usb",
-          text: "USB charging portal",
-        },
-        {
-          value: "tv",
-          text: "TV Screen",
-        },
+        // {
+        //   text: "AC",
+        //   value: "ac",
+        // },
+        // {
+        //   value: "snacks-and-drinks",
+        //   text: "Snacks and drinks",
+        // },
+        // {
+        //   text: "WC",
+        //   value: "wc",
+        // },
+        // {
+        //   text: "WIFI",
+        //   value: "wifi",
+        // },
+        // {
+        //   text: "GPS Tracking",
+        //   value: "gps",
+        // },
+        // {
+        //   value: "usb",
+        //   text: "USB charging portal",
+        // },
+        // {
+        //   value: "tv",
+        //   text: "TV Screen",
+        // },
       ],
     }; ///Ac, Snacks and drinks , WC ,     WIFI, GPS Tracking, USB charging portal, TV Screen
   },
@@ -681,7 +681,7 @@ export default {
           return status;
         },
       },
-      amenities: { required },
+      amenities: {},
       chassis_no: {
         required,
         alphaNum,

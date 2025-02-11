@@ -192,7 +192,7 @@
                   >
                 </b-form-group>
 
-                <b-form-group
+                <!-- <b-form-group
                   label="Amenities"
                   label-for="tags-pills"
                   label-cols-sm="4"
@@ -211,7 +211,7 @@
               <b-form-invalid-feedback
                     >Amenities is a required field.</b-form-invalid-feedback
                   > 
-            </b-form-checkbox-group>
+            </b-form-checkbox-group> -->
                   <!-- <b-form-select
                     :options="amenitieslists"
                     v-model.trim="$v.form.amenities.$model"
@@ -224,7 +224,7 @@
                   <b-form-invalid-feedback
                     >Amenities is a required field.</b-form-invalid-feedback
                   > -->
-                </b-form-group>
+                <!-- </b-form-group> -->
 
                 <b-form-group
                   label="Vehicle Type"
@@ -324,7 +324,7 @@
                     <b-form-file
                       id="picture-input"
                       accept="image/jpeg, image/png, image/jpg"
-                      placeholder="Choose a Profile picture or drop it here..."
+                      placeholder="Choose a Profile Picture or drop it here..."
                       @change="onFileChange($event, 'picture')"
                     ></b-form-file>
                   </div>
@@ -636,7 +636,7 @@ export default {
         bustypeId: null,
         buslayoutId: null,
         picture: "",
-        amenities: [],
+        amenities: ["gps"],
         certificate_registration: "",
         certificate_pollution: "",
         certificate_pollution_expiry_date: "",
@@ -655,34 +655,34 @@ export default {
       bustypes: [],
       buslayouts: [],
       amenitieslists: [
-        {
-          text: "AC",
-          value: "ac",
-        },
-        {
-          value: "snacks-and-drinks",
-          text: "Snacks and drinks",
-        },
-        {
-          text: "WC",
-          value: "wc",
-        },
-        {
-          text: "WIFI",
-          value: "wifi",
-        },
-        {
-          text: "GPS Tracking",
-          value: "gps",
-        },
-        {
-          value: "usb",
-          text: "USB charging portal",
-        },
-        {
-          value: "tv",
-          text: "TV Screen",
-        },
+        // {
+        //   text: "AC",
+        //   value: "ac",
+        // },
+        // {
+        //   value: "snacks-and-drinks",
+        //   text: "Snacks and drinks",
+        // },
+        // {
+        //   text: "WC",
+        //   value: "wc",
+        // },
+        // {
+        //   text: "WIFI",
+        //   value: "wifi",
+        // },
+        // {
+        //   text: "GPS Tracking",
+        //   value: "gps",
+        // },
+        // {
+        //   value: "usb",
+        //   text: "USB charging portal",
+        // },
+        // {
+        //   value: "tv",
+        //   text: "TV Screen",
+        // },
       ],
     };
   },
@@ -752,7 +752,7 @@ export default {
           }
         },
       },
-      amenities: { required },
+      amenities: {},
       bustypeId: { required },
       buslayoutId: { required },
       certificate_pollution_expiry_date: {},

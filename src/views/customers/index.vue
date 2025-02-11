@@ -214,12 +214,12 @@ export default {
     endDate.setDate(endDate.getDate() + 10);
     return {
       breadcrumbs: {
-        title: "Customer Lists",
-        b1: "Manage Customers",
-        b2: "Customers",
+        title: "Employee Lists",
+        b1: "Manage Employee",
+        b2: "Employee",
         b3: "Index",
         link: false,
-        name: "Customer lists",
+        name: "Employee lists",
       },
       columns: [
         {
@@ -337,7 +337,7 @@ export default {
       return getDateFormat(createdAt, format);
     },
     viewRow(data) {
-      this.title = "Customer Details";
+      this.title = "Employee Details";
       this.modalView = true;
       this.modalEdit = false;
       this.modaloktitle = "Ok";

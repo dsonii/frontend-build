@@ -155,7 +155,7 @@ export default {
         //   uniqueId: true, // like this
         // },
         {
-          label: "Customer Name",
+          label: "Employee Name",
           name: "user",
           sort: true,
         },

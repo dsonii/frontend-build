@@ -90,7 +90,7 @@
             <p class="card-description fw-500"><b>Documents</b></p>
             <br />
             <b-form-group
-              label="Profile picture"
+              label="Profile Picture"
               label-for="picture-input"
               invalid-feedback="profile is required"
               class="mt-3"

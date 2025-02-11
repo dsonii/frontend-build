@@ -31,6 +31,8 @@ import "sweetalert2/dist/sweetalert2.min.css";
 import "vue-good-table/dist/vue-good-table.css";
 import "vue-toast-notification/dist/theme-sugar.css";
 import "nprogress/nprogress.css";
+import 'leaflet/dist/leaflet.css';
+
 
 Vue.use(BootstrapVue);
 Vue.use(VueSweetalert2, options);

@@ -196,19 +196,19 @@
         <li class="nav-item">
           <a class="nav-link" v-b-toggle="'manage-customers'">
             <i class="menu-icon typcn typcn-group-outline"></i>
-            <span class="menu-title">Manage Customers</span>
+            <span class="menu-title">Manage Employees</span>
             <i class="menu-arrow"></i>
           </a>
           <b-collapse id="manage-customers">
             <ul class="nav flex-column sub-menu">
               <li class="nav-item">
                 <router-link class="nav-link" :to="{ path: '/customers' }"
-                  >All Customers</router-link
+                  >All Employees</router-link
                 >
               </li>
               <li class="nav-item">
                 <router-link class="nav-link" :to="{ path: '/customer/create' }"
-                  >Create Customer</router-link
+                  >Create Employee</router-link
                 >
               </li>
               
@@ -658,7 +658,7 @@ import JQuery from 'jquery'
 // import _ from 'lodash';
 import  { mapState } from "pinia";
 import { useAuth } from "../../store/useAuth.js";
-import { fetchUsers } from "../../store/fetchUsers.js";
+import { fetchUsers, showUser } from "../../store/fetchUsers.js";
 
 // eslint-disable-next-line
 let $ = JQuery
@@ -667,7 +667,8 @@ export default {
   computed:{
     ...mapState(fetchUsers,['getUser']),
     ...mapState(fetchUsers,['getName']),
-    ...mapState(useAuth,['isAuth'])
+    ...mapState(useAuth,['isAuth']),
+    ...mapState(showUser,['userRole']),
   },
   mounted () {
     const body = document.querySelector('body')

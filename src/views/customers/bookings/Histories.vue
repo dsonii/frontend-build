@@ -14,13 +14,13 @@
         <b-row>
           <b-col cols="6">
             <p class="float-left">
-              Customer Name : {{ customer_details.firstname }}
+              Employee Name : {{ customer_details.firstname }}
               {{ customer_details.lastname }}
             </p>
           </b-col>
           <b-col cols="6">
             <p class="float-right">
-              Customer Phone : +{{ customer_details.country_code }}
+              Employee Phone : +{{ customer_details.country_code }}
               {{ customer_details.phone }}
             </p>
           </b-col>
@@ -263,7 +263,7 @@ export default {
       return getDateFormat(createdAt, format);
     },
     viewRow(data) {
-      this.title = "Customer Booking History Details";
+      this.title = "Employee Booking History Details";
       this.modalView = true;
       this.modalEdit = false;
       this.modaloktitle = "Ok";

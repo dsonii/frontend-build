@@ -170,7 +170,7 @@ export default {
           sort: true,
         },
         {
-          label: "National ID",
+          label: "Aadhar No",
           name: "national_id",
           sort: true,
         },

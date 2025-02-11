@@ -8,8 +8,8 @@
           <td>Phone</td>
           <td>Profile Picture</td>
           <td>Licence</td>
-          <td>National ID Card</td>
-          <td>Police vertification</td>
+          <td>Aadhar No</td>
+          <td>Police Verification</td>
         </tr>
         <tr>
           <td>{{ modalData.firstname }} {{ modalData.lastname }}</td>

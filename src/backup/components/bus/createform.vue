@@ -295,7 +295,7 @@
       <p class="card-description fw-500"><b>Documents</b></p>
       <br />
       <b-form-group
-        label="Bus picture"
+        label="Bus Picture"
         label-for="picture-input"
         label-cols-sm="4"
         label-cols-lg="3"
@@ -306,7 +306,7 @@
           <b-form-file
             id="picture-input"
             accept="image/jpeg, image/png, image/jpg"
-            placeholder="Choose a Profile picture or drop it here..."
+            placeholder="Choose a Profile Picture or drop it here..."
             @change="onFileChange($event, 'picture')"
           ></b-form-file>
         </div>

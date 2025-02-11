@@ -173,7 +173,7 @@
                     </b-form-group>
 
                     <b-form-group
-                      label="National ID"
+                      label="Aadhar No"
                       label-for="national-id-input"
                       label-cols-sm="4"
                       label-cols-lg="3"
@@ -183,7 +183,7 @@
                       <b-form-input
                         id="national-id-input"
                         v-model.trim="$v.form.national_id.$model"
-                        placeholder="Enter national id number"
+                        placeholder="Enter Aadhar No"
                         :class="{
                           'is-invalid': submitted || $v.form.national_id.$error,
                         }"
@@ -193,13 +193,13 @@
                       <b-form-invalid-feedback
                         v-if="submitted || !$v.form.national_id.required"
                       >
-                        National Id number is required
+                      Aadhar No  is required
                       </b-form-invalid-feedback>
 
                       <b-form-invalid-feedback
                         v-if="!$v.form.national_id.uniqueNationalId"
                       >
-                        This National Id number is already registered.
+                        This Aadhar Nois already registered.
                       </b-form-invalid-feedback>
                     </b-form-group>
 
@@ -262,7 +262,7 @@
                 <b-card title="Documents">
                   <b-card-text>
                     <b-form-group
-                      label="Profile picture"
+                      label="Profile Picture"
                       label-for="picture-input"
                       label-cols-sm="4"
                       label-cols-lg="3"
@@ -378,7 +378,7 @@
                       </div>
                     </b-form-group>
                     <b-form-group
-                      label="Police Vertification"
+                      label="Police Verification"
                       label-for="police-vertification-input"
                       label-cols-sm="4"
                       label-cols-lg="3"
@@ -414,7 +414,7 @@
                       </div>
                     </b-form-group>
                   <b-form-group
-                    label="Police Varification Expiry Date"
+                    label="Police Verification Expiry Date"
                     label-for="police-varification-expiry-date-input"
                     label-cols-sm="4"
                     label-cols-lg="3"
@@ -466,7 +466,7 @@
 
 <script>
 import Breadcrumb from "../../../components/breadcrumb";
-import { driverService, countryService } from "../../../services";
+import { driverService } from "../../../services";
 import { validationMixin } from "vuelidate";
 import {
   required,
@@ -508,7 +508,7 @@ export default {
         email: "",
         phone: "",
         national_id: "",
-        country_code: null,
+        country_code: '91',
         picture: "",
         document_licence: "",
         licence_expiry_date: "",
@@ -578,10 +578,7 @@ export default {
   },
   methods: {
     async loadCountries() {
-      const response = await countryService.load({
-        search: "",
-      });
-      this.countries = response.items;
+      this.countries =  [{text:"India (+91)",value:"91", default:true}];
     },
     checkType(val) {
       if (val === "assistant") {

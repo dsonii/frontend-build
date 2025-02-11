@@ -17,6 +17,7 @@ import change from "../views/auth/change";
 
 import term from "../views/TermAndCondition.vue";
 import policy from "../views/PrivacyPolicy.vue";
+import share from "../views/share/index.vue";
 
 const routes = [
   {
@@ -850,6 +851,14 @@ const routes = [
         path: "/privacy-policy",
         name: "policy",
         component: policy,
+        meta: {
+          requiresAuth: false,
+        },
+      },
+      {
+        path: "/track-friend",
+        name: "track",
+        component: share,
         meta: {
           requiresAuth: false,
         },
