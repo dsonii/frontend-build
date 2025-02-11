@@ -181,7 +181,7 @@ export default {
           sort: true,
         },
         {
-          label: "Phone",
+          label: "Password",
           name: "phone",
           sort: true,
         },
