@@ -3,7 +3,7 @@
     <b-form :if="formtype" @submit.prevent="createBustype">
       <b-container>
         <b-row>
-          <b-col cols="12">
+          <b-col>
             <b-form-group
               label="Name"
               label-for="name-input"

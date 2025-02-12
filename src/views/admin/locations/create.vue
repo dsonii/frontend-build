@@ -41,7 +41,7 @@
         </GmapMap>
         
       </div>
-      <div class="col-lg-3 offset-lg-0" style="position: absolute">
+      <div class="col-lg-4 offset-lg-0" style="position: absolute">
         <div class="card">
           <div class="card-body">
             <div class="card-title text-center">{{ breadcrumbs.title }}</div>
@@ -82,7 +82,7 @@
               >
                 <gmap-autocomplete
                   class="form-control"
-                  placeholder="Start typing address"
+                  placeholder="Start Typing Address"
                   @keyup.enter="useAddressData"
                   @place_changed="getAddressData"
                   :state="validateState('address')"
@@ -161,7 +161,7 @@
                 >
                   <template #first>
                     <b-form-select-option :value="null" disabled
-                      >-- select an type --</b-form-select-option
+                      >-- Select Type --</b-form-select-option
                     >
                   </template>
 

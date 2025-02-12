@@ -41,7 +41,7 @@
                   </b-form-invalid-feedback>
                 </b-form-group>
                 <b-form-group
-                  label="Plate/Registration Number"
+                  label="Registration Number"
                   label-for="reg-no-input"
                   label-cols-sm="4"
                   label-cols-lg="3"
@@ -52,7 +52,7 @@
                     id="reg-no-input"
                     v-model.trim="$v.form.reg_no.$model"
                     type="text"
-                    placeholder="Enter plate/registration number"
+                    placeholder="Enter registration number"
                     :class="{
                       'is-invalid': submitted || $v.form.reg_no.$error,
                     }"
@@ -63,15 +63,15 @@
                     v-if="submitted || !$v.form.reg_no.required"
                     class="invalid-feedback"
                   >
-                    plate/registration number is required
+                    registration number is required
                   </b-form-invalid-feedback>
 
                   <b-form-invalid-feedback v-if="!$v.form.reg_no.minLength">
-                    Plate/registration number must hav at min
+                    registration number must hav at min
                     {{ $v.form.reg_no.$params.minLength.min }} letters.
                   </b-form-invalid-feedback>
                   <b-form-invalid-feedback v-if="!$v.form.reg_no.maxLength">
-                    Plate/registration number must have at max
+                    registration number must have at max
                     {{ $v.form.reg_no.$params.maxLength.max }} letters.
                   </b-form-invalid-feedback>
 
@@ -82,7 +82,7 @@
                     allowed</b-form-invalid-feedback
                   >
                   <b-form-invalid-feedback v-if="!$v.form.reg_no.uniqueRegNo">
-                    This plate/registration number is already registered.
+                    This registration number is already registered.
                   </b-form-invalid-feedback>
                 </b-form-group>
 
@@ -313,7 +313,7 @@
                 <p class="card-description fw-500"><b>Documents</b></p>
                 <br />
                 <b-form-group
-                  label="Vehicle picture"
+                  label="Vehicle Picture"
                   label-for="picture-input"
                   label-cols-sm="4"
                   label-cols-lg="3"
@@ -344,7 +344,7 @@
                   </div>
                 </b-form-group>
                 <b-form-group
-                  label="Certificate registration"
+                  label="Registration Certificate"
                   label-for="certificate-registration-input"
                   label-cols-sm="4"
                   label-cols-lg="3"
@@ -375,7 +375,7 @@
                   </div>
                 </b-form-group>
                 <b-form-group
-                  label="Certificate Pollution"
+                  label="PUC"
                   label-for="certificate-pollution-input"
                   label-cols-sm="4"
                   label-cols-lg="3"
@@ -406,7 +406,7 @@
                   </div>
                 </b-form-group>
                 <b-form-group
-                  label="Certificate Pollution Expiry Date"
+                  label="PUC Expiry Date"
                   label-for="certificate-pollution-expiry-date-input"
                   label-cols-sm="4"
                   label-cols-lg="3"
@@ -424,7 +424,7 @@
                 </b-form-group>
                 
                 <b-form-group
-                  label="Certificate Insurance"
+                  label="Insurance Certificate"
                   label-for="certificate-insurance-input"
                   label-cols-sm="4"
                   label-cols-lg="3"
@@ -455,7 +455,7 @@
                   </div>
                 </b-form-group>
                 <b-form-group
-                  label="Certificate Insurance Expiry Date"
+                  label="Insurance Certificate Expiry Date"
                   label-for="certificate-insurance-expiry-date-input"
                   label-cols-sm="4"
                   label-cols-lg="3"
@@ -473,7 +473,7 @@
                 </b-form-group>  
 
                 <b-form-group
-                  label="Certificate Fitness"
+                  label="Fitness Certificate"
                   label-for="certificate-fitness-input"
                   label-cols-sm="4"
                   label-cols-lg="3"
@@ -504,7 +504,7 @@
                   </div>
                 </b-form-group>
                 <b-form-group
-                  label="Certificate Fitness Expiry Date"
+                  label="Fitness Certificate Expiry Date"
                   label-for="certificate-fitness-expiry-date-input"
                   label-cols-sm="4"
                   label-cols-lg="3"
@@ -522,7 +522,7 @@
                 </b-form-group>
 
                 <b-form-group
-                  label="Certificate Permit"
+                  label="Permit Certificate"
                   label-for="certificate-permit-input"
                   label-cols-sm="4"
                   label-cols-lg="3"
@@ -553,7 +553,7 @@
                   </div>
                 </b-form-group>
                 <b-form-group
-                  label="Certificate Permit Expiry Date"
+                  label="Permit Certificate Expiry Date"
                   label-for="certificate-permit-expiry-date-input"
                   label-cols-sm="4"
                   label-cols-lg="3"
@@ -615,9 +615,9 @@ export default {
   data() {
     return {
       breadcrumbs: {
-        title: "Edit vehicle",
-        b1: "Manage vehicles",
-        b2: "bus",
+        title: "Edit Vehicle",
+        b1: "Manage Vehicles",
+        b2: "Vehicle",
         b3: "Index",
         link: true,
         name: "buses",

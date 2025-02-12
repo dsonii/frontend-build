@@ -120,9 +120,9 @@ export default {
     return {
       title: "",
       breadcrumbs: {
-        title: "Vehicle type Lists",
+        title: "Vehicle Type Lists",
         b1: "Manage Vehicle Types",
-        b2: "Vehicle types",
+        b2: "Vehicle Types",
         b3: "Index",
         link: false,
         name: "Bustypes",

@@ -106,7 +106,7 @@
                     <th scope="col" class="col-md-5">Stops</th>
                     <!-- <th scope="col" class="col-md-3">Duration</th> -->
                     <th scope="col" class="col-md-3">Minimum Fare</th>
-                    <th scope="col" class="col-md-4">Price per km</th>
+                    <th scope="col" class="col-md-4">Price Per KM</th>
                     <th></th>
                   </tr>
                 </thead>
@@ -118,8 +118,8 @@
                   >
                     <td scope="row">
                       <div class="row">
-                        <div class="col-sm-4">{{k+1}}</div>
-                        <div class="col-sm-8">
+                        <div class="col-sm-1 mt-10">{{k+1}}</div>
+                        <div class="col-sm-11">
                           <div class="form-group">
                             <!-- <v-select
                               @search="fetchPDLocations"
@@ -515,6 +515,9 @@ export default {
 .d-center {
   display: flex;
   align-items: center;
+}
+.mt-10 {
+  margin-top:10px;
 }
 /* .v-select .dropdown li {
   border-bottom: 1px solid rgba(112, 128, 144, 0.1);

@@ -76,7 +76,7 @@
             </b-form-group>
 
             <b-form-group
-              label="max Seats"
+              label="Max Seats"
               label-for="max-seats-input"
               label-cols-sm="4"
               label-cols-lg="3"

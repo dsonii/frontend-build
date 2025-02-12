@@ -141,7 +141,7 @@
             <template slot="vbt-action-buttons">
               <div class="row">
                 <div class="col-md-3"></div>
-                <div class="col-md-6">
+                <div class="col-md-7">
                   <div class="float-right">
                     <b-form inline>
                       <label class="mr-2">Date Range Filter :</label>
@@ -158,7 +158,7 @@
                     </b-form>
                   </div>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-2">
                   <div class="float-center">
                     <download-excel
                       class="btn btn-success mr-5"

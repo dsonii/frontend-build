@@ -8,7 +8,7 @@
           <td>Phone</td>
           <td>Profile Picture</td>
           <td>Licence</td>
-          <td>Aadhar No</td>
+          <td>Aadhaar No</td>
           <td>Police Verification</td>
         </tr>
         <tr>

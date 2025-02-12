@@ -9,7 +9,7 @@
               <b-form @submit.prevent="updatebustype">
                 <b-container>
                   <b-row>
-                    <b-col cols="12">
+                    <b-col>
                       <b-form-group
                         label="Name"
                         label-for="name-input"
@@ -89,9 +89,9 @@ export default {
   data() {
     return {
       breadcrumbs: {
-        title: "Edit Vehicle type",
-        b1: "Manage Vehicle types",
-        b2: "Vehicle types",
+        title: "Edit Vehicle Type",
+        b1: "Manage Vehicle Types",
+        b2: "Vehicle Types",
         b3: "Index",
         link: true,
         name: "bustypes",

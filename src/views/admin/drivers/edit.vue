@@ -173,7 +173,7 @@
                     </b-form-group>
 
                     <b-form-group
-                      label="Aadhar No"
+                      label="Aadhaar No"
                       label-for="national-id-input"
                       label-cols-sm="4"
                       label-cols-lg="3"
@@ -183,7 +183,7 @@
                       <b-form-input
                         id="national-id-input"
                         v-model.trim="$v.form.national_id.$model"
-                        placeholder="Enter Aadhar No"
+                        placeholder="Enter Aadhaar No"
                         :class="{
                           'is-invalid': submitted || $v.form.national_id.$error,
                         }"
@@ -193,13 +193,13 @@
                       <b-form-invalid-feedback
                         v-if="submitted || !$v.form.national_id.required"
                       >
-                      Aadhar No  is required
+                      Aadhaar No  is required
                       </b-form-invalid-feedback>
 
                       <b-form-invalid-feedback
                         v-if="!$v.form.national_id.uniqueNationalId"
                       >
-                        This Aadhar Nois already registered.
+                        This Aadhaar No is already registered.
                       </b-form-invalid-feedback>
                     </b-form-group>
 
@@ -344,7 +344,7 @@
                   </b-form-group>
 
                     <b-form-group
-                      label="National ICard"
+                      label="Aadhaar No"
                       label-for="national-icard-input"
                       label-cols-sm="4"
                       label-cols-lg="3"
@@ -499,7 +499,7 @@ export default {
       ],
       option_types: [
         { text: "Driver", value: "driver" },
-        { text: "Assistant", value: "assistant", default: "assistant" },
+        // { text: "Assistant", value: "assistant", default: "assistant" },
       ],
       form: {
         adminId: "",
