@@ -9,6 +9,7 @@ export const useAuth = defineStore("userAuth", {
     authToken: {},
     isAuth: false,
     getRolePermissions: [],
+    getRolePermissionsArr: [],
     general: {},
   }),
   getters: {},
@@ -20,6 +21,13 @@ export const useAuth = defineStore("userAuth", {
       try {
         const getPerms = await authApi.post("/auth/access", { roleId });
         this.getRolePermissions = getPerms.data.permissions;
+        let arr = [];
+        if (this.getRolePermissions.length > 0) {
+          for (let i = 0; i < this.getRolePermissions.length; i++) {
+            arr.push(this.getRolePermissions[i].slug);
+          }
+        }
+        this.getRolePermissionsArr = arr;
         this.general = getPerms.data.general;
       } catch (error) {
         if (error?.response?.data?.message) {

@@ -9,13 +9,14 @@
               <div class="dot-indicator bg-success"></div>
             </div>
             <div class="text-wrapper">
+            
               <div class="profile-name">{{ getUser.firstname }}</div>
               <div class="designation">{{ getUser.lastname }}</div>
             </div>
           </a>
         </li>
         <li class="nav-item nav-category">Main Menu</li>
-        <li class="nav-item">
+        <li class="nav-item" v-if="showMenue('manage.dashboard')">
           <router-link class="nav-link" :to="{ path: '/dashboard' }">
             <i class="menu-icon typcn typcn-home-outline typcn-3x"></i>
             <span class="menu-title">Dashboard</span></router-link
@@ -27,7 +28,7 @@
             <span class="menu-title">Eagle Eyes</span></router-link
           >
         </li>
-        <li class="nav-item">
+        <li class="nav-item" v-if="showMenue('bus.load')">
           <a class="nav-link" v-b-toggle="'ui-basic'">
             <i class="menu-icon typcn typcn-coffee"></i>
             <span class="menu-title">Manage Vehicles</span>
@@ -35,7 +36,7 @@
           </a>
           <b-collapse id="ui-basic">
             <ul class="nav flex-column sub-menu">
-              <li class="nav-item">
+              <li class="nav-item" v-if="showMenue('bus.view')">
                 <router-link
                   class="nav-link"
                   :to="{
@@ -54,7 +55,7 @@
                 >
               </li> -->
 
-              <li class="nav-item">
+              <li class="nav-item" v-if="showMenue('bus.create')">
                 <router-link
                   class="nav-link"
                   :to="{
@@ -63,7 +64,7 @@
                   >Create Vehicle</router-link
                 >
               </li>
-              <li class="nav-item">
+              <li class="nav-item" v-if="showMenue('bus.layout.view')">
                 <router-link
                   class="nav-link"
                   :to="{
@@ -72,7 +73,7 @@
                   >All Vehicles Layout</router-link
                 >
               </li>
-              <li class="nav-item">
+              <li class="nav-item" v-if="showMenue('bus.layout.create')">
                 <router-link
                   class="nav-link"
                   :to="{
@@ -82,7 +83,7 @@
                 </router-link>
               </li>
 
-              <li class="nav-item">
+              <li class="nav-item" v-if="showMenue('bus.type.view')">
                 <router-link
                   class="nav-link"
                   :to="{
@@ -91,7 +92,7 @@
                   >All Vehicle Type</router-link
                 >
               </li>
-              <li class="nav-item">
+              <li class="nav-item" v-if="showMenue('bus.type.create')">
                 <router-link
                   class="nav-link"
                   :to="{
@@ -103,7 +104,7 @@
             </ul>
           </b-collapse>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" v-if="showMenue('driver.view')">
           <span class="nav-link" v-b-toggle="'manage-driver-dropdown'">
             <i class="menu-icon typcn typcn-group-outline"></i>
             <span class="menu-title"> Manage Drivers </span>
@@ -111,12 +112,12 @@
           </span>
           <b-collapse id="manage-driver-dropdown">
             <ul class="nav flex-column sub-menu">
-              <li class="nav-item">
+              <li class="nav-item" v-if="showMenue('driver.view')">
                 <router-link class="nav-link" :to="{ path: '/drivers' }"
                   >All Drivers</router-link
                 >
               </li>
-              <li class="nav-item">
+              <li class="nav-item" v-if="showMenue('driver.create')">
                 <router-link
                   class="nav-link"
                   :to="{
@@ -128,7 +129,7 @@
             </ul>
           </b-collapse>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" v-if="showMenue('route.view') || showMenue('stop.view')">
           <a class="nav-link" v-b-toggle="'manage-routes'">
             <i class="menu-icon typcn typcn-location-arrow-outline"></i>
             <span class="menu-title">Fixed routes</span>
@@ -136,7 +137,7 @@
           </a>
           <b-collapse id="manage-routes">
             <ul class="nav flex-column sub-menu">
-              <li class="nav-item">
+              <li class="nav-item"  v-if="showMenue('stop.view')">
                 <router-link
                   class="nav-link"
                   :to="{
@@ -145,7 +146,7 @@
                   >All stops</router-link
                 >
               </li>
-              <li class="nav-item">
+              <li class="nav-item" v-if="showMenue('stop.create')">
                 <router-link
                   class="nav-link"
                   :to="{
@@ -155,12 +156,12 @@
                 >
               </li>
 
-              <li class="nav-item">
+              <li class="nav-item" v-if="showMenue('route.view')">
                 <router-link class="nav-link" :to="{ path: '/routes' }"
                   >All Routes</router-link
                 >
               </li>
-              <li class="nav-item">
+              <li class="nav-item" v-if="showMenue('route.create')">
                 <router-link
                   class="nav-link"
                   :to="{
@@ -169,7 +170,7 @@
                   >Create Route</router-link
                 >
               </li>
-              <li class="nav-item">
+              <li class="nav-item" v-if="showMenue('bus.load')">
                 <router-link
                   class="nav-link"
                   :to="{
@@ -178,7 +179,7 @@
                   >All Vehicles Schedule</router-link
                 >
               </li>
-              <li class="nav-item">
+              <li class="nav-item" v-if="showMenue('bus.load')">
                 <router-link
                   class="nav-link"
                   :to="{
@@ -201,18 +202,18 @@
           </a>
           <b-collapse id="manage-customers">
             <ul class="nav flex-column sub-menu">
-              <li class="nav-item">
+              <li class="nav-item" v-if="showMenue('customer.view')">
                 <router-link class="nav-link" :to="{ path: '/customers' }"
                   >All Employees</router-link
                 >
               </li>
-              <li class="nav-item">
+              <li class="nav-item" v-if="showMenue('customer.create')">
                 <router-link class="nav-link" :to="{ path: '/customer/create' }"
                   >Create Employee</router-link
                 >
               </li>
               
-              <li class="nav-item">
+              <li class="nav-item" v-if="showMenue('suggests')">
                 <router-link class="nav-link" :to="{ path: '/suggests' }"
                   >Suggestions</router-link
                 >
@@ -304,7 +305,7 @@
             <span class="menu-title">All Agents</span>
           </router-link>
         </li> -->
-        <li class="nav-item">
+        <li class="nav-item" v-if="showMenue('help.support.view')">
           <router-link
             class="nav-link"
             :to="{
@@ -327,7 +328,7 @@
           </router-link>
         </li> -->
 
-        <li class="nav-item">
+        <li class="nav-item" v-if="showMenue('manage.trips.view')">
           <a class="nav-link" v-b-toggle="'trips'">
             <i class="menu-icon typcn typcn-user-outline"></i>
             <span class="menu-title">Manage Trips</span>
@@ -335,7 +336,7 @@
           </a>
           <b-collapse id="trips">
             <ul class="nav flex-column sub-menu">
-              <li class="nav-item">
+              <li class="nav-item" v-if="showMenue('manage.trips.create')">
                 <router-link
                   class="nav-link"
                   :to="{
@@ -344,7 +345,7 @@
                   >Create</router-link
                 >
               </li>
-              <li class="nav-item">
+              <li class="nav-item" v-if="showMenue('manage.trips.view')">
                 <router-link
                   class="nav-link"
                   :to="{
@@ -358,7 +359,7 @@
           </b-collapse>
         </li>
 
-        <li class="nav-item">
+        <li class="nav-item" v-if="showMenue('booking.assigns.view')">
           <a class="nav-link" v-b-toggle="'bookings'">
             <i class="menu-icon typcn typcn-user-outline"></i>
             <span class="menu-title">Manage Bookings</span>
@@ -366,7 +367,7 @@
           </a>
           <b-collapse id="bookings">
             <ul class="nav flex-column sub-menu">
-              <li class="nav-item">
+              <li class="nav-item" v-if="showMenue('booking.view')">
                 <router-link
                   class="nav-link"
                   :to="{
@@ -514,7 +515,7 @@
         >
           {{ getUser.role.toUpperCase() }} Menu
         </li>
-        <li class="nav-item">
+        <li class="nav-item" v-if="showMenue('manage.notification')">
           <a class="nav-link" v-b-toggle="'manage-notifications'">
             <i class="menu-icon typcn typcn-group-outline"></i>
             <span class="menu-title">Manage Notifications</span>
@@ -522,7 +523,7 @@
           </a>
           <b-collapse id="manage-notifications">
             <ul class="nav flex-column sub-menu">
-              <li class="nav-item">
+              <li class="nav-item" v-if="showMenue('notification.view')">
                 <router-link
                   class="nav-link"
                   :to="{
@@ -531,7 +532,7 @@
                   >Lists</router-link
                 >
               </li>
-              <li class="nav-item">
+              <li class="nav-item" v-if="showMenue('notification.create')">
                 <router-link
                   class="nav-link"
                   :to="{
@@ -543,20 +544,20 @@
             </ul>
           </b-collapse>
         </li>
-        <li v-if="getUser.role === 'admin'" class="nav-item">
-          <a class="nav-link" v-b-toggle="'manage-users'">
+        <li v-if="getUser.role === 'admin'" class="nav-item" >
+          <a class="nav-link" v-b-toggle="'manage-users'"  v-if="showMenue('user.view')">
             <i class="menu-icon typcn typcn-group-outline"></i>
             <span class="menu-title">Manage Users</span>
             <i class="menu-arrow"></i>
           </a>
           <b-collapse id="manage-users">
             <ul class="nav flex-column sub-menu">
-              <li class="nav-item">
+              <li class="nav-item" v-if="showMenue('user.view')">
                 <router-link class="nav-link" :to="{ path: '/users' }"
                   >Manage Users</router-link
                 >
               </li>
-              <li class="nav-item">
+              <li class="nav-item" v-if="showMenue('user.create')">
                 <router-link
                   class="nav-link"
                   :to="{
@@ -570,12 +571,12 @@
         </li>
 
         <li v-if="getUser.role === 'admin'" class="nav-item">
-          <a class="nav-link" v-b-toggle="'auth'">
+          <a class="nav-link" v-b-toggle="'auth'" v-if="showMenue('roles') && showMenue('permissions')">
             <i class="menu-icon typcn typcn-document-add"></i>
             <span class="menu-title">Role and Permission</span>
             <i class="menu-arrow"></i>
           </a>
-          <b-collapse id="auth">
+          <b-collapse id="auth" v-if="showMenue('roles')">
             <ul class="nav flex-column sub-menu">
               <li class="nav-item">
                 <router-link
@@ -592,8 +593,8 @@
             </ul>
           </b-collapse>
         </li>
-        <li v-if="getUser.role == 'admin'" class="nav-item">
-          <a class="nav-link" v-b-toggle="'administration-tools'">
+        <li v-if="getUser.role == 'admin'" class="nav-item" >
+          <a class="nav-link" v-b-toggle="'administration-tools'" v-if="showMenue('roles')">
             <i class="menu-icon typcn typcn-document-add"></i>
             <span class="menu-title">Administration Tools</span>
             <i class="menu-arrow"></i>
@@ -622,7 +623,7 @@
                   <span class="menu-title">Currency</span>
                 </router-link>
               </li>
-              <li class="nav-item">
+              <li class="nav-item" v-if="showMenue('manage.application.settings')">
                 <router-link
                   class="nav-link"
                   :to="{
@@ -633,7 +634,7 @@
                   <span class="menu-title">App Settings</span>
                 </router-link>
               </li>
-              <li class="nav-item">
+              <li class="nav-item" v-if="showMenue('payment.view')">
                 <router-link
                   class="nav-link"
                   :to="{
@@ -667,8 +668,21 @@ export default {
   computed:{
     ...mapState(fetchUsers,['getUser']),
     ...mapState(fetchUsers,['getName']),
-    ...mapState(useAuth,['isAuth']),
+    ...mapState(useAuth,['isAuth', 'getRolePermissionsArr']),
     ...mapState(showUser,['userRole']),
+  },
+  methods: {
+    showMenue(data) {
+      if (this.getRolePermissionsArr.length > 0) {
+        if (this.getRolePermissionsArr.includes(data)) {
+          return true;
+        } else {
+          return false;
+        }
+      } else {
+        return true;
+      }
+    },
   },
   mounted () {
     const body = document.querySelector('body')
