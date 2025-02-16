@@ -25,7 +25,7 @@
                     </router-link>
                   </div>
                   <div class="wrapper text-center text-sm-left">
-                    <p class="card-text mb-0">Customers</p>
+                    <p class="card-text mb-0">Employees</p>
                     <div class="fluid-container"></div>
                   </div>
                 </div>
@@ -187,27 +187,27 @@ export default {
   data() {
     return {
       countDriver: {
-        startVal: 10,
+        startVal: 0,
         endVal: 0,
       },
       countCustomer: {
-        startVal: 200,
+        startVal: 0,
         endVal: 0,
       },
       countHelp: {
-        startVal: 5,
+        startVal: 0,
         endVal: 0,
       },
       countTotalBooking: {
-        startVal: 5,
+        startVal:0,
         endVal: 0,
       },
       countTodayCompletedBooking: {
-        startVal: 5,
+        startVal: 0,
         endVal: 0,
       },
       countScheduledBooking: {
-        startVal: 5,
+        startVal: 0,
         endVal: 0,
       },
     };

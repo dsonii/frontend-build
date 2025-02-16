@@ -10,8 +10,8 @@
             </div>
             <div class="text-wrapper">
             
-              <div class="profile-name">{{ getUser.firstname }}</div>
-              <div class="designation">{{ getUser.lastname }}</div>
+              <div class="profile-name">{{ getUser.firstname }} {{ getUser.lastname }}</div>
+              <div class="designation"></div>
             </div>
           </a>
         </li>

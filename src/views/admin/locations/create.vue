@@ -514,7 +514,10 @@ export default {
   },
   mounted() {
     this.loadMarkerItems();
-    this.getLocation();
+    if (typeof this.$route.params.id !== 'undefined') {
+      this.getLocation();
+    }
+    
     this.getCenter();
   },
 };

@@ -60,23 +60,23 @@ export default {
         name: "Dashboard",
       },
       countDriver:{
-        startVal: 10,
+        startVal: 0,
         endVal: 0
       },
       countCustomer:{
-        startVal: 200,
+        startVal: 0,
         endVal: 0
       },
       countAgent:{
-        startVal: 10,
+        startVal: 0,
         endVal: 0
       },
       countHelp:{
-        startVal: 5,
+        startVal: 0,
         endVal: 0
       },
       countTotalBooking:{
-        startVal: 5,
+        startVal: 0,
         endVal: 0
       },
     }

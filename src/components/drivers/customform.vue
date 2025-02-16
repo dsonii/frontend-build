@@ -263,7 +263,7 @@
                   <b-form-file
                     id="picture-input"
                     accept="image/jpeg, image/png, image/jpg"
-                    placeholder="Choose a Profile Picture or drop it here..."
+                    placeholder="Choose File"
                     @change="onFileChange($event, 'picture')"
                   ></b-form-file>
                 </div>
@@ -295,7 +295,7 @@
                   <b-form-file
                     id="licence-input"
                     accept="image/jpeg, image/png, image/jpg"
-                    placeholder="Choose a Licence or drop it here..."
+                    placeholder="Choose File"
                     @change="onFileChange($event, 'document_licence')"
                   ></b-form-file>
                 </div>
@@ -347,7 +347,7 @@
                   <b-form-file
                     id="national-icard-input"
                     accept="image/jpeg, image/png, image/gif"
-                    placeholder="Choose a National ICard or drop it here..."
+                    placeholder="Choose File"
                     @change="onFileChange($event, 'document_national_icard')"
                   ></b-form-file>
                 </div>
@@ -378,7 +378,7 @@
                   <b-form-file
                     id="police-vertification-input"
                     accept="image/jpeg, image/png, image/gif"
-                    placeholder="Choose a Police Verification or drop it here..."
+                    placeholder="Choose File"
                     @change="
                       onFileChange($event, 'document_police_vertification')
                     "
