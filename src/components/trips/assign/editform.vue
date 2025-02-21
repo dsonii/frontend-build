@@ -323,7 +323,8 @@ export default {
     fetchAssistants(search, loading) {
       if (search.length) {
         let type = "assistant";
-        this.search2(false, search, type, this);
+        loading = false;
+        this.search2(loading, search, type, this);
       }
     },
     search: lodash.debounce(async (loading, search, type, vm) => {
