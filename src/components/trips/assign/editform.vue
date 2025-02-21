@@ -16,11 +16,11 @@
           }"
           :state="validateState('route')"
           :options="roptions"
-          placeholder="start typing to search Route Name"
+          placeholder="Start typing to search route name"
           label="route_name"
           track-by="id"
           :searchable="true"
-          :loading="true"
+          :loading="false"
           @search-change="fetchRoutes"
         >
           <template slot="option" slot-scope="props">
