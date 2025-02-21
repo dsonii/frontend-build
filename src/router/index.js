@@ -856,7 +856,7 @@ const routes = [
         },
       },
       {
-        path: "/track-friend",
+        path: "/track-friend/:id",
         name: "track",
         component: share,
         meta: {

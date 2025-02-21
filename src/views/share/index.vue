@@ -1,54 +1,58 @@
 <template>
     <gmap-map ref="mymap" :center="coordinates" :zoom="17" style="width: 100%; height: 300px">
-        <gmap-marker :position="position" :draggable="true" />
-        <DirectionsRenderer travelMode="DRIVING" :origin="origin" :destination="destionation"/>
+        <!-- <gmap-marker :position="position" :draggable="true" /> -->
+        <gmap-polyline :path="polylinePath" :stroke-options="{ strokeColor: 'blue', strokeOpacity: 0, icons: [ { icon: lineSymbol, offset: '0', repeat: '20px' } ] }" />
     </gmap-map>
 </template>
 
 
 <script>
-import DirectionsRenderer from "../../components/share/DirectionsRenderer";
+import { locationService, bookingService } from "../../services";
 export default {
-    components: {
-        DirectionsRenderer
-    },
-    origin: { type: Object },
-    destination: { type: Object },
     data() {
         return {
-            coordinates: {lat:24.53866022898745, lng:81.28497725212615},
-            position: {lat:24.53866022898745, lng:81.28497725212615},
-        }
-    },
-    computed: {
-        origin() {
-            return { query: {lat:24.53866022898745, lng:81.28497725212615} };
-        },
-        destionation() {
-            return  {lat:24.53866022898745, lng:81.28497725212615};
+            coordinates:{lat:parseFloat(0), lng:parseFloat(0)} ,
+            position: {lat:parseFloat(0), lng:parseFloat(0)} ,
+            polylinePath: [{ lat: parseFloat(0), lng: parseFloat(0) }, { lat: parseFloat(0), lng: parseFloat(0) }],
+            lineSymbol: {
+            path: 'M 0,-2 0,2',
+            strokeOpacity: 2,
+            scale: 2
+            }
         }
     },
     mounted() {
-        // this.loadDirection();
-        this.moveUp(0.001);
-        
+        this.getBookingData();
+        // this.moveUp();
     },
     methods: {
-        // loadDirection() {
-        //     const directionsService = new window.google.maps.DirectionsService();
-        //     const directionsRenderer = new window.google.maps.DirectionsRenderer();
-        //     directionsService.route({
-        //             origin:new window.google.maps.LatLng(24.53866022898745, 81.28497725212615),
-        //             destination:new window.google.maps.LatLng(24.53446853482179, 81.29175853409387),
-        //             travelMode:"DRIVING",
-        //         }).then((response) => {
-        //             directionsRenderer.setDirections(response);
-        //         })
-        // },
-        moveUp(delta) {
-            let lat = delta+this.position.lat;
-    	    this.position.lat = lat;
-    	    setTimeout(() => this.moveUp(delta), 3000);
+        getBookingData() {
+            bookingService.find(this.$route.params.id).then((response) => {
+            if (response.status) {
+                this.coordinates.lat= parseFloat(response.data.pickupId_location.coordinates[1]);
+                this.coordinates.lng = parseFloat(response.data.pickupId_location.coordinates[0]);
+                this.position.lat= parseFloat(response.data.dropoffId_location.coordinates[1]);
+                this.position.lng = parseFloat(response.data.dropoffId_location.coordinates[0]);
+
+                this.polylinePath[0].lat= parseFloat(response.data.pickupId_location.coordinates[1]);
+                this.polylinePath[0].lng = parseFloat(response.data.pickupId_location.coordinates[0]);
+                this.polylinePath[1].lat= parseFloat(response.data.dropoffId_location.coordinates[1]);
+                this.polylinePath[1].lng = parseFloat(response.data.dropoffId_location.coordinates[0]);  
+                console.log(this.polylinePath);
+            }
+            });
+        },
+        async getCurrentBookingData() {
+            locationService.getCurrentLocation(this.$route.params.id).then((response) => {
+            if (response.status) {
+                this.position.lat= response.data.current_location[0];
+                this.position.lng = response.data.current_location[1];                 
+            }
+            });
+        },
+        async moveUp() {
+            await this.getCurrentBookingData();
+    	    setTimeout(() => this.moveUp(), 10000);
         },
     },
 }

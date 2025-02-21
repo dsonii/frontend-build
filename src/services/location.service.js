@@ -11,12 +11,23 @@ export const locationService = {
   find,
   markers,
   searchLocation,
+  getCurrentLocation,
 };
 
 async function find(id) {
   try {
     const privateAuth = useAuthApi();
     const response = await privateAuth.get("locations/" + id);
+    return response.data;
+  } catch (e) {
+    return e.response;
+  }
+}
+
+async function getCurrentLocation(id) {
+  try {
+    const privateAuth = useAuthApi();
+    const response = await privateAuth.get("locations/current/" + id);
     return response.data;
   } catch (e) {
     return e.response;
