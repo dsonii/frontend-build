@@ -97,6 +97,13 @@
                 role="group"
                 aria-label="Basic example"
               >
+              <router-link  v-if="showMenue('driver.create')"
+                  class="nav-link btn btn-success mr-2"
+                  :to="{
+                    path: '/driver/create',
+                  }"
+                  >Create Driver</router-link
+                >
                 <download-excel
                   class="btn btn-success"
                   :data="excelDownload"
@@ -139,6 +146,7 @@ import modalView from "./modelView";
 import { mapState } from "pinia";
 import { useApp } from "../../../store/useApp";
 import { getDateFormat } from "../../../helpers/utils";
+import { useAuth } from "../../../store/useAuth.js";
 
 export default {
   name: "drivers",
@@ -248,6 +256,7 @@ export default {
     Breadcrumb,
   },
   computed: {
+    ...mapState(useAuth,['isAuth', 'getRolePermissionsArr']),
     excelDownload() {
       return driverService.tranform(this.rows);
     },
@@ -258,6 +267,17 @@ export default {
     ...mapState(useApp, ["dateFormat"]),
   },
   methods: {
+    showMenue(data) {
+      if (this.getRolePermissionsArr.length > 0) {
+        if (this.getRolePermissionsArr.includes(data)) {
+          return true;
+        } else {
+          return false;
+        }
+      } else {
+        return true;
+      }
+    },
     dateFormated(createdAt, format) {
       return getDateFormat(createdAt, format); //"DD MMM, YYYY"
     },

@@ -5,12 +5,16 @@
         <tr>
           <td>Title</td>
           <td>Stops</td>
+          <td>Departure Location</td>
+          <td>Arrival Location</td>
           <td>Status</td>
           <td>Created At</td>
         </tr>
         <tr>
           <td>{{ form.title }}</td>
           <td>{{ form.total_stops }}</td>
+          <td>{{ form.da }}</td>
+          <td>{{ form.al }}</td>
           <td>{{ form.status }}</td>
           <td>{{
               dateConvert(

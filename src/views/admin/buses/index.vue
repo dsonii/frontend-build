@@ -76,6 +76,13 @@
                 role="group"
                 aria-label="Basic example"
               >
+                <router-link v-if="showMenue('bus.create')"
+                  class="nav-link btn btn-success mr-2"
+                  :to="{
+                    path: '/bus/create',
+                  }"
+                  >Create</router-link
+                >
                 <download-excel
                   class="btn btn-success"
                   :data="excelDownload"
@@ -114,6 +121,8 @@ import moment from "moment-timezone";
 import VueBootstrap4Table from "vue-bootstrap4-table";
 import downloadExcel from "vue-json-excel";
 import modalView from "./modelView";
+import  { mapState } from "pinia";
+import { useAuth } from "../../../store/useAuth.js";
 
 export default {
   name: "buses",
@@ -235,6 +244,7 @@ export default {
     modalView,
   },
   computed: {
+    ...mapState(useAuth,['isAuth', 'getRolePermissionsArr']),
     excelDownload() {
       return busService.tranform(this.rows);
     },
@@ -243,6 +253,17 @@ export default {
     },
   },
   methods: {
+    showMenue(data) {
+      if (this.getRolePermissionsArr.length > 0) {
+        if (this.getRolePermissionsArr.includes(data)) {
+          return true;
+        } else {
+          return false;
+        }
+      } else {
+        return true;
+      }
+    },
     createdFormat(created) {
       return moment(created).format("DD MMM, YYYY");
     },

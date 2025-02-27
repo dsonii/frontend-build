@@ -23,12 +23,6 @@
               <i class="mdi mdi-account-search"></i>
             </template>
 
-            <template slot="refresh-button-text">
-              <i class="mdi mdi-sync-alert"></i> Refresh
-            </template>
-            <template slot="reset-button-text">
-              <i class="mdi mdi-broom"></i> Reset filters
-            </template>
 
             <template slot="status" slot-scope="props">
               <span v-if="props.column.name == 'status'">
@@ -140,11 +134,11 @@
             <template slot="paginataion-next-button"> Next </template>
             <template slot="vbt-action-buttons">
               <div class="row">
-                <div class="col-md-3"></div>
-                <div class="col-md-7">
-                  <div class="float-right">
+                <div class="col-md-1"></div>
+                <div class="col-md-5">
+                  <div class="float-left">
                     <b-form inline>
-                      <label class="mr-2">Date Range Filter :</label>
+                      <label class="mr-2">Filter :</label>
                       <date-range-picker
                         v-model="pickerDates"
                         @update="updateDateRange"
@@ -158,8 +152,11 @@
                     </b-form>
                   </div>
                 </div>
-                <div class="col-md-2">
-                  <div class="float-center">
+                <div class="col-md-6">
+                  <div class="btn-group float-right">
+                      <router-link v-if="showMenue('customer.create')" class="nav-link btn btn-success mr-2" :to="{ path: '/customer/create' }"
+                        >Create</router-link
+                      >
                     <download-excel
                       class="btn btn-success mr-5"
                       :data="excelDownload"
@@ -203,6 +200,8 @@ import modalView from "./modelView";
 import { mapState } from "pinia";
 import { useApp } from "../../store/useApp";
 import { getDateFormat } from "../../helpers/utils";
+
+import { useAuth } from "../../store/useAuth.js";
 
 import "vue2-daterange-picker/dist/vue2-daterange-picker.css";
 
@@ -271,17 +270,19 @@ export default {
         loaderText: "Updating...", // by default 'Loading...'
         pagination: true,
         global_search: {
-          placeholder: "Enter search offers",
+          placeholder: "Search Employee",
           visibility: true,
           case_sensitive: false,
           showClearButton: false,
-          searchOnPressEnter: false,
+          searchOnPressEnter: true,
           searchDebounceRate: 1000,
         },
         per_page_options: [10, 20, 30, 50, 100],
         highlight_row_hover_color: "silver",
         highlight_row_hover: true,
         card_mode: true,
+        show_refresh_button: false,
+        show_reset_button: false,
       },
       dropdowns: [],
       classes: {
@@ -321,6 +322,7 @@ export default {
     },
   },
   computed: {
+    ...mapState(useAuth,['isAuth', 'getRolePermissionsArr']),
     excelDownload() {
       return customerService.tranform(this.rows);
     },
@@ -333,6 +335,17 @@ export default {
     ...mapState(useApp, ["dateFormat"]),
   },
   methods: {
+    showMenue(data) {
+      if (this.getRolePermissionsArr.length > 0) {
+        if (this.getRolePermissionsArr.includes(data)) {
+          return true;
+        } else {
+          return false;
+        }
+      } else {
+        return true;
+      }
+    },
     dateFormated(createdAt, format) {
       return getDateFormat(createdAt, format);
     },

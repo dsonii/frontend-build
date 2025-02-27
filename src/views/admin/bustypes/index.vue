@@ -73,6 +73,14 @@
                 role="group"
                 aria-label="Basic example"
               >
+              <router-link v-if="showMenue('bus.type.create')"
+                  class="nav-link btn btn-success mr-2"
+                  :to="{
+                    path: '/bustype/create',
+                  }"
+                  >Add Vehicle Type
+                </router-link>
+
                 <download-excel
                   class="btn btn-success"
                   :data="excelDownload"
@@ -113,6 +121,8 @@ import VueBootstrap4Table from "vue-bootstrap4-table";
 import downloadExcel from "vue-json-excel";
 
 import modalView from "./modelView";
+import  { mapState } from "pinia";
+import { useAuth } from "../../../store/useAuth.js";
 
 export default {
   name: "bustypes",
@@ -195,6 +205,7 @@ export default {
     Breadcrumb,
   },
   computed: {
+    ...mapState(useAuth,['isAuth', 'getRolePermissionsArr']),
     excelDownload() {
       return bustypeService.tranform(this.rows);
     },
@@ -203,6 +214,17 @@ export default {
     },
   },
   methods: {
+    showMenue(data) {
+      if (this.getRolePermissionsArr.length > 0) {
+        if (this.getRolePermissionsArr.includes(data)) {
+          return true;
+        } else {
+          return false;
+        }
+      } else {
+        return true;
+      }
+    },
     viewRow(data) {
       console.log("data", data);
       this.title = "bustype Details";

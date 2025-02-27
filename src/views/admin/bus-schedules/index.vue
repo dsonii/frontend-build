@@ -20,13 +20,7 @@
             <i class="mdi mdi-account-search"></i>
           </template>
 
-          <template slot="refresh-button-text">
-            <i class="mdi mdi-sync-alert"></i> Refresh
-          </template>
-          <template slot="reset-button-text">
-            <i class="mdi mdi-broom"></i> Reset filters
-          </template>
-
+          
           <template slot="status" slot-scope="props">
             
             <span v-if="props.column.name == 'status'">
@@ -83,7 +77,7 @@
           <template slot="paginataion-next-button"> Next </template>
 
           <template slot="vbt-action-buttons">
-            <b-row>
+            <b-row class="btn-group float-left">
               <b-col md="5" sm="5" lg="5"></b-col>
               <b-col md="5" sm="5" lg="5">
                 <label>Route Filters :</label>
@@ -108,6 +102,13 @@
               role="group"
               aria-label="Basic example"
             >
+                <router-link v-if="showMenue('bus.load')"
+                  class="nav-link btn btn-success mr-2"
+                  :to="{
+                    path: '/bus-schedules/create',
+                  }"
+                  >Create</router-link
+                >
               <download-excel
                 class="btn btn-success"
                 :data="excelDownload"
@@ -146,7 +147,7 @@ import { useApp } from "../../../store/useApp";
 import { getDateFormat } from "../../../helpers/utils";
 import downloadExcel from "vue-json-excel";
 import moment from "moment-timezone";
-
+import { useAuth } from "../../../store/useAuth.js";
 export default {
   name: "timetable",
   data() {
@@ -203,7 +204,7 @@ export default {
         loaderText: "Updating...", // by default 'Loading...'
         pagination: true,
         global_search: {
-          placeholder: "Enter search bus schedules",
+          placeholder: "Enter search vehicle schedules",
           visibility: true,
           case_sensitive: false,
           showClearButton: false,
@@ -214,6 +215,8 @@ export default {
         highlight_row_hover_color: "silver",
         // card_title: "Vue Bootsrap 4 advanced table",
         card_mode: true,
+        show_refresh_button: false,
+        show_reset_button: false,
       },
       dropdowns: [],
       classes: {
@@ -242,6 +245,7 @@ export default {
     downloadExcel,
   },
   computed: {
+    ...mapState(useAuth,['isAuth', 'getRolePermissionsArr']),
     ...mapState(useApp, ["dateFormat", "timeFormat"]),
     excelDownload() {
       return busScheduleService.tranform(this.rows);
@@ -251,6 +255,17 @@ export default {
     },
   },
   methods: {
+    showMenue(data) {
+      if (this.getRolePermissionsArr.length > 0) {
+        if (this.getRolePermissionsArr.includes(data)) {
+          return true;
+        } else {
+          return false;
+        }
+      } else {
+        return true;
+      }
+    },
     momentFormat(createdAt, format) {
       return getDateFormat(createdAt, format);
     },

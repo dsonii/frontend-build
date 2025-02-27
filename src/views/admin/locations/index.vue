@@ -70,6 +70,14 @@
               role="group"
               aria-label="Basic example"
             >
+
+              <router-link v-if="showMenue('stop.create')"
+                  class="nav-link btn btn-success mr-2"
+                  :to="{
+                    path: '/location/create',
+                  }"
+                  >Create stops</router-link
+                >
               <download-excel
                 class="btn btn-success"
                 :data="excelDownload"
@@ -105,7 +113,8 @@ import VueBootstrap4Table from "vue-bootstrap4-table";
 import moment from "moment-timezone";
 import downloadExcel from "vue-json-excel";
 import modalView from "./modelView";
-
+import { mapState } from "pinia";
+import { useAuth } from "../../../store/useAuth.js";
 export default {
   name: "location",
   data() {
@@ -182,6 +191,7 @@ export default {
     modalView,
   },
   computed: {
+    ...mapState(useAuth,['isAuth', 'getRolePermissionsArr']),
     excelDownload() {
       return locationService.tranform(this.rows);
     },
@@ -190,6 +200,17 @@ export default {
     },
   },
   methods: {
+    showMenue(data) {
+      if (this.getRolePermissionsArr.length > 0) {
+        if (this.getRolePermissionsArr.includes(data)) {
+          return true;
+        } else {
+          return false;
+        }
+      } else {
+        return true;
+      }
+    },
     viewRow(data) {
       this.title = "Location Details";
       this.modalView = true;

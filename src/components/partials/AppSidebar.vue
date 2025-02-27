@@ -55,7 +55,7 @@
                 >
               </li> -->
 
-              <li class="nav-item" v-if="showMenue('bus.create')">
+              <!-- <li class="nav-item" v-if="showMenue('bus.create')">
                 <router-link
                   class="nav-link"
                   :to="{
@@ -63,7 +63,7 @@
                   }"
                   >Create Vehicle</router-link
                 >
-              </li>
+              </li> -->
               <li class="nav-item" v-if="showMenue('bus.layout.view')">
                 <router-link
                   class="nav-link"
@@ -73,7 +73,7 @@
                   >All Vehicles Layout</router-link
                 >
               </li>
-              <li class="nav-item" v-if="showMenue('bus.layout.create')">
+              <!-- <li class="nav-item" v-if="showMenue('bus.layout.create')">
                 <router-link
                   class="nav-link"
                   :to="{
@@ -81,7 +81,7 @@
                   }"
                   >Add Vehicle Layout
                 </router-link>
-              </li>
+              </li> -->
 
               <li class="nav-item" v-if="showMenue('bus.type.view')">
                 <router-link
@@ -92,7 +92,7 @@
                   >All Vehicle Type</router-link
                 >
               </li>
-              <li class="nav-item" v-if="showMenue('bus.type.create')">
+              <!-- <li class="nav-item" v-if="showMenue('bus.type.create')">
                 <router-link
                   class="nav-link"
                   :to="{
@@ -100,7 +100,7 @@
                   }"
                   >Add Vehicle Type
                 </router-link>
-              </li>
+              </li> -->
             </ul>
           </b-collapse>
         </li>
@@ -117,7 +117,7 @@
                   >All Drivers</router-link
                 >
               </li>
-              <li class="nav-item" v-if="showMenue('driver.create')">
+              <!-- <li class="nav-item" v-if="showMenue('driver.create')">
                 <router-link
                   class="nav-link"
                   :to="{
@@ -125,7 +125,7 @@
                   }"
                   >Create Driver</router-link
                 >
-              </li>
+              </li> -->
             </ul>
           </b-collapse>
         </li>
@@ -146,7 +146,7 @@
                   >All stops</router-link
                 >
               </li>
-              <li class="nav-item" v-if="showMenue('stop.create')">
+              <!-- <li class="nav-item" v-if="showMenue('stop.create')">
                 <router-link
                   class="nav-link"
                   :to="{
@@ -154,14 +154,14 @@
                   }"
                   >Create stops</router-link
                 >
-              </li>
+              </li> -->
 
               <li class="nav-item" v-if="showMenue('route.view')">
                 <router-link class="nav-link" :to="{ path: '/routes' }"
                   >All Routes</router-link
                 >
               </li>
-              <li class="nav-item" v-if="showMenue('route.create')">
+              <!-- <li class="nav-item" v-if="showMenue('route.create')">
                 <router-link
                   class="nav-link"
                   :to="{
@@ -169,7 +169,7 @@
                   }"
                   >Create Route</router-link
                 >
-              </li>
+              </li> -->
               <li class="nav-item" v-if="showMenue('bus.load')">
                 <router-link
                   class="nav-link"
@@ -179,7 +179,7 @@
                   >All Vehicles Schedule</router-link
                 >
               </li>
-              <li class="nav-item" v-if="showMenue('bus.load')">
+              <!-- <li class="nav-item" v-if="showMenue('bus.load')">
                 <router-link
                   class="nav-link"
                   :to="{
@@ -187,7 +187,7 @@
                   }"
                   >Create Vehicle schedule</router-link
                 >
-              </li>
+              </li> -->
             </ul>
           </b-collapse>
         </li>
@@ -207,11 +207,11 @@
                   >All Employees</router-link
                 >
               </li>
-              <li class="nav-item" v-if="showMenue('customer.create')">
+              <!-- <li class="nav-item" v-if="showMenue('customer.create')">
                 <router-link class="nav-link" :to="{ path: '/customer/create' }"
                   >Create Employee</router-link
                 >
-              </li>
+              </li> -->
               
               <li class="nav-item" v-if="showMenue('suggests')">
                 <router-link class="nav-link" :to="{ path: '/suggests' }"
@@ -336,7 +336,7 @@
           </a>
           <b-collapse id="trips">
             <ul class="nav flex-column sub-menu">
-              <li class="nav-item" v-if="showMenue('manage.trips.create')">
+              <!-- <li class="nav-item" v-if="showMenue('manage.trips.create')">
                 <router-link
                   class="nav-link"
                   :to="{
@@ -344,7 +344,7 @@
                   }"
                   >Create</router-link
                 >
-              </li>
+              </li> -->
               <li class="nav-item" v-if="showMenue('manage.trips.view')">
                 <router-link
                   class="nav-link"
@@ -532,7 +532,7 @@
                   >Lists</router-link
                 >
               </li>
-              <li class="nav-item" v-if="showMenue('notification.create')">
+              <!-- <li class="nav-item" v-if="showMenue('notification.create')">
                 <router-link
                   class="nav-link"
                   :to="{
@@ -540,7 +540,7 @@
                   }"
                   >Create</router-link
                 >
-              </li>
+              </li> -->
             </ul>
           </b-collapse>
         </li>
@@ -557,7 +557,7 @@
                   >Manage Users</router-link
                 >
               </li>
-              <li class="nav-item" v-if="showMenue('user.create')">
+              <!-- <li class="nav-item" v-if="showMenue('user.create')">
                 <router-link
                   class="nav-link"
                   :to="{
@@ -565,7 +565,7 @@
                   }"
                   >Create User</router-link
                 >
-              </li>
+              </li> -->
             </ul>
           </b-collapse>
         </li>

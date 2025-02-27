@@ -107,6 +107,13 @@
                 role="group"
                 aria-label="Basic example"
               >
+                <router-link v-if="showMenue('user.create')"
+                  class="nav-link btn btn-success mr-2"
+                  :to="{
+                    path: '/user/create',
+                  }"
+                  >Create</router-link
+                >
                 <download-excel
                   class="btn btn-success mr-2"
                   :data="excelDownload"
@@ -152,6 +159,8 @@ import { mapState } from "pinia";
 import { useApp } from "../../../store/useApp";
 import { fetchUsers } from "../../../store/fetchUsers";
 import { getDateFormat } from "../../../helpers/utils";
+
+import { useAuth } from "../../../store/useAuth.js";
 
 export default {
   name: "users",
@@ -239,6 +248,7 @@ export default {
     modalView,
   },
   computed: {
+    ...mapState(useAuth,['isAuth', 'getRolePermissionsArr']),
     excelDownload() {
       return userService.tranform(this.rows);
     },
@@ -252,6 +262,17 @@ export default {
     this.fetchData();
   },
   methods: {
+    showMenue(data) {
+      if (this.getRolePermissionsArr.length > 0) {
+        if (this.getRolePermissionsArr.includes(data)) {
+          return true;
+        } else {
+          return false;
+        }
+      } else {
+        return true;
+      }
+    },
     momentFormat(createdAt, format) {
       return getDateFormat(createdAt, format);
     },

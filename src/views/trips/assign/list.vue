@@ -111,7 +111,14 @@
             <template slot="paginataion-previous-button"> Previous </template>
             <template slot="paginataion-next-button"> Next </template>
             <template slot="vbt-action-buttons">
-              <div class="float-right">
+              <div class="btn-group float-right">
+                <router-link v-if="showMenue('manage.trips.create')"
+                  class="nav-link btn btn-success mr-2"
+                  :to="{
+                    path: '/trips/assign/create',
+                  }"
+                  >Create</router-link
+                >
                 <download-excel
                   class="btn btn-success mr-5"
                   :data="excelDownload"
@@ -136,6 +143,8 @@ import downloadExcel from "vue-json-excel";
 import moment from "moment-timezone";
 import { mapState } from "pinia";
 import { useApp } from "../../../store/useApp";
+
+import { useAuth } from "../../../store/useAuth.js";
 //import { getDateFormat } from "../../../helpers/utils";
 
 export default {
@@ -221,6 +230,7 @@ export default {
     Breadcrumb,
   },
   computed: {
+    ...mapState(useAuth,['isAuth', 'getRolePermissionsArr']),
     excelDownload() {
       return assignService.transform(this.rows);
     },
@@ -230,6 +240,17 @@ export default {
     ...mapState(useApp, ["dateFormat", "timeFormat", "timezone"]),
   },
   methods: {
+    showMenue(data) {
+      if (this.getRolePermissionsArr.length > 0) {
+        if (this.getRolePermissionsArr.includes(data)) {
+          return true;
+        } else {
+          return false;
+        }
+      } else {
+        return true;
+      }
+    },
     dateFormated(createdAt, format) {
       return moment(createdAt).format(format); //getDateFormat(createdAt, format); //"DD MMM, YYYY"
     },

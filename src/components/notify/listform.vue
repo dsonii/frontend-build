@@ -84,7 +84,14 @@
       <template slot="paginataion-next-button"> Next </template>
 
       <template slot="vbt-action-buttons">
-        <div class="float-right">
+        <div class="btn-group float-right">
+            <router-link v-if="showMenue('notification.create')"
+              class="nav-link btn btn-success mr-2"
+              :to="{
+                path: '/notifications/create',
+              }"
+              >Create</router-link
+            >
           <download-excel
             class="btn btn-success"
             :data="excelDownload"
@@ -115,6 +122,9 @@ import { notificationService } from "../../services";
 import VueBootstrap4Table from "vue-bootstrap4-table";
 import moment from "moment-timezone";
 import downloadExcel from "vue-json-excel";
+
+import { mapState } from "pinia";
+import { useAuth } from "../../store/useAuth.js";
 
 export default {
   name: "notification-list",
@@ -202,6 +212,7 @@ export default {
     VueBootstrap4Table,
   },
   computed: {
+    ...mapState(useAuth,['isAuth', 'getRolePermissionsArr']),
     excelDownload() {
       return notificationService.tranform(this.rows);
     },
@@ -210,6 +221,17 @@ export default {
     },
   },
   methods: {
+    showMenue(data) {
+      if (this.getRolePermissionsArr.length > 0) {
+        if (this.getRolePermissionsArr.includes(data)) {
+          return true;
+        } else {
+          return false;
+        }
+      } else {
+        return true;
+      }
+    },
     updateStatus(status, id) {
       notificationService.updateStatus(id, { status }).then((response) => {
         if (response.status) {

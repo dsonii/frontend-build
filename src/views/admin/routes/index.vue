@@ -83,6 +83,13 @@
               role="group"
               aria-label="Basic example"
             >
+                <router-link v-if="showMenue('route.create')"
+                  class="nav-link btn btn-success mr-2"
+                  :to="{
+                    path: '/route/create',
+                  }"
+                  >Create Route</router-link
+                >
               <download-excel
                 class="btn btn-success"
                 :data="excelDownload"
@@ -121,6 +128,7 @@ import modalView from "./modelView";
 import { mapState } from "pinia";
 import { useApp } from "../../../store/useApp";
 import { getDateFormat } from "../../../helpers/utils";
+import { useAuth } from "../../../store/useAuth.js";
 
 export default {
   name: "routes",
@@ -148,6 +156,16 @@ export default {
           label: "Total Stops",
           name: "total_stops",
           sort: true,
+        },
+        {
+          label: "Departure Location",
+          name: "da",
+          sort: false,
+        },
+        {
+          label: "Arrival Location",
+          name: "al",
+          sort: false,
         },
         {
           label: "Status",
@@ -205,6 +223,7 @@ export default {
     modalView,
   },
   computed: {
+    ...mapState(useAuth,['isAuth', 'getRolePermissionsArr']),
     excelDownload() {
       return routeService.tranform(this.rows);
     },
@@ -214,6 +233,17 @@ export default {
     ...mapState(useApp, ["dateFormat"]),
   },
   methods: {
+    showMenue(data) {
+      if (this.getRolePermissionsArr.length > 0) {
+        if (this.getRolePermissionsArr.includes(data)) {
+          return true;
+        } else {
+          return false;
+        }
+      } else {
+        return true;
+      }
+    },
     momentFormat(createdAt, format) {
       return getDateFormat(createdAt, format);
     },
@@ -321,6 +351,13 @@ export default {
     loadItems() {
       routeService.getAll(this.queryParams).then((response) => {
         this.total_rows = response.data.totalRecords;
+        let dataD = response.data.routes;
+        for (let index = 0; index < dataD.length; index++) {
+          dataD[index].da = dataD[index].stops[0].location;
+          dataD[index].al = dataD[index].stops[dataD[index].stops.length - 1].location;
+          
+        }
+        response.data.routes = dataD;
         this.rows = response.data.routes;
         this.showLoader = false;
       });
