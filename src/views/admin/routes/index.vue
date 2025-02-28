@@ -353,9 +353,16 @@ export default {
         this.total_rows = response.data.totalRecords;
         let dataD = response.data.routes;
         for (let index = 0; index < dataD.length; index++) {
-          dataD[index].da = dataD[index].stops[0].location;
-          dataD[index].al = dataD[index].stops[dataD[index].stops.length - 1].location;
-          
+          dataD[index].da = "";
+          dataD[index].al = "";
+          if (typeof dataD[index].stops != 'undefined') {
+            if (typeof dataD[index].stops[0] != 'undefined') {
+              dataD[index].da = dataD[index].stops[0].location;
+            }
+            if (typeof dataD[index].stops[dataD[index].stops.length - 1] != 'undefined') {
+              dataD[index].al = dataD[index].stops[dataD[index].stops.length - 1].location;
+            }
+          }
         }
         response.data.routes = dataD;
         this.rows = response.data.routes;
