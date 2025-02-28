@@ -181,12 +181,7 @@
                     }"
                     :state="validateState('email')"
                   ></b-form-input>
-                  <b-form-invalid-feedback
-                    v-if="submitted || !$v.form.email.required"
-                    class="invalid-feedback"
-                  >
-                    email address is required
-                  </b-form-invalid-feedback>
+                
                 </b-form-group>
 
                 
@@ -666,7 +661,7 @@ export default {
     form: {
       company: { required },
       customer_code: { required },
-      email: { required, email },
+      email: { email },
       firstname: { required, alpha },
       lastname: { required, alpha },
       phone: {

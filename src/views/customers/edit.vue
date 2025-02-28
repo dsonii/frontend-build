@@ -111,12 +111,7 @@
                     }"
                     :state="validateState('email')"
                   ></b-form-input>
-                  <div
-                    v-if="submitted && !$v.form.email.required"
-                    class="invalid-feedback"
-                  >
-                    email address is required
-                  </div>
+                 
                 </b-form-group>
                 <b-form-group
                   label="Country code"
@@ -604,7 +599,7 @@ export default {
       customer_code: { required },
       firstname: { required },
       lastname: { required },
-      email: { required, email },
+      email: { email },
       phone: {
         required,
         numeric,

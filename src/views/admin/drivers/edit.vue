@@ -89,11 +89,6 @@
                         }"
                         :state="validateState('email')"
                       ></b-form-input>
-                      <b-form-invalid-feedback
-                        v-if="submitted || !$v.form.email.required"
-                      >
-                        email address is required
-                      </b-form-invalid-feedback>
 
                       <b-form-invalid-feedback v-if="!$v.form.email.email"
                         >Please enter a valid email
@@ -528,7 +523,7 @@ export default {
   },
   validations: {
     form: {
-      email: { required, email },
+      email: { email },
       firstname: { required, alpha },
       lastname: { required, alpha },
       country_code: { required },
