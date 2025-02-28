@@ -4,17 +4,19 @@
       <table class="table  table-bordered  table-striped">
         <tr>
           <td>Title</td>
+          <td>Total Stops</td>
           <td>Stops</td>
-          <td>Departure Location</td>
-          <td>Arrival Location</td>
           <td>Status</td>
           <td>Created At</td>
         </tr>
         <tr>
           <td>{{ form.title }}</td>
           <td>{{ form.total_stops }}</td>
-          <td>{{ form.da }}</td>
-          <td>{{ form.al }}</td>
+          <td>
+            <ul>
+              <li v-for="(item, index)  in form.stops" :key="index" >{{ item.location }}</li>
+            </ul>
+          </td>
           <td>{{ form.status }}</td>
           <td>{{
               dateConvert(
