@@ -1,6 +1,6 @@
 <template>
   <div>
-<h1>hello there</h1>
+ 
     <b-form :if="formtype" @submit.prevent="createBus">
       <b-form-group
         label="Name"
@@ -268,6 +268,86 @@
           vehicle layout is required
         </b-form-invalid-feedback>
       </b-form-group>
+
+      <!-- Owner Name -->
+      <b-form-group
+        label="Owner Name"
+        label-for="owner-name-input"
+        label-cols-sm="4"
+        label-cols-lg="3"
+        content-cols-sm
+        content-cols-lg="7"
+      >
+        <b-form-input
+          id="owner-name-input"
+          v-model.trim="$v.form.owner_name.$model"
+          type="text"
+          placeholder="Enter owner's name"
+          :class="{
+            'is-invalid': submitted || $v.form.owner_name.$error,
+          }"
+          :state="validateState('owner_name')"
+        ></b-form-input>
+        <b-form-invalid-feedback v-if="submitted || !$v.form.owner_name.required">
+          Owner name is required
+        </b-form-invalid-feedback>
+      </b-form-group>
+
+      <!-- Fuel Type -->
+      <b-form-group
+        label="Fuel Type"
+        label-for="fuel-type-input"
+        label-cols-sm="4"
+        label-cols-lg="3"
+        content-cols-sm
+        content-cols-lg="7"
+      >
+        <b-form-select
+          v-model.trim="$v.form.fuel_type.$model"
+          :options="[
+            { value: null, text: '-- Select fuel type --' },
+            { value: 'Petrol', text: 'Petrol' },
+            { value: 'Diesel', text: 'Diesel' },
+            { value: 'CNG', text: 'CNG' },
+            { value: 'Electric', text: 'Electric' },
+            { value: 'Hybrid', text: 'Hybrid' },
+          ]"
+          :class="{
+            'is-invalid': submitted || $v.form.fuel_type.$error,
+          }"
+          :state="validateState('fuel_type')"
+        ></b-form-select>
+        <b-form-invalid-feedback v-if="submitted || !$v.form.fuel_type.required">
+          Please select a fuel type
+        </b-form-invalid-feedback>
+      </b-form-group>
+
+      <!-- Hypothecation Detail -->
+      <b-form-group
+        label="Hypothecation Detail"
+        label-for="hypothecation-input"
+        label-cols-sm="4"
+        label-cols-lg="3"
+        content-cols-sm
+        content-cols-lg="7"
+      >
+        <b-form-textarea
+          id="hypothecation-input"
+          v-model.trim="$v.form.hypothecation_detail.$model"
+          placeholder="Enter hypothecation details"
+          rows="3"
+          :class="{
+            'is-invalid': submitted || $v.form.hypothecation_detail.$error,
+          }"
+          :state="validateState('hypothecation_detail')"
+        ></b-form-textarea>
+        <b-form-invalid-feedback
+          v-if="submitted || !$v.form.hypothecation_detail.required"
+        >
+          Hypothecation detail is required
+        </b-form-invalid-feedback>
+      </b-form-group>
+
 
       <b-form-group
         label="Status "
@@ -610,6 +690,9 @@ export default {
         certificate_permit: "",
         certificate_permit_expiry_date: "",
         status: "",
+        owner_name: "",
+        fuel_type: null,
+        hypothecation_detail: "",
       },
       submitted: false,
       loading: false,
@@ -704,6 +787,13 @@ export default {
       certificate_fitness_expiry_date: {},
       certificate_permit_expiry_date: {},
       //certificate_registration: { required },
+
+      owner_name: {
+        required,
+        alpha: helpers.regex('alpha', /^[A-Za-z\s]+$/),
+      },
+      fuel_type: { required },
+      hypothecation_detail: { required },
     },
   },
   computed: {

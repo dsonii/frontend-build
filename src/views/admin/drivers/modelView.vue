@@ -1,6 +1,7 @@
 <template>
   <div>
     <section class="tables">
+    <div class="table-scroll">
       <table class="table  table-bordered  table-striped styledClass">
         <tr>
           <td>Full Name</td>
@@ -10,6 +11,11 @@
           <td>Licence</td>
           <td>Aadhaar No</td>
           <td>Police Verification</td>
+          <td> Gender </td>
+          <td> DOB </td>
+          <td> Emergency Contact </td>
+          <td> Permanent Address </td>
+          <td> Temporary Address </td>
         </tr>
         <tr>
           <td>{{ modalData.firstname }} {{ modalData.lastname }}</td>
@@ -31,9 +37,16 @@
             Exp.: {{ dateConvert(modalData.police_vertification_expiry_date,
             'Y-MM-DD') }}
           </td>
+          <td>{{ modalData.gender}} </td>
+          <td> {{ dateConvert(modalData.dob,
+            'Y-MM-DD') }} </td>
+            <td> {{ modalData.emergency_number }}</td>
+            <td> {{ modalData.permanent_address }}</td>
+            <td> {{ modalData.temporary_address }}</td>
            
         </tr>
       </table>
+      </div>
     </section>
   </div>
 </template>
@@ -62,5 +75,10 @@ export default {
     object-fit: contain;
     height: 150px !important;
     border-radius: 0 !important;
+}
+
+.table-scroll {
+  overflow-x: auto;
+  max-width: 100%;
 }
 </style>

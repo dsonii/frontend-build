@@ -193,6 +193,19 @@ export default {
           sort: true,
         },
         {
+          label: "Gender",
+          name: "gender",
+          sort: false,
+
+        },
+        {
+          label: "Emergency Contact",
+          name: "emergency_number",
+          sort: false,
+        },
+      
+
+        {
           label: "CreatedAt",
           name: "createdAt",
         },
@@ -241,6 +254,11 @@ export default {
         document_adhar_card: "",
         document_police_vertification: "",
         createdAt: "",
+        gender: "",
+        dob: "",
+        emergency_number: "",
+        temporary_address: "",
+        permanent_address: "",
       },
       modalEdit: false,
       modalView: false,
