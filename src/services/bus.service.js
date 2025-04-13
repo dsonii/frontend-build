@@ -79,6 +79,7 @@ async function find(id) {
   try {
     const privateAuth = useAuthApi();
     const response = await privateAuth.get("buses/" + id);
+    
     return response.data;
   } catch (e) {
     return e.response;

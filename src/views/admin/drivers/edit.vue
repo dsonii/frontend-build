@@ -188,7 +188,7 @@
                       <b-form-invalid-feedback
                         v-if="submitted || !$v.form.national_id.required"
                       >
-                      Aadhaar No  is required
+                        Aadhaar No is required
                       </b-form-invalid-feedback>
 
                       <b-form-invalid-feedback
@@ -248,6 +248,135 @@
                       <b-form-invalid-feedback
                         v-if="submitted || !$v.form.status.required"
                         >Please select status</b-form-invalid-feedback
+                      >
+                    </b-form-group>
+
+                    <b-form-group
+                      label="Gender"
+                      label-for="gender-input"
+                      label-cols-sm="4"
+                      label-cols-lg="3"
+                      content-cols-sm
+                      content-cols-lg="7"
+                    >
+                      <b-form-radio-group
+                        v-model.trim="$v.form.gender.$model"
+                        :options="[
+                          { text: 'Male', value: 'male' },
+                          { text: 'Female', value: 'female' },
+                          { text: 'Prefer not to say', value: 'not_disclose' },
+                        ]"
+                        :class="{
+                          'is-invalid': submitted || $v.form.gender.$error,
+                        }"
+                        :state="validateState('gender')"
+                        name="gender"
+                      ></b-form-radio-group>
+                      <b-form-invalid-feedback
+                        v-if="submitted || !$v.form.gender.required"
+                        >Please select gender</b-form-invalid-feedback
+                      >
+                    </b-form-group>
+
+                    <!-- Date of Birth -->
+                    <b-form-group
+                      label="Date of Birth"
+                      label-for="dob-input"
+                      label-cols-sm="4"
+                      label-cols-lg="3"
+                      content-cols-sm
+                      content-cols-lg="7"
+                    >
+                      <b-form-input
+                        id="dob-input"
+                        type="date"
+                        v-model.trim="$v.form.dob.$model"
+                        :class="{
+                          'is-invalid': submitted || $v.form.dob.$error,
+                        }"
+                        :state="validateState('dob')"
+                      ></b-form-input>
+                      <b-form-invalid-feedback
+                        v-if="submitted || !$v.form.dob.required"
+                        >Date of Birth is required</b-form-invalid-feedback
+                      >
+                    </b-form-group>
+
+                    <!-- Temporary Address -->
+                    <b-form-group
+                      label="Temporary Address"
+                      label-for="temp-address-input"
+                      label-cols-sm="4"
+                      label-cols-lg="3"
+                      content-cols-sm
+                      content-cols-lg="7"
+                    >
+                      <b-form-textarea
+                        id="temp-address-input"
+                        v-model.trim="$v.form.temporary_address.$model"
+                        placeholder="Enter temporary address"
+                        rows="2"
+                        :class="{
+                          'is-invalid':
+                            submitted || $v.form.temporary_address.$error,
+                        }"
+                        :state="validateState('temporary_address')"
+                      ></b-form-textarea>
+                      <b-form-invalid-feedback
+                        v-if="submitted || !$v.form.temporary_address.required"
+                        >Temporary address is required</b-form-invalid-feedback
+                      >
+                    </b-form-group>
+
+                    <!-- Permanent Address -->
+                    <b-form-group
+                      label="Permanent Address"
+                      label-for="perm-address-input"
+                      label-cols-sm="4"
+                      label-cols-lg="3"
+                      content-cols-sm
+                      content-cols-lg="7"
+                    >
+                      <b-form-textarea
+                        id="perm-address-input"
+                        v-model.trim="$v.form.permanent_address.$model"
+                        placeholder="Enter permanent address"
+                        rows="2"
+                        :class="{
+                          'is-invalid':
+                            submitted || $v.form.permanent_address.$error,
+                        }"
+                        :state="validateState('permanent_address')"
+                      ></b-form-textarea>
+                      <b-form-invalid-feedback
+                        v-if="submitted || !$v.form.permanent_address.required"
+                        >Permanent address is required</b-form-invalid-feedback
+                      >
+                    </b-form-group>
+
+                    <!-- Emergency Contact -->
+                    <b-form-group
+                      label="Emergency Contact"
+                      label-for="emergency-input"
+                      label-cols-sm="4"
+                      label-cols-lg="3"
+                      content-cols-sm
+                      content-cols-lg="7"
+                    >
+                      <b-form-input
+                        id="emergency-input"
+                        v-model.trim="$v.form.emergency_number.$model"
+                        type="text"
+                        placeholder="Enter emergency contact number"
+                        :class="{
+                          'is-invalid':
+                            submitted || $v.form.emergency_number.$error,
+                        }"
+                        :state="validateState('emergency_number')"
+                      ></b-form-input>
+                      <b-form-invalid-feedback
+                        v-if="submitted || !$v.form.emergency_number.required"
+                        >Emergency contact is required</b-form-invalid-feedback
                       >
                     </b-form-group>
                   </b-card-text>
@@ -326,17 +455,17 @@
                       label-cols-lg="3"
                       content-cols-sm
                       content-cols-lg="7"
-                       v-if="show"
+                      v-if="show"
                     >
                       <div>
                         <b-form-input
-                        id="licence-expiry-date-input"
-                        v-model.trim="$v.form.licence_expiry_date.$model"
-                        type="date"
-                        placeholder="Select Date"
-                      ></b-form-input>
+                          id="licence-expiry-date-input"
+                          v-model.trim="$v.form.licence_expiry_date.$model"
+                          type="date"
+                          placeholder="Select Date"
+                        ></b-form-input>
                       </div>
-                  </b-form-group>
+                    </b-form-group>
 
                     <b-form-group
                       label="Aadhaar No"
@@ -408,24 +537,25 @@
                         </button>
                       </div>
                     </b-form-group>
-                  <b-form-group
-                    label="Police Verification Expiry Date"
-                    label-for="police-varification-expiry-date-input"
-                    label-cols-sm="4"
-                    label-cols-lg="3"
-                    content-cols-sm
-                    content-cols-lg="7"
-                  >
-                    <div>
-                      <b-form-input
-                      id="police-varification-expiry-date-input"
-                      v-model.trim="$v.form.police_vertification_expiry_date.$model"
-                      type="date"
-                      placeholder="Select Date"
-                    ></b-form-input>
-                    </div>
-                  </b-form-group>
-
+                    <b-form-group
+                      label="Police Verification Expiry Date"
+                      label-for="police-varification-expiry-date-input"
+                      label-cols-sm="4"
+                      label-cols-lg="3"
+                      content-cols-sm
+                      content-cols-lg="7"
+                    >
+                      <div>
+                        <b-form-input
+                          id="police-varification-expiry-date-input"
+                          v-model.trim="
+                            $v.form.police_vertification_expiry_date.$model
+                          "
+                          type="date"
+                          placeholder="Select Date"
+                        ></b-form-input>
+                      </div>
+                    </b-form-group>
                   </b-card-text>
                 </b-card>
               </b-col>
@@ -503,7 +633,7 @@ export default {
         email: "",
         phone: "",
         national_id: "",
-        country_code: '91',
+        country_code: "91",
         picture: "",
         document_licence: "",
         licence_expiry_date: "",
@@ -512,6 +642,11 @@ export default {
         police_vertification_expiry_date: "",
         status: "",
         type: "",
+        gender: "",
+        dob: "",
+        temporary_address: "",
+        permanent_address: "",
+        emergency_number: "",
       },
       submitted: false,
       loading: false,
@@ -559,6 +694,25 @@ export default {
       //   document_licence: { required },
       //   document_national_icard: { required },
       //   document_police_vertification: { required },
+
+      gender: {
+        required,
+      },
+      dob: {
+        required,
+      },
+      temporary_address: {
+        required,
+      },
+      permanent_address: {
+        required,
+      },
+      emergency_number: {
+        required,
+        minLength: minLength(10),
+        maxLength: maxLength(15),
+        numeric,
+      },
     },
   },
   computed: {
@@ -573,7 +727,7 @@ export default {
   },
   methods: {
     async loadCountries() {
-      this.countries =  [{text:"India (+91)",value:"91", default:true}];
+      this.countries = [{ text: "India (+91)", value: "91", default: true }];
     },
     checkType(val) {
       if (val === "assistant") {
@@ -609,8 +763,14 @@ export default {
       try {
         const response = await driverService.find(this.$route.params.id);
         if (response.status) {
-          response.data.licence_expiry_date = getDateFormat(response.data.licence_expiry_date, 'Y-MM-DD');
-          response.data.police_vertification_expiry_date = getDateFormat(response.data.police_vertification_expiry_date, 'Y-MM-DD');
+          response.data.licence_expiry_date = getDateFormat(
+            response.data.licence_expiry_date,
+            "Y-MM-DD"
+          );
+          response.data.police_vertification_expiry_date = getDateFormat(
+            response.data.police_vertification_expiry_date,
+            "Y-MM-DD"
+          );
           if (response.data.type === "assistant") {
             this.show = false;
           } else {

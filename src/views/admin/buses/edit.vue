@@ -116,7 +116,9 @@
                     >Only alphanumerics characters are
                     allowed</b-form-invalid-feedback
                   >
-                  <b-form-invalid-feedback v-if="!$v.form.model_no.uniqueModelNo">
+                  <b-form-invalid-feedback
+                    v-if="!$v.form.model_no.uniqueModelNo"
+                  >
                     This Model number is already registered.
                   </b-form-invalid-feedback>
                 </b-form-group>
@@ -212,7 +214,7 @@
                     >Amenities is a required field.</b-form-invalid-feedback
                   > 
             </b-form-checkbox-group> -->
-                  <!-- <b-form-select
+                <!-- <b-form-select
                     :options="amenitieslists"
                     v-model.trim="$v.form.amenities.$model"
                     :class="{
@@ -244,7 +246,8 @@
                   >
                     <template #first>
                       <b-form-select-option :value="null" disabled
-                        >-- Please select an vehicle type --</b-form-select-option
+                        >-- Please select an vehicle type
+                        --</b-form-select-option
                       >
                     </template>
                   </b-form-select>
@@ -273,7 +276,8 @@
                   >
                     <template #first>
                       <b-form-select-option :value="null" disabled
-                        >-- Please select an vehicle layout --</b-form-select-option
+                        >-- Please select an vehicle layout
+                        --</b-form-select-option
                       >
                     </template>
                   </b-form-select>
@@ -282,6 +286,83 @@
                     class="invalid-feedback"
                   >
                     vehicle layout is required
+                  </b-form-invalid-feedback>
+                </b-form-group>
+
+                <!-- Owner Name -->
+                <b-form-group
+                  label="Owner Name"
+                  label-for="owner-name-input"
+                  label-cols-sm="4"
+                  label-cols-lg="3"
+                  content-cols-sm
+                  content-cols-lg="7"
+                >
+                  <b-form-input
+                    id="owner-name-input"
+                    v-model.trim="$v.form.owner_name.$model"
+                    type="text"
+                    placeholder="Enter owner name"
+                    :class="{
+                      'is-invalid': submitted || $v.form.owner_name.$error,
+                    }"
+                    :state="validateState('owner_name')"
+                    @blur="$v.form.owner_name.$touch()"
+                  ></b-form-input>
+                  <b-form-invalid-feedback v-if="!$v.form.owner_name.required">
+                    Owner name is required
+                  </b-form-invalid-feedback>
+                </b-form-group>
+
+                <!-- Fuel Type -->
+                <b-form-group
+                  label="Fuel Type"
+                  label-for="fuel-type-input"
+                  label-cols-sm="4"
+                  label-cols-lg="3"
+                  content-cols-sm
+                  content-cols-lg="7"
+                >
+                  <b-form-select
+                    id="fuel-type-input"
+                    v-model.trim="$v.form.fuel_type.$model"
+                    :options="['Petrol', 'Diesel', 'Electric', 'Hybrid']"
+                    placeholder="Select fuel type"
+                    :class="{
+                      'is-invalid': submitted || $v.form.fuel_type.$error,
+                    }"
+                    :state="validateState('fuel_type')"
+                    @blur="$v.form.fuel_type.$touch()"
+                  />
+                  <b-form-invalid-feedback v-if="!$v.form.fuel_type.required">
+                    Fuel type is required
+                  </b-form-invalid-feedback>
+                </b-form-group>
+
+                <!-- Hypothecation -->
+                <b-form-group
+                  label="Hypothecation"
+                  label-for="hypothecation-input"
+                  label-cols-sm="4"
+                  label-cols-lg="3"
+                  content-cols-sm
+                  content-cols-lg="7"
+                >
+                  <b-form-textarea
+                    id="hypothecation-input"
+                    v-model.trim="$v.form.hypothecation_detail.$model"
+                    placeholder="Enter hypothecation details"
+                    :class="{
+                      'is-invalid': submitted || $v.form.hypothecation_detail.$error,
+                    }"
+                    :state="validateState('hypothecation_detail')"
+                    @blur="$v.form.hypothecation_detail.$touch()"
+                    rows="3"
+                  />
+                  <b-form-invalid-feedback
+                    v-if="!$v.form.hypothecation_detail.required"
+                  >
+                    Hypothecation details are required
                   </b-form-invalid-feedback>
                 </b-form-group>
 
@@ -415,14 +496,16 @@
                 >
                   <div>
                     <b-form-input
-                    id="certificate-pollution-expiry-date-input"
-                    v-model.trim="$v.form.certificate_pollution_expiry_date.$model"
-                    type="date"
-                    placeholder="Select Date"
-                  ></b-form-input>
+                      id="certificate-pollution-expiry-date-input"
+                      v-model.trim="
+                        $v.form.certificate_pollution_expiry_date.$model
+                      "
+                      type="date"
+                      placeholder="Select Date"
+                    ></b-form-input>
                   </div>
                 </b-form-group>
-                
+
                 <b-form-group
                   label="Insurance Certificate"
                   label-for="certificate-insurance-input"
@@ -464,13 +547,15 @@
                 >
                   <div>
                     <b-form-input
-                    id="certificate-insurance-expiry-date-input"
-                    v-model.trim="$v.form.certificate_insurance_expiry_date.$model"
-                    type="date"
-                    placeholder="Select Date"
-                  ></b-form-input>
+                      id="certificate-insurance-expiry-date-input"
+                      v-model.trim="
+                        $v.form.certificate_insurance_expiry_date.$model
+                      "
+                      type="date"
+                      placeholder="Select Date"
+                    ></b-form-input>
                   </div>
-                </b-form-group>  
+                </b-form-group>
 
                 <b-form-group
                   label="Fitness Certificate"
@@ -513,11 +598,13 @@
                 >
                   <div>
                     <b-form-input
-                    id="certificate-fitness-expiry-date-input"
-                    v-model.trim="$v.form.certificate_fitness_expiry_date.$model"
-                    type="date"
-                    placeholder="Select Date"
-                  ></b-form-input>
+                      id="certificate-fitness-expiry-date-input"
+                      v-model.trim="
+                        $v.form.certificate_fitness_expiry_date.$model
+                      "
+                      type="date"
+                      placeholder="Select Date"
+                    ></b-form-input>
                   </div>
                 </b-form-group>
 
@@ -562,11 +649,13 @@
                 >
                   <div>
                     <b-form-input
-                    id="certificate-permit-expiry-date-input"
-                    v-model.trim="$v.form.certificate_permit_expiry_date.$model"
-                    type="date"
-                    placeholder="Select Date"
-                  ></b-form-input>
+                      id="certificate-permit-expiry-date-input"
+                      v-model.trim="
+                        $v.form.certificate_permit_expiry_date.$model
+                      "
+                      type="date"
+                      placeholder="Select Date"
+                    ></b-form-input>
                   </div>
                 </b-form-group>
 
@@ -647,6 +736,9 @@ export default {
         certificate_permit: "",
         certificate_permit_expiry_date: "",
         status: "",
+        owner_name: "",
+        fuel_type: "",
+        hypothecation_detail: "",
       },
       submitted: false,
       loading: false,
@@ -720,6 +812,9 @@ export default {
           }
         },
       },
+      owner_name: { required },
+      fuel_type: { required },
+      hypothecation_detail: { required },
       brand: { required, alphaNum },
       model_no: {
         required,
@@ -804,14 +899,28 @@ export default {
     async getbus() {
       try {
         const response = await busService.find(this.$route.params.id);
-        response.data.certificate_pollution_expiry_date = getDateFormat(response.data.certificate_pollution_expiry_date, 'Y-MM-DD');
-        response.data.certificate_insurance_expiry_date = getDateFormat(response.data.certificate_insurance_expiry_date, 'Y-MM-DD');
-        response.data.certificate_fitness_expiry_date = getDateFormat(response.data.certificate_fitness_expiry_date, 'Y-MM-DD');
-        response.data.certificate_permit_expiry_date = getDateFormat(response.data.certificate_permit_expiry_date, 'Y-MM-DD');
+        
+        response.data.certificate_pollution_expiry_date = getDateFormat(
+          response.data.certificate_pollution_expiry_date,
+          "Y-MM-DD"
+        );
+        response.data.certificate_insurance_expiry_date = getDateFormat(
+          response.data.certificate_insurance_expiry_date,
+          "Y-MM-DD"
+        );
+        response.data.certificate_fitness_expiry_date = getDateFormat(
+          response.data.certificate_fitness_expiry_date,
+          "Y-MM-DD"
+        );
+        response.data.certificate_permit_expiry_date = getDateFormat(
+          response.data.certificate_permit_expiry_date,
+          "Y-MM-DD"
+        );
         if (response.status) {
           console.log(response.data);
           this.form = response.data;
         }
+        
       } catch (e) {
         console.log("params", e);
         this.$toast.open({
