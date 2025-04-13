@@ -1,5 +1,6 @@
 <template>
   <div>
+<h1>hello there</h1>
     <b-form :if="formtype" @submit.prevent="createBus">
       <b-form-group
         label="Name"
