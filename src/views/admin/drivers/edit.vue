@@ -264,7 +264,7 @@
                         :options="[
                           { text: 'Male', value: 'male' },
                           { text: 'Female', value: 'female' },
-                          { text: 'Prefer not to say', value: 'not_disclose' },
+                          { text: 'Not to disclose', value: 'not_disclosed' },
                         ]"
                         :class="{
                           'is-invalid': submitted || $v.form.gender.$error,
@@ -771,6 +771,8 @@ export default {
             response.data.police_vertification_expiry_date,
             "Y-MM-DD"
           );
+		response.data.dob = getDateFormat(response.data.dob,"Y-MM-DD");
+
           if (response.data.type === "assistant") {
             this.show = false;
           } else {
