@@ -124,7 +124,7 @@
                 </b-form-group>
 
                 <b-form-group
-                  label="Chassis No."
+                  label="Chassis/Motor No."
                   label-for="chassis-no-input"
                   label-cols-sm="4"
                   label-cols-lg="3"
