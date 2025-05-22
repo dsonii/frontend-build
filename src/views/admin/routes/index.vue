@@ -356,55 +356,55 @@ export default {
         this.showLoader = false;
       });
     },
-    // enableDropdowns() {
-    //   this.$el
-    //     .querySelectorAll('[data-toggle="dropdown"]')
-    //     .forEach(($dropdownToggle) => {
-    //       const $dropdown = $dropdownToggle.nextElementSibling;
-    //       let isShown = false;
+    enableDropdowns() {
+      this.$el
+        .querySelectorAll('[data-toggle="dropdown"]')
+        .forEach(($dropdownToggle) => {
+          const $dropdown = $dropdownToggle.nextElementSibling;
+          let isShown = false;
 
-    //       function setIsShown(state) {
-    //         isShown = state;
-    //         $dropdown.classList.toggle("show", isShown);
-    //       }
+          function setIsShown(state) {
+            isShown = state;
+            $dropdown.classList.toggle("show", isShown);
+          }
 
-    //       if (!this.dropdowns.includes($dropdown)) {
-    //         this.dropdowns.push($dropdown);
+          if (!this.dropdowns.includes($dropdown)) {
+            this.dropdowns.push($dropdown);
 
-    //         $dropdownToggle.addEventListener("click", (event) => {
-    //           event.preventDefault();
-    //           setIsShown(!isShown);
-    //         });
+            $dropdownToggle.addEventListener("click", (event) => {
+              event.preventDefault();
+              setIsShown(!isShown);
+            });
 
-    //         $dropdown.addEventListener("click", (event) => {
-    //           event.preventDefault();
-    //           setIsShown(false);
-    //         });
+            $dropdown.addEventListener("click", (event) => {
+              event.preventDefault();
+              setIsShown(false);
+            });
 
-    //         $dropdown.clickOutsideEvent = (event) => {
-    //           const isDropdownOrChildren =
-    //             $dropdown === event.target || $dropdown.contains(event.target);
-    //           const isDropdownToggleOrChildren =
-    //             $dropdownToggle === event.target ||
-    //             $dropdownToggle.contains(event.target);
+            $dropdown.clickOutsideEvent = (event) => {
+              const isDropdownOrChildren =
+                $dropdown === event.target || $dropdown.contains(event.target);
+              const isDropdownToggleOrChildren =
+                $dropdownToggle === event.target ||
+                $dropdownToggle.contains(event.target);
 
-    //           if (!isDropdownOrChildren && !isDropdownToggleOrChildren) {
-    //             setIsShown(false);
-    //           }
-    //         };
-    //         document.addEventListener("click", $dropdown.clickOutsideEvent);
-    //       }
-    //     });
-    // },
+              if (!isDropdownOrChildren && !isDropdownToggleOrChildren) {
+                 setIsShown(false);
+               }
+             };
+             document.addEventListener("click", $dropdown.clickOutsideEvent);
+           }
+         });
+     },
   },
-  // updated() {
-  //   this.enableDropdowns();
-  // },
-  // destroyed() {
-  //   this.dropdowns.forEach(($dropdown) => {
-  //     document.removeEventListener("click", $dropdown.clickOutsideEvent);
-  //   });
-  // },
+   updated() {
+     this.enableDropdowns();
+   },
+   destroyed() {
+     this.dropdowns.forEach(($dropdown) => {
+       document.removeEventListener("click", $dropdown.clickOutsideEvent);
+     });
+   },
   mounted() {
     this.loadItems();
   },

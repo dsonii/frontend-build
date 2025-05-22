@@ -771,6 +771,8 @@ export default {
             response.data.police_vertification_expiry_date,
             "Y-MM-DD"
           );
+
+          response.data.dob = getDateFormat(response.data.dob, "Y-MM-DD");
           if (response.data.type === "assistant") {
             this.show = false;
           } else {

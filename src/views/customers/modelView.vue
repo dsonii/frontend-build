@@ -11,7 +11,7 @@
           <td>Email</td>
           <td>Phone</td>
           <td>Status</td>
-          <td>Created By</td>
+          
         </tr>
         <tr>
           <td><b-img
@@ -28,9 +28,26 @@
           <td>{{ modalData.email }}</td>
           <td>+{{ modalData.country_code }}{{ modalData.phone }}</td>
           <td>{{ modalData.status }}</td>
+         
+        </tr>
+      </table>
+      <table class="table  table-bordered  table-striped styledClass">
+        <tr>
+          <td>Emergency Contact I</td>
+          <td>Emergency Contact II</td>
+          <td>Emergency Contact III</td>
+          
+          <td>Created By</td>
+        </tr>
+        <tr>
+         
+          <td>{{ modalData.emargency_number1 }}</td>
+          <td>{{ modalData.emargency_number2 }}</td>
+          <td>{{ modalData.emargency_number3 }}</td>
           <td>{{ modalData.created_by }}</td>
         </tr>
       </table>
+
     </section>
   </div>
 </template>
