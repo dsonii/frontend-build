@@ -254,7 +254,7 @@
                   :options="[
                     { text: 'Male', value: 'male' },
                     { text: 'Female', value: 'female' },
-                    { text: 'Not Disclose', value: 'not_disclose' },
+                    { text: 'Not to disclose', value: 'not_disclosed' },
                   ]"
                   v-model.trim="$v.form.gender.$model"
                   :class="{ 'is-invalid': submitted || $v.form.gender.$error }"
