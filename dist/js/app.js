@@ -3712,7 +3712,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 
-const BASE_URL = "https://stg.happiesttravel.com/v1";
+const BASE_URL = "https://stg.happiesttravel.com/v1/";
 const baseApi = axios__WEBPACK_IMPORTED_MODULE_0___default.a.create({
   mode: "no-cors",
   baseURL: BASE_URL,
@@ -6246,20 +6246,13 @@ function tranform(rows) {
     selectableItems.push({
       id: i++,
       fullname: user.fullname,
+      company: user.company,
+      emp_code: user.customer_code,
       gender: user.gender,
       email: user.email,
       phone: user.phone,
-      mode: user.mode,
-      refercode: user.refercode,
-      ProfilePic: user.ProfilePic,
-      home_address: user.home_address,
-      home_lat: user.home_lat,
-      home_lng: user.home_lng,
-      home_timing: user.home_timing,
-      office_timing: user.office_timing,
-      office_address: user.office_address,
-      office_lat: user.office_lat,
-      office_lng: user.office_lng,
+      home_address: user.places.home.address,
+      office_address: user.places.office.address,
       status: user.status,
       createdAt: Object(_helpers_utils__WEBPACK_IMPORTED_MODULE_4__["getDateFormat"])(user.createdAt)
     });
@@ -6318,6 +6311,8 @@ async function loadCountData() {
   try {
     const privateAuth = Object(_helpers_authHook__WEBPACK_IMPORTED_MODULE_0__["default"])();
     const response = await privateAuth.get("dashboard/count");
+    console.log("response frontend");
+    console.log(response.data);
     return response.data;
   } catch (e) {
     console.log("dashboard", e);

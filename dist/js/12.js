@@ -250,6 +250,18 @@ __webpack_require__.r(__webpack_exports__);
       countScheduledBooking: {
         startVal: 0,
         endVal: 0
+      },
+      totalCancelled: {
+        startVal: 0,
+        endVal: 0
+      },
+      totalVehicleOnboarded: {
+        startVal: 0,
+        endVal: 0
+      },
+      routeAvailable: {
+        startVal: 0,
+        endVal: 0
       }
     };
   },
@@ -268,6 +280,9 @@ __webpack_require__.r(__webpack_exports__);
         this.countTotalBooking = response.data.countTotalBooking;
         this.countTodayCompletedBooking = response.data.todayCompletedBooking;
         this.countScheduledBooking = response.data.todayScheduledBooking;
+        this.totalCancelled = response.data.totalCancelled;
+        this.totalVehicleOnboarded = response.data.totalVehicleOnboarded;
+        this.routeAvailable = response.data.routeAvailable;
       });
     }
     // toggleProBanner: function () {
@@ -642,7 +657,7 @@ var render = function render() {
     },
     attrs: {
       to: {
-        path: "/bookings/scheduled"
+        path: "/bookings/completed"
       }
     }
   }, [_c("countTo", {
@@ -703,7 +718,93 @@ var render = function render() {
       endVal: _vm.countScheduledBooking.endVal,
       duration: _vm.countScheduledBooking.duration
     }
-  })], 1)], 1), _vm._m(5)])])])])])])])]);
+  })], 1)], 1), _vm._m(5)])])])])])])]), _c("div", {
+    staticClass: "row"
+  }, [_c("div", {
+    staticClass: "col-md-12 grid-margin"
+  }, [_c("div", {
+    staticClass: "card card-statistics"
+  }, [_c("div", {
+    staticClass: "row"
+  }, [_c("div", {
+    staticClass: "card-col col-xl-4 col-lg-4 col-md-4 col-6"
+  }, [_c("div", {
+    staticClass: "card-body"
+  }, [_c("div", {
+    staticClass: "d-flex align-items-center justify-content-center flex-column flex-sm-row"
+  }, [_c("div", {
+    staticClass: "text-primary mr-0 icon-lg"
+  }, [_c("i", {
+    staticClass: "mdi mdi-ticket-confirmation"
+  }), _c("router-link", {
+    staticStyle: {
+      "text-decoration": "none",
+      color: "#002c5f"
+    },
+    attrs: {
+      to: {
+        path: "/bookings/cancelled"
+      }
+    }
+  }, [_c("countTo", {
+    attrs: {
+      startVal: _vm.totalCancelled.startVal,
+      endVal: _vm.totalCancelled.endVal,
+      duration: _vm.totalCancelled.duration
+    }
+  })], 1)], 1), _vm._m(6)])])]), _c("div", {
+    staticClass: "card-col col-xl-4 col-lg-4 col-md-4 col-6"
+  }, [_c("div", {
+    staticClass: "card-body"
+  }, [_c("div", {
+    staticClass: "d-flex align-items-center justify-content-center flex-column flex-sm-row"
+  }, [_c("div", {
+    staticClass: "text-primary mr-0 icon-lg"
+  }, [_c("i", {
+    staticClass: "mdi mdi-ticket-confirmation"
+  }), _c("router-link", {
+    staticStyle: {
+      "text-decoration": "none",
+      color: "#002c5f"
+    },
+    attrs: {
+      to: {
+        path: "/buses"
+      }
+    }
+  }, [_c("countTo", {
+    attrs: {
+      startVal: _vm.totalVehicleOnboarded.startVal,
+      endVal: _vm.totalVehicleOnboarded.endVal,
+      duration: _vm.totalVehicleOnboarded.duration
+    }
+  })], 1)], 1), _vm._m(7)])])]), _c("div", {
+    staticClass: "card-col col-xl-4 col-lg-4 col-md-4 col-6"
+  }, [_c("div", {
+    staticClass: "card-body"
+  }, [_c("div", {
+    staticClass: "d-flex align-items-center justify-content-center flex-column flex-sm-row"
+  }, [_c("div", {
+    staticClass: "text-primary mr-0 icon-lg"
+  }, [_c("i", {
+    staticClass: "mdi mdi-ticket-confirmation"
+  }), _c("router-link", {
+    staticStyle: {
+      "text-decoration": "none",
+      color: "#002c5f"
+    },
+    attrs: {
+      to: {
+        path: "/routes"
+      }
+    }
+  }, [_c("countTo", {
+    attrs: {
+      startVal: _vm.routeAvailable.startVal,
+      endVal: _vm.routeAvailable.endVal,
+      duration: _vm.routeAvailable.duration
+    }
+  })], 1)], 1), _vm._m(8)])])])])])])])]);
 };
 var staticRenderFns = [function () {
   var _vm = this,
@@ -742,7 +843,7 @@ var staticRenderFns = [function () {
     staticClass: "wrapper text-center text-sm-right"
   }, [_c("p", {
     staticClass: "card-text mb-0"
-  }, [_vm._v("Total Ticket Booking")]), _c("div", {
+  }, [_vm._v("Total Completed Booking")]), _c("div", {
     staticClass: "fluid-container"
   })]);
 }, function () {
@@ -752,7 +853,7 @@ var staticRenderFns = [function () {
     staticClass: "wrapper text-center text-sm-left"
   }, [_c("p", {
     staticClass: "card-text mb-0"
-  }, [_vm._v("Completed Booking")]), _c("div", {
+  }, [_vm._v("Today's Completed Booking")]), _c("div", {
     staticClass: "fluid-container"
   })]);
 }, function () {
@@ -763,6 +864,36 @@ var staticRenderFns = [function () {
   }, [_c("p", {
     staticClass: "card-text mb-0"
   }, [_vm._v("Scheduled Booking")]), _c("div", {
+    staticClass: "fluid-container"
+  })]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("div", {
+    staticClass: "wrapper text-center text-sm-left"
+  }, [_c("p", {
+    staticClass: "card-text mb-0"
+  }, [_vm._v("Total Cancelled Booking")]), _c("div", {
+    staticClass: "fluid-container"
+  })]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("div", {
+    staticClass: "wrapper text-center text-sm-left"
+  }, [_c("p", {
+    staticClass: "card-text mb-0"
+  }, [_vm._v("Total Vehicle Onboarded")]), _c("div", {
+    staticClass: "fluid-container"
+  })]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("div", {
+    staticClass: "wrapper text-center text-sm-left"
+  }, [_c("p", {
+    staticClass: "card-text mb-0"
+  }, [_vm._v("Routes Available")]), _c("div", {
     staticClass: "fluid-container"
   })]);
 }];

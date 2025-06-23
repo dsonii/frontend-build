@@ -112,7 +112,7 @@ __webpack_require__.r(__webpack_exports__);
           searchOnPressEnter: true,
           searchDebounceRate: 1000
         },
-        per_page_options: [10, 20, 30, 50, 100],
+        per_page_options: [25, 50, 100],
         highlight_row_hover_color: "silver",
         highlight_row_hover: true,
         card_mode: true,
@@ -159,6 +159,7 @@ __webpack_require__.r(__webpack_exports__);
   computed: {
     ...Object(pinia__WEBPACK_IMPORTED_MODULE_10__["mapState"])(_store_useAuth_js__WEBPACK_IMPORTED_MODULE_13__["useAuth"], ['isAuth', 'getRolePermissionsArr']),
     excelDownload() {
+      console.log(this.rows);
       return _services__WEBPACK_IMPORTED_MODULE_3__["customerService"].tranform(this.rows);
     },
     excelName() {

@@ -48324,7 +48324,7 @@ __webpack_require__.r(__webpack_exports__);
  */
 var getEnv = function getEnv(key) {
   var fallback = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
-  var env = typeof process !== 'undefined' && process ? Object({"NODE_ENV":"development","VUE_APP_API_URL":"https://stg.happiesttravel.com/v1","VUE_APP_GOOGLE_MAPS_API_KEY":"AIzaSyDNXFKSewcSyt9woJA8HmBLqlKmg-M5IFA","BASE_URL":"/"}) || false : {};
+  var env = typeof process !== 'undefined' && process ? Object({"NODE_ENV":"development","VUE_APP_API_URL":"https://stg.happiesttravel.com/v1/","VUE_APP_GOOGLE_MAPS_API_KEY":"AIzaSyDNXFKSewcSyt9woJA8HmBLqlKmg-M5IFA","BASE_URL":"/"}) || false : {};
 
   if (!key) {
     /* istanbul ignore next */
@@ -138219,7 +138219,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
-var withParams = Object({"NODE_ENV":"development","VUE_APP_API_URL":"https://stg.happiesttravel.com/v1","VUE_APP_GOOGLE_MAPS_API_KEY":"AIzaSyDNXFKSewcSyt9woJA8HmBLqlKmg-M5IFA","BASE_URL":"/"}).BUILD === 'web' ? __webpack_require__(/*! ./withParamsBrowser */ "./node_modules/vuelidate/lib/withParamsBrowser.js").withParams : __webpack_require__(/*! ./params */ "./node_modules/vuelidate/lib/params.js").withParams;
+var withParams = Object({"NODE_ENV":"development","VUE_APP_API_URL":"https://stg.happiesttravel.com/v1/","VUE_APP_GOOGLE_MAPS_API_KEY":"AIzaSyDNXFKSewcSyt9woJA8HmBLqlKmg-M5IFA","BASE_URL":"/"}).BUILD === 'web' ? __webpack_require__(/*! ./withParamsBrowser */ "./node_modules/vuelidate/lib/withParamsBrowser.js").withParams : __webpack_require__(/*! ./params */ "./node_modules/vuelidate/lib/params.js").withParams;
 var _default = withParams;
 exports.default = _default;
 
