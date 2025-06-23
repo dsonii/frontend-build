@@ -10,6 +10,8 @@ async function loadCountData() {
   try {
     const privateAuth = useAuthApi();
     const response = await privateAuth.get("dashboard/count");
+    console.log("response frontend");
+    console.log(response.data);
     return response.data;
   } catch (e) {
     console.log("dashboard", e);

@@ -66,6 +66,7 @@ async function getAll(Objparams) {
     const response = await privateAuth.get("users/search", {
       params: Objparams,
     });
+    
     return response.data;
   } catch (e) {
     return e.response;
@@ -98,23 +99,18 @@ function tranform(rows) {
   const selectableItems = [];
   let i = 1;
   rows.forEach((user) => {
+
     selectableItems.push({
       id: i++,
       fullname: user.fullname,
+      company: user.company,
+      emp_code: user.customer_code,
       gender: user.gender,
       email: user.email,
       phone: user.phone,
-      mode: user.mode,
-      refercode: user.refercode,
-      ProfilePic: user.ProfilePic,
-      home_address: user.home_address,
-      home_lat: user.home_lat,
-      home_lng: user.home_lng,
-      home_timing: user.home_timing,
-      office_timing: user.office_timing,
-      office_address: user.office_address,
-      office_lat: user.office_lat,
-      office_lng: user.office_lng,
+      home_address: user.places.home.address,
+      office_address: user.places.office.address,
+     
       status: user.status,
       createdAt: getDateFormat(user.createdAt),
     });

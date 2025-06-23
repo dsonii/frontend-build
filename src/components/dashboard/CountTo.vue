@@ -100,7 +100,7 @@
                     <i class="mdi mdi-ticket-confirmation"></i>
                     <router-link
                       :to="{
-                        path: '/bookings/scheduled',
+                        path: '/bookings/completed',
                       }"
                       style="text-decoration: none; color: #002c5f"
                     >
@@ -112,12 +112,13 @@
                     </router-link>
                   </div>
                   <div class="wrapper text-center text-sm-right">
-                    <p class="card-text mb-0">Total Ticket Booking</p>
+                    <p class="card-text mb-0">Total Completed Booking</p>
                     <div class="fluid-container"></div>
                   </div>
                 </div>
               </div>
             </div>
+
             <div class="card-col col-xl-4 col-lg-4 col-md-4 col-6">
               <div class="card-body">
                 <div
@@ -139,12 +140,13 @@
                     </router-link>
                   </div>
                   <div class="wrapper text-center text-sm-left">
-                    <p class="card-text mb-0">Completed Booking</p>
+                    <p class="card-text mb-0">Today's Completed Booking</p>
                     <div class="fluid-container"></div>
                   </div>
                 </div>
               </div>
             </div>
+
             <div class="card-col col-xl-4 col-lg-4 col-md-4 col-6">
               <div class="card-body">
                 <div
@@ -172,6 +174,107 @@
                 </div>
               </div>
             </div>
+
+            </div>
+            </div>
+            </div>
+            </div>
+
+
+
+             <div class="row">
+      <div class="col-md-12 grid-margin">
+        <div class="card card-statistics">
+          <div class="row">
+            
+
+            <div class="card-col col-xl-4 col-lg-4 col-md-4 col-6">
+              <div class="card-body">
+                <div
+                  class="d-flex align-items-center justify-content-center flex-column flex-sm-row"
+                >
+                  <div class="text-primary mr-0 icon-lg">
+                    <i class="mdi mdi-ticket-confirmation"></i>
+                    <router-link
+                      :to="{
+                        path: '/bookings/cancelled',
+                      }"
+                      style="text-decoration: none; color: #002c5f"
+                    >
+                      <countTo
+                        :startVal="totalCancelled.startVal"
+                        :endVal="totalCancelled.endVal"
+                        :duration="totalCancelled.duration"
+                      ></countTo>
+                    </router-link>
+                  </div>
+                  <div class="wrapper text-center text-sm-left">
+                    <p class="card-text mb-0">Total Cancelled Booking</p>
+                    <div class="fluid-container"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card-col col-xl-4 col-lg-4 col-md-4 col-6">
+              <div class="card-body">
+                <div
+                  class="d-flex align-items-center justify-content-center flex-column flex-sm-row"
+                >
+                  <div class="text-primary mr-0 icon-lg">
+                    <i class="mdi mdi-ticket-confirmation"></i>
+                    <router-link
+                      :to="{
+                        path: '/buses',
+                      }"
+                      style="text-decoration: none; color: #002c5f"
+                    >
+                      <countTo
+                        :startVal="totalVehicleOnboarded.startVal"
+                        :endVal="totalVehicleOnboarded.endVal"
+                        :duration="totalVehicleOnboarded.duration"
+                      ></countTo>
+                    </router-link>
+                  </div>
+                  <div class="wrapper text-center text-sm-left">
+                    <p class="card-text mb-0">Total Vehicle Onboarded</p>
+                    <div class="fluid-container"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="card-col col-xl-4 col-lg-4 col-md-4 col-6">
+              <div class="card-body">
+                <div
+                  class="d-flex align-items-center justify-content-center flex-column flex-sm-row"
+                >
+                  <div class="text-primary mr-0 icon-lg">
+                    <i class="mdi mdi-ticket-confirmation"></i>
+                    <router-link
+                      :to="{
+                        path: '/routes',
+                      }"
+                      style="text-decoration: none; color: #002c5f"
+                    >
+                      <countTo
+                        :startVal="routeAvailable.startVal"
+                        :endVal="routeAvailable.endVal"
+                        :duration="routeAvailable.duration"
+                      ></countTo>
+                    </router-link>
+                  </div>
+                  <div class="wrapper text-center text-sm-left">
+                    <p class="card-text mb-0">Routes Available</p>
+                    <div class="fluid-container"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+
           </div>
         </div>
       </div>
@@ -210,6 +313,18 @@ export default {
         startVal: 0,
         endVal: 0,
       },
+      totalCancelled: {
+        startVal: 0,
+        endVal: 0,
+      },
+      totalVehicleOnboarded: {
+      startVal: 0,
+      endVal: 0,
+      },
+      routeAvailable: {
+      startVal: 0,
+      endVal: 0,
+      },
     };
   },
   components: { countTo },
@@ -225,6 +340,9 @@ export default {
         this.countTotalBooking = response.data.countTotalBooking;
         this.countTodayCompletedBooking = response.data.todayCompletedBooking;
         this.countScheduledBooking = response.data.todayScheduledBooking;
+        this.totalCancelled = response.data.totalCancelled;
+        this.totalVehicleOnboarded = response.data.totalVehicleOnboarded;
+        this.routeAvailable = response.data.routeAvailable;
       });
     },
     // toggleProBanner: function () {
